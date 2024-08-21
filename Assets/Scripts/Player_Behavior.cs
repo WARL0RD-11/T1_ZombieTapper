@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player_Behavior : MonoBehaviour
-{
+{   
+
+    void PlayerMovement()
+    {   
+        
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +18,6 @@ public class Player_Behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        PlayerMovement();
     }
 }
