@@ -525,6 +525,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1902519462}
     - target: {fileID: 7588521829188989851, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
+      propertyPath: delayPenalty
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588521829188989851, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
       propertyPath: deliveryItems.Array.size
       value: 4
       objectReference: {fileID: 0}

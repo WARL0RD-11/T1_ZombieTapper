@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,56 +19,128 @@ public class SoldierBehavior : MonoBehaviour
     //Points to the game manager in the scene
     private GameManager gM;
 
+    //The SO Delivery item that the soldier currently wants
     private DeliveryItem wantedItem;
 
+    //Bool that changes depeneding on if the solider needs an item or not
     private bool waitingForItem;
 
+    //Color of the debug line trace used for testing
+    //No functionality in final project
     private Color tempColor;
 
+    //Layermask for the raycast2D to only see zombies to prevent funky interactions
     [SerializeField]
     private LayerMask zombieMask;
 
     void Start()
     {
+        //Gets all the components referenced in the code
         bC2D = GetComponent<BoxCollider2D>();
         spRend = GetComponent<SpriteRenderer>();
         gM = FindObjectOfType<GameManager>();
 
+        //Gets the stun duration that will be suffered from the game manager
         stunDuration = gM.GetDelayPenalty();
 
+        //Initializes waitingForItem to false
         waitingForItem = false;
+
+        //Test code for stun functionality
+        //BecomeStunned();
     }
 
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector3.left), Mathf.Infinity, zombieMask);
-        if (hit.collider!=null)
+
+        //Only looks for a zombie if the soldier is not currently stunned
+        if (!isStunned)
         {
-            tempColor = Color.red;
-            //Debug.Log("Soldier deteced a zombie");
-            Debug.DrawLine(transform.position, hit.transform.position, tempColor);
-            if (!waitingForItem)
+
+            //Send out a 2D raycast and store the hit result (if it exists) in *hit*
+            //Only detects colliders on the Zombie layer to prevent clipping with anything else
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector3.left), Mathf.Infinity, zombieMask);
+            //If hit has a result
+            if (hit.collider != null)
             {
-                WantsNewItem();
+                //then set the debug line color to red and end it on the position
+                tempColor = Color.red;
+                //Debug.Log("Soldier deteced a zombie");
+                Debug.DrawLine(transform.position, hit.transform.position, tempColor);
+                //If this is the first time they've detected a zombie
+                if (!waitingForItem)
+                {
+                    //Start wanting a new item
+                    WantsNewItem();
+                }
+
+            }
+            //If hit does not have a result
+            else
+            {
+                //then set the debug line color to green and go off screen
+                tempColor = Color.green;
+                //Debug.Log("Soldier cannot see a zombie");
+                Debug.DrawLine(transform.position, Vector3.left * 100, tempColor);
+
+                //Doesn't see a zombie so nothing should happen at the moment
             }
 
         }
-        else
-        {
-            tempColor = Color.green;
-            //Debug.Log("Soldier cannot see a zombie");
-            Debug.DrawLine(transform.position, Vector3.left * 100, tempColor);
-        }
-
-
     }
 
     //Called when the soldier wants a new item to be delivered
     private void WantsNewItem()
     {
+        //Get a random delivery item from the game manager
         wantedItem = gM.GetRandomDeliveryItem();
 
         Debug.Log("Soldier wants " + wantedItem.itemName);
+
+        //Set waitingForItem to true so that its not constantly asking for a new one
+        waitingForItem = true;
+    }
+
+    //Called by the player when they attempt to give the soldier an item
+    public void DeliverItem(DeliveryItem item)
+    {
+        //If the item is the correct item
+        if(item == wantedItem)
+        {
+            //Do something
+            //Shoot the zombie
+            //Give the player some points, subject to change
+            gM.AddScore(1);
+        }
+        //If the item is the wrong item
+        else
+        {
+            //Stun the soldier
+            waitingForItem=false;
+            BecomeStunned();
+        }
+    }
+
+    //Called when the player delivers the wrong item to the soldier
+    private void BecomeStunned()
+    {
+        //Set isStunned to true to prevent detection and asking for a new item
+        isStunned = true;
+
+        //Start the StunBehavior coroutine
+        StartCoroutine(StunBehavior());
+
+        Debug.Log("soldier has become stunned");
+    }
+
+    //Part of stun behavior
+    //Basically waits the duration specified in GameManager's penalty
+    //Then recovers the soldier from stun to act as normal
+    private IEnumerator StunBehavior()
+    {
+        yield return new WaitForSeconds(stunDuration);
+        isStunned = false;
+        Debug.Log("soldier recovered from stun");
     }
 }
