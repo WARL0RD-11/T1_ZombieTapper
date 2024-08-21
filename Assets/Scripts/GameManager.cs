@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int powerUpProgress;
 
+    //Points to the playerUI script attached to the player UI
+    //Will communicate and update the score for the player.
+    [SerializeField]
+    private PlayerUI playerUI;
+
     //Variable to track whether or not the game has ended
     private bool gameHasEnded;
 
@@ -31,13 +36,22 @@ public class GameManager : MonoBehaviour
         playerScore = 0;
 
         gameHasEnded = false;
+
+        Debug.Log("Game manager exists");
+
+        AddScore(0);
     }
 
     //Something in the game tells the manager to add score to the player
     public void AddScore(int score)
     {
+
+        Debug.Log("Adding " + score.ToString() + " score to the player");
         //Add the score to the existing score and store it
         playerScore += score;
+
+        //Call the playerUI object and tell it to update the player score.
+        playerUI.UpdateScoreText(playerScore);
     }
 
     //Called when a zombie breaches the defenses.
@@ -53,6 +67,13 @@ public class GameManager : MonoBehaviour
     {
         //Code to get everything and pause things like animations and movement by zombies/guards.
         //Show off the score or something.
+    }
+
+
+    //Return the current value of gameHasEnded for other scripts to get so that nothing goes wonky when the game is over.
+    public bool GetGameStatus()
+    {
+        return gameHasEnded;
     }
 
 }
