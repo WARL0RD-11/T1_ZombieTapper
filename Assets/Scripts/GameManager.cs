@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -29,6 +30,10 @@ public class GameManager : MonoBehaviour
 
     //Variable to track whether or not the game has ended
     private bool gameHasEnded;
+
+    //Contains all the delivery items that the soldiers could want
+    [SerializeField]
+    private DeliveryItem[] deliveryItems;
 
     // Start is called before the first frame update
     void Start()
@@ -74,6 +79,21 @@ public class GameManager : MonoBehaviour
     public bool GetGameStatus()
     {
         return gameHasEnded;
+    }
+
+    public float GetDelayPenalty()
+    { return delayPenalty; }
+
+    //Returns the whole array of delivery items
+    public DeliveryItem[] GetDeliveryItems()
+    { return deliveryItems; }
+    
+    //Returns a random delivery item that a soldier could want
+    public DeliveryItem GetRandomDeliveryItem()
+    {
+        int index = Random.Range(0, deliveryItems.Length);
+
+        return deliveryItems[index];
     }
 
 }

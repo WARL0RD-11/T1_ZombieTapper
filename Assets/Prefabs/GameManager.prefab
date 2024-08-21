@@ -47,3 +47,9 @@ MonoBehaviour:
   scorePerZombie: 0
   delayPenalty: 0
   powerUpProgress: 0
+  playerUI: {fileID: 0}
+  deliveryItems:
+  - {fileID: 11400000, guid: 5118fca42aeb1a84890f998ac76089d9, type: 2}
+  - {fileID: 11400000, guid: 82f1ab96d0b6a624dae088c39a077abf, type: 2}
+  - {fileID: 11400000, guid: 40a218b76848e064585718edcec1703a, type: 2}
+  - {fileID: 11400000, guid: 35c2d99edbe417848a963f50c77a1946, type: 2}
