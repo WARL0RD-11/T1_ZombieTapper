@@ -5,7 +5,8 @@ using UnityEngine;
 public class Enemy_Instantiate : MonoBehaviour
 {
     [SerializeField] public GameObject enemyPrefab;
-    [SerializeField] float interval = 4f;
+    [SerializeField] Transform parent;
+    [SerializeField] float interval = 3f;
     float time = 0;
     void Start()
     {
@@ -15,12 +16,17 @@ public class Enemy_Instantiate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Enemy_Behaviour.isGameOver)
+        { return; }
         time += Time.deltaTime;
         if(time >= interval)
         {
-            time = 0f;
-            var spawnPosition = new Vector3(0, Mathf.RoundToInt(Random.Range(-8, 8)), 0);
-            Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            time = 0f;            
+            var spawnPosition = new Vector3(transform.position.x, Mathf.RoundToInt(
+                Random.Range(-2, 2)) * 2, 0); //Generate random lane for enemy
+            GameObject spawnGameObject = Instantiate(enemyPrefab, spawnPosition, 
+               Quaternion.identity);
+            spawnGameObject.transform.parent = parent; // Parent all clones to a single object
         }
     }
 }
