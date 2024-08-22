@@ -72,6 +72,8 @@ public class GameManager : MonoBehaviour
     {
         //Code to get everything and pause things like animations and movement by zombies/guards.
         //Show off the score or something.
+        Debug.Log("Game is over");
+        //Transition to the end game screen
     }
 
 

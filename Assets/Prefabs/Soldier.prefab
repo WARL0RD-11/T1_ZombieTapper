@@ -177,6 +177,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombieMask:
     serializedVersion: 2
-    m_Bits: 0
-  speechBubblePrefab: {fileID: 0}
-  bubbleCoords: {fileID: 0}
+    m_Bits: 64
+  speechBubblePrefab: {fileID: 7545094513806686253, guid: 0f450db5e65b90e4bbbab767bfbec834, type: 3}
+  bubbleCoords: {fileID: 280828244024678843}

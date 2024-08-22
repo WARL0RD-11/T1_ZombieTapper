@@ -7,12 +7,13 @@ public class PlayerUI : MonoBehaviour
 {
 
     //Points to the attached TextMeshPro component
+    [SerializeField]
     private TMP_Text scoreText;
 
     public void Start()
     {
         //Get the TMP component and set it
-        scoreText = GetComponentInChildren<TMP_Text>();
+        //scoreText = GetComponentInChildren<TMP_Text>();
     }
 
 
