@@ -14,8 +14,6 @@ public class DesiredItemBubble : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-
     }
 
     public void UpdateItemSprite(Sprite sprite)
