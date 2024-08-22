@@ -12,42 +12,22 @@ public class Player_Behavior : MonoBehaviour
         float vertical = 0;
         float GridSize = 1.0f;
         bool MovingUp = true;
-        KeyCode KeyPressed = KeyCode.Space;
+        KeyCode DownKeyPressed = KeyCode.S;
+        KeyCode UpKeyPressed = KeyCode.W;
         Vector3 NewPos;
 
-        if (Input.GetKeyDown(KeyPressed))
+        if (Input.GetKeyDown(DownKeyPressed))
         {
-            if ((transform.position.y >= -5.0f) && (transform.position.y < 5.0f))
-            { 
-                MovingUp = true;
-                Debug.Log("TRUE");
-            }
-            else if (transform.position.y >= 5.0f)
-            {
-                MovingUp = false;
-                Debug.Log("False");
-            }
-
-            if (MovingUp)
-            {
-                NewPos = transform.position + new Vector3(0, GridSize, 0);
-            }
-            else
-            {
-                NewPos = transform.position - new Vector3(0, GridSize, 0);
-            }
-
-            if (Input.GetKey(KeyCode.A))
-            {
-                horizontal -= 1;
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                horizontal += 1;
-            }
-
+            NewPos = transform.position - new Vector3(0, GridSize, 0);
             transform.position = NewPos;
         }
+
+        if (Input.GetKeyDown(UpKeyPressed))
+        {
+            NewPos = transform.position + new Vector3(0, GridSize, 0);
+            transform.position = NewPos;
+        }
+
     }
 
     // Start is called before the first frame update
