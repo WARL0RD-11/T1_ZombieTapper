@@ -42,6 +42,8 @@ public class SoldierBehavior : MonoBehaviour
     [SerializeField]
     private GameObject bubbleCoords;
 
+    private float linecastDistance;
+
     void Start()
     {
         //Gets all the components referenced in the code
@@ -54,6 +56,8 @@ public class SoldierBehavior : MonoBehaviour
 
         //Initializes waitingForItem to false
         waitingForItem = false;
+
+        linecastDistance = gM.GetLinecastDistance();
 
         //Test code for stun functionality
         //BecomeStunned();
@@ -69,7 +73,7 @@ public class SoldierBehavior : MonoBehaviour
 
             //Send out a 2D raycast and store the hit result (if it exists) in *hit*
             //Only detects colliders on the Zombie layer to prevent clipping with anything else
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector3.left), Mathf.Infinity, zombieMask);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector3.left), linecastDistance, zombieMask);
             //If hit has a result
             if (hit.collider != null)
             {
@@ -91,7 +95,7 @@ public class SoldierBehavior : MonoBehaviour
                 //then set the debug line color to green and go off screen
                 tempColor = Color.green;
                 //Debug.Log("Soldier cannot see a zombie");
-                Debug.DrawLine(transform.position, Vector3.left * 100, tempColor);
+                Debug.DrawLine(transform.position, transform.position - Vector3.left * -linecastDistance, tempColor);
 
                 //Doesn't see a zombie so nothing should happen at the moment
             }

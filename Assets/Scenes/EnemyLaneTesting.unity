@@ -525,6 +525,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7588521829188989851, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
+      propertyPath: linecastDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588521829188989851, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
       propertyPath: deliveryItems.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -689,6 +693,10 @@ PrefabInstance:
     - target: {fileID: 3062358487381867548, guid: b8ae50d742f4957459f9b647c5179ac6, type: 3}
       propertyPath: m_Name
       value: EndZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062358487381867548, guid: b8ae50d742f4957459f9b647c5179ac6, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7310806544746518140, guid: b8ae50d742f4957459f9b647c5179ac6, type: 3}
       propertyPath: m_LocalPosition.x

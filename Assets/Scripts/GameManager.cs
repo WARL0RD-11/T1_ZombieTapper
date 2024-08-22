@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private DeliveryItem[] deliveryItems;
 
+    [SerializeField]
+    private float linecastDistance;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,4 +101,8 @@ public class GameManager : MonoBehaviour
         return deliveryItems[index];
     }
 
+    public float GetLinecastDistance()
+    {
+        return linecastDistance;
+    }
 }
