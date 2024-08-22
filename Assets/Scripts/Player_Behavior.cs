@@ -5,6 +5,35 @@ using UnityEngine;
 
 public class Player_Behavior : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject Package; 
+    public bool CanDeliver = false;
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Package"))
+        {
+            CanDeliver = true;  
+        }
+    }
+
+    //This Function Checks if the Player Overlaps with the Package and then Presses SPACE. 
+    //Creating the Pickup mechanic
+    void Delivery()
+    {
+        KeyCode PDKey = KeyCode.Space;
+        if (Input.GetKeyDown(PDKey))
+        {
+            Debug.Log("SPACE Pressed");
+            if (CanDeliver == true)
+            {
+                Debug.Log("Destruction Initiated");
+                Destroy(Package);
+                gameObject.tag = "HasPackage";
+            }
+
+        }
+    }
 
     void PlayerMovement()
     {
@@ -39,5 +68,6 @@ public class Player_Behavior : MonoBehaviour
     void Update()
     {
         PlayerMovement();
+        Delivery();
     }
 }
