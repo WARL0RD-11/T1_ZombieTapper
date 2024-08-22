@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: LargeBullet
   m_EditorClassIdentifier: 
   itemName: LargeBullet
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 5de3ce827225ca846a4c8e4808c0842c, type: 3}

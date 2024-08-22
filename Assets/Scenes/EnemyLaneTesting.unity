@@ -242,7 +242,7 @@ Transform:
   m_GameObject: {fileID: 546325851}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.52, y: 0, z: 0}
+  m_LocalPosition: {x: -7.52, y: 1.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -500,9 +500,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+      propertyPath: bubbleCoords
+      value: 
+      objectReference: {fileID: 529375728627749130}
+    - target: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: zombieMask.m_Bits
       value: 64
       objectReference: {fileID: 0}
+    - target: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+      propertyPath: speechBubblePrefab
+      value: 
+      objectReference: {fileID: 7545094513806686253, guid: 0f450db5e65b90e4bbbab767bfbec834, type: 3}
     - target: {fileID: 5907876598019354629, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_Name
       value: Soldier
@@ -512,6 +520,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+--- !u!1 &529375728627749130 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 280828244024678843, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+  m_PrefabInstance: {fileID: 529375728627749129}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2706331110872476713
 PrefabInstance:
   m_ObjectHideFlags: 0

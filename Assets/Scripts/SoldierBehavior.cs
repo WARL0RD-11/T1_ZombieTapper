@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using UnityEngine;
 
 public class SoldierBehavior : MonoBehaviour
@@ -32,6 +33,14 @@ public class SoldierBehavior : MonoBehaviour
     //Layermask for the raycast2D to only see zombies to prevent funky interactions
     [SerializeField]
     private LayerMask zombieMask;
+
+    [SerializeField]
+    private GameObject speechBubblePrefab;
+
+    private GameObject currentSpeechBubble;
+
+    [SerializeField]
+    private GameObject bubbleCoords;
 
     void Start()
     {
@@ -98,6 +107,9 @@ public class SoldierBehavior : MonoBehaviour
 
         Debug.Log("Soldier wants " + wantedItem.itemName);
 
+        currentSpeechBubble = Instantiate(speechBubblePrefab, bubbleCoords.transform.position, Quaternion.identity);
+        currentSpeechBubble.GetComponent<DesiredItemBubble>().UpdateItemSprite(wantedItem.itemSprite);
+
         //Set waitingForItem to true so that its not constantly asking for a new one
         waitingForItem = true;
     }
@@ -110,6 +122,8 @@ public class SoldierBehavior : MonoBehaviour
         {
             //Do something
             //Shoot the zombie
+            //Get rid of the current speech bubble
+            Destroy(currentSpeechBubble);
             //Give the player some points, subject to change
             gM.AddScore(1);
         }

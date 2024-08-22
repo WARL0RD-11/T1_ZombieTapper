@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SmallBullet
   m_EditorClassIdentifier: 
   itemName: Handgun Bullet
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 5dc887b057d2246408cd9aa76c95989c, type: 3}
