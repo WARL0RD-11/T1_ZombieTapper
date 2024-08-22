@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float linecastDistance;
 
+    [SerializeField]
+    private float soldierCooldown;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -104,5 +107,10 @@ public class GameManager : MonoBehaviour
     public float GetLinecastDistance()
     {
         return linecastDistance;
+    }
+
+    public float GetSoldierCooldown()
+    {
+        return soldierCooldown;
     }
 }

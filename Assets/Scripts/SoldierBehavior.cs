@@ -14,6 +14,8 @@ public class SoldierBehavior : MonoBehaviour
     //Delivering the wrong item to the guard means they are stunned
     private bool isStunned;
 
+    private bool canShoot;
+
     //The duration that the guard is stunned if the wrong delivery is given
     private float stunDuration;
 
@@ -41,6 +43,8 @@ public class SoldierBehavior : MonoBehaviour
 
     private GameObject detectedEnemy;
 
+    private float cooldown;
+
     [SerializeField]
     private GameObject bubbleCoords;
 
@@ -61,6 +65,9 @@ public class SoldierBehavior : MonoBehaviour
 
         linecastDistance = gM.GetLinecastDistance();
 
+        cooldown = gM.GetSoldierCooldown();
+
+        canShoot = true;
         //Test code for stun functionality
         //BecomeStunned();
     }
@@ -176,7 +183,7 @@ public class SoldierBehavior : MonoBehaviour
     private void ShootBehavior()
     {
         //Make sure that an actual target exists for the soldier
-        if(detectedEnemy)
+        if(detectedEnemy && canShoot)
         {
             //DO the shoot action on the enemy game object
             //Just destroy it for right now
@@ -186,7 +193,17 @@ public class SoldierBehavior : MonoBehaviour
 
             //Remove the stored value to prevent any edge cases
             detectedEnemy = null;
+
+            canShoot = false;
         }
         
+    }
+
+    private IEnumerator ShootCooldown()
+    {
+        yield return new WaitForSeconds(cooldown);
+        canShoot = true;
+        Debug.Log("Soldier can shoot again");
+
     }
 }
