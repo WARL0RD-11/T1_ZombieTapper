@@ -26,6 +26,7 @@ public class Enemy_Behaviour : MonoBehaviour
         }
         //ToDo
         // Enemy speed increase over time
+        // Enemy Health
     }
     private void EnemyMovement()
     {

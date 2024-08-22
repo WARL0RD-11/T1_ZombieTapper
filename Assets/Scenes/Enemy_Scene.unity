@@ -1005,6 +1005,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7588521829188989851, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
+      propertyPath: enemySpawnTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588521829188989851, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
       propertyPath: scorePerZombie
       value: 1
       objectReference: {fileID: 0}
@@ -1149,7 +1153,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 2772351504547192300, guid: fbd9a907a00deef4c90d41f379c5bc5b, type: 3}
   parent: {fileID: 2042173376}
-  interval: 2
 --- !u!4 &1007335507
 Transform:
   m_ObjectHideFlags: 0
