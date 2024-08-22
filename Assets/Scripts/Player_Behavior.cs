@@ -8,10 +8,7 @@ public class Player_Behavior : MonoBehaviour
 
     void PlayerMovement()
     {
-        float horizontal = 0;
-        float vertical = 0;
-        float GridSize = 1.0f;
-        bool MovingUp = true;
+        float GridSize = 2.0f;
         KeyCode DownKeyPressed = KeyCode.S;
         KeyCode UpKeyPressed = KeyCode.W;
         Vector3 NewPos;
