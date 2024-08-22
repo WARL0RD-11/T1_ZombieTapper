@@ -471,7 +471,7 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Debug Horizontal
-    descriptiveName: 
+    descriptiveName: 'Testing this '
     descriptiveNegativeName: 
     negativeButton: left
     positiveButton: right
@@ -485,3 +485,4 @@ InputManager:
     type: 2
     axis: 5
     joyNum: 0
+  m_UsePhysicalKeys: 1
