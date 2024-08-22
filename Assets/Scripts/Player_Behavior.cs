@@ -5,16 +5,22 @@ using UnityEngine;
 
 public class Player_Behavior : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject Package; 
+    //[SerializeField]
+    //private GameObject Package; 
     public bool CanDeliver = false;
+
+    //Variable that holds the current delivery item picked up by the player
+    //Carter 
+    private DeliveryItem currentItem;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        /*
         if (collision.gameObject.CompareTag("Package"))
         {
             CanDeliver = true;  
         }
+        */
     }
 
     //This Function Checks if the Player Overlaps with the Package and then Presses SPACE. 
@@ -25,11 +31,21 @@ public class Player_Behavior : MonoBehaviour
         if (Input.GetKeyDown(PDKey))
         {
             Debug.Log("SPACE Pressed");
-            if (CanDeliver == true)
+            if (CanDeliver == true && currentItem)
             {
-                Debug.Log("Destruction Initiated");
-                Destroy(Package);
-                gameObject.tag = "HasPackage";
+                //Debug.Log("Destruction Initiated");
+                //Destroy(Package);
+                //gameObject.tag = "HasPackage";
+
+                //Code for giving it to the detected soldier
+
+                RemoveDeliveryItem();
+            }
+            else
+            {
+                //use SetDeliveryItem on the current supply box
+
+      
             }
 
         }
@@ -69,5 +85,15 @@ public class Player_Behavior : MonoBehaviour
     {
         PlayerMovement();
         Delivery();
+    }
+
+    private void SetDeliveryItem(DeliveryItem newItem)
+    {
+        currentItem = newItem;
+    }
+
+    private void RemoveDeliveryItem()
+    {
+        currentItem = null;
     }
 }
