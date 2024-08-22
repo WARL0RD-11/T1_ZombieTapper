@@ -551,6 +551,9 @@ MonoBehaviour:
   supplyMask:
     serializedVersion: 2
     m_Bits: 256
+  soldierMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &492669645
 PrefabInstance:
   m_ObjectHideFlags: 0

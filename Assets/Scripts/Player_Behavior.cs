@@ -28,9 +28,7 @@ public class Player_Behavior : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Package"))
         {
-            //Debug.Log("Collision with Package"); //Successful Log
-            //CurrentSB = collision.gameObject.GetComponent<SupplyBox_Behavior>();
-            //Debug.Log(CurrentSB.GetSupplyItem().itemName);
+
         }
     }
 
@@ -47,6 +45,9 @@ public class Player_Behavior : MonoBehaviour
                 //Code for giving it to the detected soldier
                 Debug.Log("Already Has Item");
                 RemoveDeliveryItem(); 
+                HasItem = false;
+                Debug.Log("Item Delivered");
+
             }
             else if (HasItem == false && !currentItem)
             {
@@ -88,7 +89,7 @@ public class Player_Behavior : MonoBehaviour
         RaycastHit2D SoldierDetect = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector3.left), 100, soldierMask);
 
         RaycastHit2D SupplyDetect = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector3.right), 100, supplyMask);
-        //Debug.Log("hello world");
+
         if (SoldierDetect.collider)
         {
             CurrentSoldier = SoldierDetect.collider.gameObject;
@@ -105,6 +106,7 @@ public class Player_Behavior : MonoBehaviour
     void Start()
     {
         HasItem = false;
+        RaycastDetections();
     }
 
     // Update is called once per frame
