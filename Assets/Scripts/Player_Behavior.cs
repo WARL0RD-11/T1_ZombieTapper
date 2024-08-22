@@ -15,16 +15,18 @@ public class Player_Behavior : MonoBehaviour
 
         if (Input.GetKeyDown(DownKeyPressed))
         {
+            
             NewPos = transform.position - new Vector3(0, GridSize, 0);
+            NewPos.y = Mathf.Clamp(NewPos.y, -4, GridSize);
             transform.position = NewPos;
         }
 
         if (Input.GetKeyDown(UpKeyPressed))
         {
             NewPos = transform.position + new Vector3(0, GridSize, 0);
+            NewPos.y = Mathf.Clamp(NewPos.y, -4, GridSize);
             transform.position = NewPos;
         }
-
     }
 
     // Start is called before the first frame update
