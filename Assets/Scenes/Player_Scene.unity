@@ -557,7 +557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2593085153897028985, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Size.x
-      value: 9.653473
+      value: 12.49957
       objectReference: {fileID: 0}
     - target: {fileID: 2593085153897028985, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Size.y
@@ -565,17 +565,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2593085153897028985, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Offset.x
-      value: -4.3267365
+      value: -5.749785
       objectReference: {fileID: 0}
     - target: {fileID: 2593085153897028985, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Offset.y
       value: 0.00000011920929
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593085153897028985, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7953492119133736993, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Name
       value: SupplyBox1
       objectReference: {fileID: 0}
     - target: {fileID: 7953492119133736993, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: m_TagString
+      value: Package
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255841777943408207, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_TagString
       value: Package
       objectReference: {fileID: 0}
@@ -715,6 +723,10 @@ PrefabInstance:
     - target: {fileID: 4930646424962340977, guid: 66803ede8a22d0e429353c7e524fd6f1, type: 3}
       propertyPath: m_Name
       value: PlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4930646424962340977, guid: 66803ede8a22d0e429353c7e524fd6f1, type: 3}
+      propertyPath: m_TagString
+      value: Package
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1024,7 +1036,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b59b3049d764c34c879b480319a65f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanDeliver: 0
+  PDKey: 32
+  UpKeyPressed: 119
+  DownKeyPressed: 115
+  HasItem: 0
 --- !u!50 &1623065977
 Rigidbody2D:
   serializedVersion: 4
@@ -1081,7 +1096,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.06402859, y: -0.008003771}
@@ -1170,7 +1185,7 @@ Transform:
   m_GameObject: {fileID: 1623065975}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.9487772, y: 2.006403, z: 0}
+  m_LocalPosition: {x: 1.9487772, y: 0.0064029694, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

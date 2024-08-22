@@ -5,47 +5,46 @@ using UnityEngine;
 
 public class Player_Behavior : MonoBehaviour
 {
-    //[SerializeField]
-    //private GameObject Package; 
-    public bool CanDeliver = false;
+    [SerializeField] public KeyCode PDKey = KeyCode.Space;
+    [SerializeField] public KeyCode UpKeyPressed = KeyCode.W;
+    [SerializeField] public KeyCode DownKeyPressed = KeyCode.S;
+
+    public bool HasItem;
 
     //Variable that holds the current delivery item picked up by the player
     //Carter 
     private DeliveryItem currentItem;
+    [SerializeField] public SupplyBox_Behavior CurrentSB;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        /*
         if (collision.gameObject.CompareTag("Package"))
         {
-            CanDeliver = true;  
+            Debug.Log("Collision with Package"); //Successful Log
+            //CurrentSB = collision.gameObject.GetComponent<SupplyBox_Behavior>();
+            //Debug.Log(CurrentSB.GetSupplyItem().itemName);
         }
-        */
     }
 
     //This Function Checks if the Player Overlaps with the Package and then Presses SPACE. 
     //Creating the Pickup mechanic
     void Delivery()
     {
-        KeyCode PDKey = KeyCode.Space;
         if (Input.GetKeyDown(PDKey))
         {
-            Debug.Log("SPACE Pressed");
-            if (CanDeliver == true && currentItem)
+            Debug.Log("SPACE Called");
+            if (HasItem == true && currentItem)
             {
-                //Debug.Log("Destruction Initiated");
-                //Destroy(Package);
-                //gameObject.tag = "HasPackage";
-
+                //RayCast to Soldier
                 //Code for giving it to the detected soldier
-
-                RemoveDeliveryItem();
+                Debug.Log("Already Has Item");
+                RemoveDeliveryItem(); 
             }
-            else
+            else if (HasItem == false && !currentItem)
             {
-                //use SetDeliveryItem on the current supply box
-
-      
+                SetDeliveryItem(CurrentSB.GetSupplyItem());
+                HasItem = true;
+                Debug.Log("Item Picked");
             }
 
         }
@@ -54,8 +53,6 @@ public class Player_Behavior : MonoBehaviour
     void PlayerMovement()
     {
         float GridSize = 2.0f;
-        KeyCode DownKeyPressed = KeyCode.S;
-        KeyCode UpKeyPressed = KeyCode.W;
         Vector3 NewPos;
 
         if (Input.GetKeyDown(DownKeyPressed))
@@ -77,7 +74,7 @@ public class Player_Behavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        HasItem = false;
     }
 
     // Update is called once per frame
