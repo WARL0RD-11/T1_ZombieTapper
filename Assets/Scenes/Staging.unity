@@ -544,7 +544,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b59b3049d764c34c879b480319a65f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanDeliver: 0
+  PDKey: 32
+  UpKeyPressed: 119
+  DownKeyPressed: 115
+  HasItem: 0
+  supplyMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1001 &492669645
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1129,45 +1135,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 84616375402996791, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 84616375402996791, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 84616375402996791, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.8075337
-      objectReference: {fileID: 0}
-    - target: {fileID: 84616375402996791, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.22239137
-      objectReference: {fileID: 0}
-    - target: {fileID: 2593085153897028985, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
-      propertyPath: m_Size.x
-      value: 9.653473
-      objectReference: {fileID: 0}
-    - target: {fileID: 2593085153897028985, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
-      propertyPath: m_Size.y
-      value: 1.6181056
-      objectReference: {fileID: 0}
-    - target: {fileID: 2593085153897028985, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
-      propertyPath: m_Offset.x
-      value: -4.3267365
-      objectReference: {fileID: 0}
-    - target: {fileID: 2593085153897028985, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.00000011920929
+    - target: {fileID: 6944272071513625935, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7953492119133736993, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Name
       value: SupplyBox1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7953492119133736993, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
-      propertyPath: m_TagString
-      value: Package
       objectReference: {fileID: 0}
     - target: {fileID: 9071535286221801018, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_LocalPosition.x

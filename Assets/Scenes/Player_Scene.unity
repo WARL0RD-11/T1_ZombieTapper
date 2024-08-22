@@ -539,53 +539,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 84616375402996791, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 84616375402996791, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 84616375402996791, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.8075337
-      objectReference: {fileID: 0}
-    - target: {fileID: 84616375402996791, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.22239137
-      objectReference: {fileID: 0}
-    - target: {fileID: 2593085153897028985, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
-      propertyPath: m_Size.x
-      value: 12.49957
-      objectReference: {fileID: 0}
-    - target: {fileID: 2593085153897028985, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
-      propertyPath: m_Size.y
-      value: 1.6181056
-      objectReference: {fileID: 0}
-    - target: {fileID: 2593085153897028985, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
-      propertyPath: m_Offset.x
-      value: -5.749785
-      objectReference: {fileID: 0}
-    - target: {fileID: 2593085153897028985, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.00000011920929
-      objectReference: {fileID: 0}
-    - target: {fileID: 2593085153897028985, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7953492119133736993, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Name
       value: SupplyBox1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7953492119133736993, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
-      propertyPath: m_TagString
-      value: Package
-      objectReference: {fileID: 0}
-    - target: {fileID: 8255841777943408207, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
-      propertyPath: m_TagString
-      value: Package
       objectReference: {fileID: 0}
     - target: {fileID: 9071535286221801018, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1017,7 +973,7 @@ GameObject:
   - component: {fileID: 1623065978}
   - component: {fileID: 1623065977}
   - component: {fileID: 1623065976}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player_AverageJoe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
