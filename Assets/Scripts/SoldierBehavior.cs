@@ -44,6 +44,8 @@ public class SoldierBehavior : MonoBehaviour
 
     private float linecastDistance;
 
+    private Enemy_Behaviour detectedZombie;
+
     void Start()
     {
         //Gets all the components referenced in the code
@@ -86,6 +88,9 @@ public class SoldierBehavior : MonoBehaviour
                 {
                     //Start wanting a new item
                     WantsNewItem();
+
+                    //Set the target of the soldier to the enemy that triggered the check
+                    detectedZombie = hit.collider.gameObject.GetComponent<Enemy_Behaviour>();
                 }
 
             }
@@ -121,13 +126,21 @@ public class SoldierBehavior : MonoBehaviour
     //Called by the player when they attempt to give the soldier an item
     public void DeliverItem(DeliveryItem item)
     {
+
+        //Get rid of the current speech bubble
+        Destroy(currentSpeechBubble);
+
         //If the item is the correct item
-        if(item == wantedItem)
+        if (item == wantedItem)
         {
             //Do something
             //Shoot the zombie
-            //Get rid of the current speech bubble
-            Destroy(currentSpeechBubble);
+            //Make sure that detectedZombie actually has a value
+            if(detectedZombie)
+            {
+                //Kill the zombie
+                detectedZombie.OnDeath();
+            }
             //Give the player some points, subject to change
             gM.AddScore(1);
         }

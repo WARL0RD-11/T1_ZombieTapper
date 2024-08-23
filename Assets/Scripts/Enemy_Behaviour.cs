@@ -54,4 +54,15 @@ public class Enemy_Behaviour : MonoBehaviour
         // play animation??
         // GameOver screen
     }
+
+    //Function to be called by soldiers when they are delivered the correct item
+    public void OnDeath()
+    {
+        //Set the speed to 0 so corpses can't move
+        enemySpeed = 0.0f;
+
+        //Play animations or something
+        new WaitForSeconds(waitAfterDeath);
+        Destroy(gameObject);
+    }
 }

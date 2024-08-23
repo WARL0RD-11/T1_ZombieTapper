@@ -594,6 +594,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.00000011920929
       objectReference: {fileID: 0}
+    - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: supplyItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 35c2d99edbe417848a963f50c77a1946, type: 2}
     - target: {fileID: 7953492119133736993, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Name
       value: SupplyBox4
@@ -880,6 +884,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.00000011920929
       objectReference: {fileID: 0}
+    - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: supplyItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 40a218b76848e064585718edcec1703a, type: 2}
     - target: {fileID: 7953492119133736993, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Name
       value: SupplyBox3
@@ -1046,6 +1054,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.00000011920929
       objectReference: {fileID: 0}
+    - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: supplyItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 82f1ab96d0b6a624dae088c39a077abf, type: 2}
     - target: {fileID: 7953492119133736993, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Name
       value: SupplyBox2

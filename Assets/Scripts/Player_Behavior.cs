@@ -44,6 +44,15 @@ public class Player_Behavior : MonoBehaviour
                 //RayCast to Soldier
                 //Code for giving it to the detected soldier
                 Debug.Log("Already Has Item");
+
+                //Carter
+                //Make sure that CurrentSoldier is actually set to something
+                if (CurrentSoldier)
+                {
+                    //Then get its SB script and try to deliver the current item, whatever it is.
+                    CurrentSoldier.GetComponent<SoldierBehavior>().DeliverItem(currentItem);
+                }
+
                 RemoveDeliveryItem(); 
                 HasItem = false;
                 Debug.Log("Item Delivered");
@@ -51,7 +60,13 @@ public class Player_Behavior : MonoBehaviour
             }
             else if (HasItem == false && !currentItem)
             {
-                SetDeliveryItem(CurrentSB.GetComponent<SupplyBox_Behavior>().GetSupplyItem());
+                //Carter
+                //Make sure that CurrentSB is actually set to something
+                if (CurrentSB)
+                {
+                    //Then set the player's current delivery item to the supply item from the box
+                    SetDeliveryItem(CurrentSB.GetComponent<SupplyBox_Behavior>().GetSupplyItem());
+                }
                 HasItem = true;
                 Debug.Log("Item Picked");
             }
@@ -93,12 +108,12 @@ public class Player_Behavior : MonoBehaviour
         if (SoldierDetect.collider)
         {
             CurrentSoldier = SoldierDetect.collider.gameObject;
-            Debug.Log("SoliderHIT");
+            //Debug.Log("SoliderHIT");
         }
         if (SupplyDetect.collider)
         {
             CurrentSB = SupplyDetect.collider.gameObject;
-            Debug.Log("BOXHIT");
+            //Debug.Log("BOXHIT");
         }
     }
 
