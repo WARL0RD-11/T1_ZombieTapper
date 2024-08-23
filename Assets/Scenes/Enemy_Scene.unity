@@ -1016,6 +1016,18 @@ PrefabInstance:
       propertyPath: linecastDistance
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7588521829188989851, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
+      propertyPath: enemySpawnTime.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588521829188989851, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
+      propertyPath: enemySpawnTime.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588521829188989851, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
+      propertyPath: enemySpawnTime.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8239039737298603011, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -1151,7 +1163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 357ba4c6a424a044db17451c980552f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 2772351504547192300, guid: fbd9a907a00deef4c90d41f379c5bc5b, type: 3}
+  enemyPrefab:
+  - {fileID: 2772351504547192300, guid: fbd9a907a00deef4c90d41f379c5bc5b, type: 3}
+  - {fileID: 6526103215240996522, guid: 18a445e8e178b2d4abd588bbb6e01ab3, type: 3}
   parent: {fileID: 2042173376}
 --- !u!4 &1007335507
 Transform:
