@@ -27,17 +27,16 @@ public class Enemy_Behaviour : MonoBehaviour
         {
             EnemyMovement();
         }
+        //Check if enemy reached the barricade
+        if (transform.position.x > 0)
+        {
+            gameManager.EndGame();
+        }
     }
     private void EnemyMovement()
     {
         //Move enemy on the x-axis
         transform.position += new Vector3(1.0f, 0f, 0) * enemySpeed * Time.deltaTime;
-
-        //Check if enemy reached the barricade
-        if(transform.position.x > 0)
-        {
-            gameManager.EndGame();
-        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
