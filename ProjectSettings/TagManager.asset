@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Package
   - HasPackage
+  - Package2
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - UI
   - Zombie
   - Soldier
-  - 
+  - Supply
   - 
   - 
   - 

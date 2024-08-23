@@ -14,8 +14,6 @@ public class SoldierBehavior : MonoBehaviour
     //Delivering the wrong item to the guard means they are stunned
     private bool isStunned;
 
-    private bool canShoot;
-
     //The duration that the guard is stunned if the wrong delivery is given
     private float stunDuration;
 
@@ -41,14 +39,12 @@ public class SoldierBehavior : MonoBehaviour
 
     private GameObject currentSpeechBubble;
 
-    private GameObject detectedEnemy;
-
-    private float cooldown;
-
     [SerializeField]
     private GameObject bubbleCoords;
 
     private float linecastDistance;
+
+    private Enemy_Behaviour detectedZombie;
 
     void Start()
     {
@@ -65,9 +61,6 @@ public class SoldierBehavior : MonoBehaviour
 
         linecastDistance = gM.GetLinecastDistance();
 
-        cooldown = gM.GetSoldierCooldown();
-
-        canShoot = true;
         //Test code for stun functionality
         //BecomeStunned();
     }
@@ -91,14 +84,13 @@ public class SoldierBehavior : MonoBehaviour
                 //Debug.Log("Soldier deteced a zombie");
                 Debug.DrawLine(transform.position, hit.transform.position, tempColor);
                 //If this is the first time they've detected a zombie
-
-                //Set detectedEnemy to the raycasted objects
-                detectedEnemy = hit.collider.gameObject;
-
                 if (!waitingForItem)
                 {
                     //Start wanting a new item
                     WantsNewItem();
+
+                    //Set the target of the soldier to the enemy that triggered the check
+                    detectedZombie = hit.collider.gameObject.GetComponent<Enemy_Behaviour>();
                 }
 
             }
@@ -109,8 +101,6 @@ public class SoldierBehavior : MonoBehaviour
                 tempColor = Color.green;
                 //Debug.Log("Soldier cannot see a zombie");
                 Debug.DrawLine(transform.position, transform.position - Vector3.left * -linecastDistance, tempColor);
-                //Remove the value out of detectedEnemy
-                detectedEnemy = null;
 
                 //Doesn't see a zombie so nothing should happen at the moment
             }
@@ -136,13 +126,21 @@ public class SoldierBehavior : MonoBehaviour
     //Called by the player when they attempt to give the soldier an item
     public void DeliverItem(DeliveryItem item)
     {
+
+        //Get rid of the current speech bubble
+        Destroy(currentSpeechBubble);
+
         //If the item is the correct item
-        if(item == wantedItem)
+        if (item == wantedItem)
         {
             //Do something
             //Shoot the zombie
-            ShootBehavior();
-
+            //Make sure that detectedZombie actually has a value
+            if(detectedZombie)
+            {
+                //Kill the zombie
+                detectedZombie.OnDeath();
+            }
             //Give the player some points, subject to change
             gM.AddScore(1);
         }
@@ -153,8 +151,6 @@ public class SoldierBehavior : MonoBehaviour
             waitingForItem=false;
             BecomeStunned();
         }
-        //Get rid of the current speech bubble
-        Destroy(currentSpeechBubble);
     }
 
     //Called when the player delivers the wrong item to the soldier
@@ -177,33 +173,5 @@ public class SoldierBehavior : MonoBehaviour
         yield return new WaitForSeconds(stunDuration);
         isStunned = false;
         Debug.Log("soldier recovered from stun");
-    }
-
-    //Function for the soldier to attack the detected zombie
-    private void ShootBehavior()
-    {
-        //Make sure that an actual target exists for the soldier
-        if(detectedEnemy && canShoot)
-        {
-            //DO the shoot action on the enemy game object
-            //Just destroy it for right now
-            Destroy(detectedEnemy);
-
-            Debug.Log("Soldier shot at a zombie");
-
-            //Remove the stored value to prevent any edge cases
-            detectedEnemy = null;
-
-            canShoot = false;
-        }
-        
-    }
-
-    private IEnumerator ShootCooldown()
-    {
-        yield return new WaitForSeconds(cooldown);
-        canShoot = true;
-        Debug.Log("Soldier can shoot again");
-
     }
 }
