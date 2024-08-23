@@ -140,6 +140,7 @@ public class SoldierBehavior : MonoBehaviour
             {
                 //Kill the zombie
                 detectedZombie.OnDeath();
+                waitingForItem = false;
             }
             //Give the player some points, subject to change
             gM.AddScore(1);
