@@ -12,6 +12,11 @@ public class UIManagement : MonoBehaviour
     [SerializeField] public GameObject InstructMenu;
     [SerializeField] public Slider volumeSlider;
 
+    //First-Button Selection Setup
+    [SerializeField] public Button First_Menu_Play;
+    [SerializeField] public Button Second_Menu_Instruct;
+    [SerializeField] public Button Thrid_Menu_Back;
+
 
     void Start()
     {
@@ -21,6 +26,7 @@ public class UIManagement : MonoBehaviour
         } else {
             Load();
         }
+        First_Menu_Play.Select();
     }
     //Scene Controller
     public void StartGame()
@@ -44,21 +50,25 @@ public class UIManagement : MonoBehaviour
     {
         OptionMenu.SetActive(true);
         StartMenu.SetActive(false);
+        Second_Menu_Instruct.Select();
     }
     public void Backto_StartMenu()
     {
         OptionMenu.SetActive(false);
         StartMenu.SetActive(true);
+        First_Menu_Play.Select();
     }
     public void Open_InstructMenu()
     {
         OptionMenu.SetActive(false);
         InstructMenu.SetActive(true);
+        Thrid_Menu_Back.Select();
     }
     public void Backto_OptionMenu()
     {
         OptionMenu.SetActive(true);
         InstructMenu.SetActive(false);
+        Second_Menu_Instruct.Select();
     }
 
     //Volume Controller
