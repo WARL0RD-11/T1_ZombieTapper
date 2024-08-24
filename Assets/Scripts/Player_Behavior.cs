@@ -17,6 +17,7 @@ public class Player_Behavior : MonoBehaviour
     private DeliveryItem currentItem;
     private GameObject CurrentSB;
     private GameObject CurrentSoldier;
+    private GameManager GameManager;
 
     [SerializeField]
     private LayerMask supplyMask;
@@ -120,6 +121,7 @@ public class Player_Behavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager = FindObjectOfType<GameManager>();
         HasItem = false;
         RaycastDetections();
     }
@@ -127,8 +129,10 @@ public class Player_Behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerMovement();
-        Delivery();
+        if (!GameManager.GetGameStatus())
+        { PlayerMovement();
+            Delivery();
+        }
     }
 
     private void SetDeliveryItem(DeliveryItem newItem)
