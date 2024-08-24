@@ -8,51 +8,53 @@ public class Enemy_Behaviour : MonoBehaviour
     [SerializeField] float enemySpeed = 1.0f;
     //[SerializeField] Animation deathAnimation;
     [SerializeField] float waitAfterDeath = 2.0f;
+    [SerializeField] int health = 1;
 
-    public static bool isGameOver = false;
+    GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        gameManager = FindAnyObjectByType<GameManager>();
+        
+        //ToDo
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isGameOver)
+        if (!gameManager.GetGameStatus())
         {
             EnemyMovement();
         }
-        //ToDo
-        // Enemy speed increase over time
+        //Check if enemy reached the barricade
+        if (transform.position.x > 0)
+        {
+            gameManager.EndGame();
+        }
     }
     private void EnemyMovement()
     {
         //Move enemy on the x-axis
         transform.position += new Vector3(1.0f, 0f, 0) * enemySpeed * Time.deltaTime;
-
-        //Check if enemy reached the barricade
-        if(transform.position.x > 0)
-        {
-            isGameOver = true;
-            GameOver();
-        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Bullet" && !isGameOver)
+        if(collision.gameObject.tag == "Bullet" && !gameManager.GetGameStatus())
         {
-            //deathAnimation.Play();
-            new WaitForSeconds(waitAfterDeath);
-            Destroy(gameObject);
+            --health;
+            if(health <=0)
+            {
+                KillEnemy();
+            }
         }
 
     }
-    private void GameOver()
+    private void KillEnemy()
     {
-        // play animation??
-        // GameOver screen
+        //deathAnimation.Play();
+        new WaitForSeconds(waitAfterDeath);
+        Destroy(gameObject);
     }
 
     //Function to be called by soldiers when they are delivered the correct item

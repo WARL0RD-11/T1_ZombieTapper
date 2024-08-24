@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float linecastDistance;
 
+    [SerializeField]
+    public float[] enemySpawnTime;
+
     // Start is called before the first frame update
     void Start()
     {
