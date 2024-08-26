@@ -46,12 +46,15 @@ public class SoldierBehavior : MonoBehaviour
 
     private Enemy_Behaviour detectedZombie;
 
+    private Animator animator;
+
     void Start()
     {
         //Gets all the components referenced in the code
         bC2D = GetComponent<BoxCollider2D>();
         spRend = GetComponent<SpriteRenderer>();
         gM = FindObjectOfType<GameManager>();
+        animator = GetComponent<Animator>();
 
         //Gets the stun duration that will be suffered from the game manager
         stunDuration = gM.GetDelayPenalty();
@@ -121,12 +124,14 @@ public class SoldierBehavior : MonoBehaviour
 
         //Set waitingForItem to true so that its not constantly asking for a new one
         waitingForItem = true;
+
+        animator.SetBool("isAsking", true);
     }
 
     //Called by the player when they attempt to give the soldier an item
     public void DeliverItem(DeliveryItem item)
     {
-
+        animator.SetBool("isAsking", false);
         //Get rid of the current speech bubble
         Destroy(currentSpeechBubble);
 
@@ -141,6 +146,7 @@ public class SoldierBehavior : MonoBehaviour
                 //Kill the zombie
                 detectedZombie.OnDeath();
                 waitingForItem = false;
+                animator.SetBool("isShooting", true);
             }
             //Give the player some points, subject to change
             gM.AddScore(1);
