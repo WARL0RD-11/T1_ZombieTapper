@@ -45,8 +45,14 @@ public class SoldierBehavior : MonoBehaviour
     private float linecastDistance;
 
     private Enemy_Behaviour detectedZombie;
-
+    
+    //Index of animations
+    //0 -> idle
+    //1 -> asking
+    //2 -> shooting
     private Animator animator;
+
+    private bool isShooting;
 
     void Start()
     {
@@ -63,6 +69,8 @@ public class SoldierBehavior : MonoBehaviour
         waitingForItem = false;
 
         linecastDistance = gM.GetLinecastDistance();
+
+        isShooting = false;
 
         //Test code for stun functionality
         //BecomeStunned();
@@ -105,6 +113,8 @@ public class SoldierBehavior : MonoBehaviour
                 //Debug.Log("Soldier cannot see a zombie");
                 Debug.DrawLine(transform.position, transform.position - Vector3.left * -linecastDistance, tempColor);
 
+                animator.SetInteger("animIndex", 0);
+
                 //Doesn't see a zombie so nothing should happen at the moment
             }
 
@@ -125,7 +135,11 @@ public class SoldierBehavior : MonoBehaviour
         //Set waitingForItem to true so that its not constantly asking for a new one
         waitingForItem = true;
 
-        animator.SetBool("isAsking", true);
+        //animator.SetBool("isAsking", true);
+        if (!isShooting)
+        {
+            animator.SetInteger("animIndex", 1);
+        }
     }
 
     //Called by the player when they attempt to give the soldier an item
@@ -146,7 +160,12 @@ public class SoldierBehavior : MonoBehaviour
                 //Kill the zombie
                 detectedZombie.OnDeath();
                 waitingForItem = false;
-                animator.SetBool("isShooting", true);
+                //animator.SetBool("isShooting", true);
+                if (!isShooting)
+                {
+                    animator.SetInteger("animIndex", 2);
+                    isShooting = true;
+                }
             }
             //Give the player some points, subject to change
             gM.AddScore(1);
@@ -170,6 +189,8 @@ public class SoldierBehavior : MonoBehaviour
         StartCoroutine(StunBehavior());
 
         Debug.Log("soldier has become stunned");
+
+        animator.SetInteger("animIndex", 0);
     }
 
     //Part of stun behavior
@@ -180,5 +201,10 @@ public class SoldierBehavior : MonoBehaviour
         yield return new WaitForSeconds(stunDuration);
         isStunned = false;
         Debug.Log("soldier recovered from stun");
+    }
+
+    private void ShootingOver()
+    {
+        isShooting = false;
     }
 }
