@@ -25,6 +25,8 @@ public class Player_Behavior : MonoBehaviour
     [SerializeField]
     private LayerMask soldierMask;
 
+    private Animator animator;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Package"))
@@ -86,17 +88,25 @@ public class Player_Behavior : MonoBehaviour
             NewPos = transform.position - new Vector3(0, GridSize, 0);
             NewPos.y = Mathf.Clamp(NewPos.y, -4, GridSize);
             transform.position = NewPos;
-            RaycastDetections();
-        }
 
-        if (Input.GetKeyDown(UpKeyPressed))
+            RaycastDetections();
+
+            animator.SetBool("isUp", false);
+            animator.SetBool("isMoving", true);
+        }
+        else if (Input.GetKeyDown(UpKeyPressed))
         {
             NewPos = transform.position + new Vector3(0, GridSize, 0);
             NewPos.y = Mathf.Clamp(NewPos.y, -4, GridSize);
             transform.position = NewPos;
 
             RaycastDetections();
+
+            animator.SetBool("isUp", true);
+            animator.SetBool("isMoving", true);
         }
+
+        animator.SetBool("isMoving", false);
 
     }
 
@@ -124,6 +134,8 @@ public class Player_Behavior : MonoBehaviour
         GameManager = FindObjectOfType<GameManager>();
         HasItem = false;
         RaycastDetections();
+
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
