@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public float[] enemySpawnTime;
 
+    [SerializeField]
+    private DeadMenu gameOverUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -80,6 +83,8 @@ public class GameManager : MonoBehaviour
         //Show off the score or something.
         Debug.Log("Game is over");
         //Transition to the end game screen
+
+        gameOverUI.EndMenuAppear();
     }
 
 
