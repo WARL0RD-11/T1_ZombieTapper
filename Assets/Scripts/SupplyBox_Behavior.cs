@@ -10,12 +10,17 @@ public class SupplyBox_Behavior : MonoBehaviour
 
     private GameManager gM;
 
+    [SerializeField]
+    private SpriteRenderer supplySprite;
+
     // Start is called before the first frame update
     void Start()
     {
         gM = FindObjectOfType<GameManager>();
 
         Debug.Log("Held item is " + supplyItem.name);
+
+        supplySprite.sprite = supplyItem.itemSprite;
     }
 
     public DeliveryItem GetSupplyItem()
