@@ -27,6 +27,9 @@ public class Player_Behavior : MonoBehaviour
 
     private Animator animator;
 
+    [SerializeField]
+    private SpriteRenderer heldItemSprite;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Package"))
@@ -136,6 +139,8 @@ public class Player_Behavior : MonoBehaviour
         RaycastDetections();
 
         animator = GetComponent<Animator>();
+
+        heldItemSprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -150,10 +155,12 @@ public class Player_Behavior : MonoBehaviour
     private void SetDeliveryItem(DeliveryItem newItem)
     {
         currentItem = newItem;
+        heldItemSprite.sprite = currentItem.itemSprite;
     }
 
     private void RemoveDeliveryItem()
     {
         currentItem = null;
+        heldItemSprite.sprite = null;
     }
 }
