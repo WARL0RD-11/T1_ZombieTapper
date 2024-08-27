@@ -12,12 +12,14 @@ public class Enemy_Behaviour : MonoBehaviour
 
     GameManager gameManager;
     Animator animator;
+    GameObject sandBagObject;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = FindAnyObjectByType<GameManager>();
         animator = GetComponent<Animator>();
+        sandBagObject = GameObject.FindGameObjectWithTag("EndLine");
     }
 
     // Update is called once per frame
@@ -32,7 +34,7 @@ public class Enemy_Behaviour : MonoBehaviour
             animator.SetBool("isGameOver", true);
         }
         //Check if enemy reached the barricade
-        if (transform.position.x > 0)
+        if (transform.position.x >= sandBagObject.transform.position.x)
         {
             animator.SetBool("isGameOver", true);
             gameManager.EndGame();
