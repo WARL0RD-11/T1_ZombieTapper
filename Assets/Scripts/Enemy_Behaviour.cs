@@ -19,7 +19,7 @@ public class Enemy_Behaviour : MonoBehaviour
     {
         gameManager = FindAnyObjectByType<GameManager>();
         animator = GetComponent<Animator>();
-        sandBagObject = GameObject.FindGameObjectWithTag("EndLine");
+        sandBagObject = GameObject.FindGameObjectWithTag("Finish");
     }
 
     // Update is called once per frame
