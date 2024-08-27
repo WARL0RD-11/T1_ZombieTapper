@@ -174,6 +174,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4581754343806987492, guid: 95c638baa664e3c43946d117d2bf1dd0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581754343806987492, guid: 95c638baa664e3c43946d117d2bf1dd0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581754343806987492, guid: 95c638baa664e3c43946d117d2bf1dd0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581754343806987492, guid: 95c638baa664e3c43946d117d2bf1dd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581754343806987492, guid: 95c638baa664e3c43946d117d2bf1dd0, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -941,6 +961,7 @@ MonoBehaviour:
   soldierMask:
     serializedVersion: 2
     m_Bits: 128
+  heldItemSprite: {fileID: 0}
 --- !u!1001 &492669645
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1494,6 +1515,7 @@ GameObject:
   - component: {fileID: 881355824}
   - component: {fileID: 881355823}
   - component: {fileID: 881355822}
+  - component: {fileID: 881355826}
   m_Layer: 5
   m_Name: EndUI
   m_TagString: Untagged
@@ -1584,6 +1606,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &881355826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881355821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dd16420b80cc954ca03a3f25bf9f2c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &921585560
 PrefabInstance:
   m_ObjectHideFlags: 0
