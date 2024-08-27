@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,238 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Zombie_Death_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 58.18182
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa4574a222ba3ef44b98aceca00449d3
+      internalID: 1631153327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie_Death_1
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 0
+        width: 58.18182
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e1d6eec34febd0459ab7cda6185f508
+      internalID: -1558182278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie_Death_2
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 0
+        width: 58.18182
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bb65d6b1eaa9ba4caebe25e92a85efd
+      internalID: 1122669713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie_Death_3
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 0
+        width: 58.18182
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff2de54e27d1fd546b544d3cf47b60f0
+      internalID: 646217776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie_Death_4
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 0
+        width: 58.18182
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe1be44732d1f844ebcb1763725c18dd
+      internalID: 987224321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie_Death_5
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 0
+        width: 58.18182
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05413a28cef1ebb4bb66d3ebd1fd1457
+      internalID: 829387926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie_Death_6
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 0
+        width: 58.18182
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53d748634c50ec14d98ccaeb12be7e42
+      internalID: -618363043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie_Death_7
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 0
+        width: 58.18182
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0731169d4f1d264cb3bd933700ea73e
+      internalID: -1581012311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie_Death_8
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 0
+        width: 58.18182
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38adf5a7b7150d44ca9794509c3b4f38
+      internalID: 1427801289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie_Death_9
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 0
+        width: 58.18182
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90d9a83db6296d2499ad172dd4503883
+      internalID: 711014622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie_Death_10
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 0
+        width: 58.18182
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33b3889d96d3b724a8abb5b87607199a
+      internalID: -1792770661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +350,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Zombie_Death_0: 1631153327
+      Zombie_Death_1: -1558182278
+      Zombie_Death_10: -1792770661
+      Zombie_Death_2: 1122669713
+      Zombie_Death_3: 646217776
+      Zombie_Death_4: 987224321
+      Zombie_Death_5: 829387926
+      Zombie_Death_6: -618363043
+      Zombie_Death_7: -1581012311
+      Zombie_Death_8: 1427801289
+      Zombie_Death_9: 711014622
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

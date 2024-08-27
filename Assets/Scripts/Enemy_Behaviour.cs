@@ -11,13 +11,13 @@ public class Enemy_Behaviour : MonoBehaviour
     [SerializeField] int health = 1;
 
     GameManager gameManager;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = FindAnyObjectByType<GameManager>();
-        
-        //ToDo
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,9 +27,14 @@ public class Enemy_Behaviour : MonoBehaviour
         {
             EnemyMovement();
         }
+        else
+        {
+            animator.SetBool("isGameOver", true);
+        }
         //Check if enemy reached the barricade
         if (transform.position.x > 0)
         {
+            animator.SetBool("isGameOver", true);
             gameManager.EndGame();
         }
     }
@@ -52,7 +57,7 @@ public class Enemy_Behaviour : MonoBehaviour
     }
     private void KillEnemy()
     {
-        //deathAnimation.Play();
+        animator.SetBool("isZombieDead", true);
         new WaitForSeconds(waitAfterDeath);
         Destroy(gameObject);
     }

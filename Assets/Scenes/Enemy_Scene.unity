@@ -828,8 +828,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b59b3049d764c34c879b480319a65f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Package: {fileID: 0}
-  CanDeliver: 0
+  PDKey: 32
+  UpKeyPressed: 119
+  DownKeyPressed: 115
+  HasItem: 0
+  supplyMask:
+    serializedVersion: 2
+    m_Bits: 0
+  soldierMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &671156062
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,7 +1026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7588521829188989851, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
       propertyPath: enemySpawnTime.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7588521829188989851, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
       propertyPath: enemySpawnTime.Array.data[0]
