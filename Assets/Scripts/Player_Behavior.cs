@@ -140,7 +140,7 @@ public class Player_Behavior : MonoBehaviour
 
         animator = GetComponent<Animator>();
 
-        heldItemSprite = GetComponent<SpriteRenderer>();
+        //heldItemSprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
