@@ -19,9 +19,18 @@ public class AudioManager : MonoBehaviour
     public AudioClip gameStart_Audio;
     public AudioClip gameEnd_Audio;
 
+    public static AudioManager instance;
+
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else{
+            Destroy(gameObject);
+        }
     }
 
     void Start()
