@@ -127,6 +127,9 @@ public class SoldierBehavior : MonoBehaviour
                 }
                 */
 
+                animator.SetBool("isShooting", true);
+                animator.SetBool("isAsking", false);
+
 
                 //DO DAMAGE TO THE ZOMBIE
                 canShoot = false;
@@ -137,6 +140,13 @@ public class SoldierBehavior : MonoBehaviour
                 StartCoroutine(ShootCooldown());
 
                 currentAmmo--;
+                if(currentAmmo <= 0 && !waitingForItem)
+                {
+                    animator.SetBool("isShooting", false);
+                    animator.SetBool("isAsking", true);
+
+                    WantsNewItem();
+                }
 
             }
 
@@ -151,6 +161,8 @@ public class SoldierBehavior : MonoBehaviour
 
             animator.SetInteger("animIndex", 0);
 
+            animator.SetBool("isShooting", false);
+
             //Doesn't see a zombie so nothing should happen at the moment
         }
 
@@ -160,6 +172,9 @@ public class SoldierBehavior : MonoBehaviour
     //Called when the soldier wants a new item to be delivered
     private void WantsNewItem()
     {
+
+        animator.SetBool("isAsking", true);
+
         //Get a random delivery item from the game manager
         wantedItem = gM.GetRandomDeliveryItem();
 
@@ -172,10 +187,12 @@ public class SoldierBehavior : MonoBehaviour
         waitingForItem = true;
 
         //animator.SetBool("isAsking", true);
+        /*
         if (!isShooting)
         {
             animator.SetInteger("animIndex", 1);
         }
+        */
     }
 
     //Called by the player when they attempt to give the soldier an item
@@ -192,6 +209,7 @@ public class SoldierBehavior : MonoBehaviour
             //Do something
             //Shoot the zombie
             //Make sure that detectedZombie actually has a value
+            /*
             if (detectedZombie)
             {
                 //Kill the zombie
@@ -205,14 +223,24 @@ public class SoldierBehavior : MonoBehaviour
                 }
             }
             //Give the player some points, subject to change
+            */
+
+            animator.SetBool("isAsking", false);
+
+            currentAmmo = maximumAmmo;
+
+            waitingForItem = false;
+
             gM.AddScore(1);
         }
         //If the item is the wrong item
         else
         {
+            //No longer stun the soldier, decided that they would just do nothing
+            //Leaving code in case we need it again later.
             //Stun the soldier
-            waitingForItem = false;
-            BecomeStunned();
+            //waitingForItem = false;
+            //BecomeStunned();
         }
     }
 

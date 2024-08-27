@@ -249,7 +249,7 @@ PrefabInstance:
     - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: supplyItem
       value: 
-      objectReference: {fileID: 11400000, guid: 82f1ab96d0b6a624dae088c39a077abf, type: 2}
+      objectReference: {fileID: 11400000, guid: 9c7d09de191928c4188b3ea4c815276d, type: 2}
     - target: {fileID: 7953492119133736993, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Name
       value: SupplyBox2
@@ -331,6 +331,22 @@ PrefabInstance:
       propertyPath: enemySpawnTime.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7588521829188989851, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
+      propertyPath: deliveryItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: e7012c6d1d2541a44adfc42550662156, type: 2}
+    - target: {fileID: 7588521829188989851, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
+      propertyPath: deliveryItems.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9c7d09de191928c4188b3ea4c815276d, type: 2}
+    - target: {fileID: 7588521829188989851, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
+      propertyPath: deliveryItems.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4be3a01c53076b14c8de0ce137a4ce96, type: 2}
+    - target: {fileID: 7588521829188989851, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
+      propertyPath: deliveryItems.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7af1a1bdc7261e640bc0d79ba78278cd, type: 2}
     - target: {fileID: 7588521829188989851, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
       propertyPath: enemySpawnTime.Array.data[0]
       value: 2
@@ -640,6 +656,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+      propertyPath: maximumAmmo
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5907876598019354629, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_Name
       value: Soldier (5)
@@ -692,7 +712,7 @@ PrefabInstance:
     - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: supplyItem
       value: 
-      objectReference: {fileID: 11400000, guid: 35c2d99edbe417848a963f50c77a1946, type: 2}
+      objectReference: {fileID: 11400000, guid: 7af1a1bdc7261e640bc0d79ba78278cd, type: 2}
     - target: {fileID: 7953492119133736993, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Name
       value: SupplyBox4
@@ -809,6 +829,10 @@ PrefabInstance:
     - target: {fileID: 3715493568349687957, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+      propertyPath: maximumAmmo
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5907876598019354629, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_Name
@@ -995,6 +1019,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: supplyItem
+      value: 
+      objectReference: {fileID: 11400000, guid: e7012c6d1d2541a44adfc42550662156, type: 2}
     - target: {fileID: 6944272071513625935, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -1259,7 +1287,7 @@ PrefabInstance:
     - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: supplyItem
       value: 
-      objectReference: {fileID: 11400000, guid: 40a218b76848e064585718edcec1703a, type: 2}
+      objectReference: {fileID: 11400000, guid: 4be3a01c53076b14c8de0ce137a4ce96, type: 2}
     - target: {fileID: 7953492119133736993, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Name
       value: SupplyBox3
@@ -1376,6 +1404,10 @@ PrefabInstance:
     - target: {fileID: 3715493568349687957, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+      propertyPath: maximumAmmo
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5907876598019354629, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_Name
@@ -1703,6 +1735,10 @@ PrefabInstance:
     - target: {fileID: 3715493568349687957, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+      propertyPath: maximumAmmo
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5907876598019354629, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_Name
