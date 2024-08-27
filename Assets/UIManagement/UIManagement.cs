@@ -17,6 +17,14 @@ public class UIManagement : MonoBehaviour
     [SerializeField] public Button Second_Menu_Instruct;
     [SerializeField] public Button Thrid_Menu_Back;
 
+    //Audio
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>();
+    }
+
 
     void Start()
     {
@@ -31,6 +39,7 @@ public class UIManagement : MonoBehaviour
     //Scene Controller
     public void StartGame()
     {
+        audioManager.PlaySFX(audioManager.gameStart_Audio);
         SceneManager.LoadScene(GameScene_Name);
     }
 
@@ -48,6 +57,7 @@ public class UIManagement : MonoBehaviour
     //Panel Controller
     public void Open_OptionMenu()
     {
+        audioManager.PlaySFX(audioManager.gameStart_Audio);
         OptionMenu.SetActive(true);
         StartMenu.SetActive(false);
         Second_Menu_Instruct.Select();
@@ -60,6 +70,7 @@ public class UIManagement : MonoBehaviour
     }
     public void Open_InstructMenu()
     {
+        audioManager.PlaySFX(audioManager.gameStart_Audio);
         OptionMenu.SetActive(false);
         InstructMenu.SetActive(true);
         Thrid_Menu_Back.Select();
