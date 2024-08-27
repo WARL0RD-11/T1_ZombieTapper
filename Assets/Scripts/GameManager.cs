@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
         gameHasEnded = false;
 
-        Debug.Log("Game manager exists");
+        //Debug.Log("Game manager exists");
 
         AddScore(0);
     }
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
     public void AddScore(int score)
     {
 
-        Debug.Log("Adding " + score.ToString() + " score to the player");
+        //Debug.Log("Adding " + score.ToString() + " score to the player");
         //Add the score to the existing score and store it
         playerScore += score;
 

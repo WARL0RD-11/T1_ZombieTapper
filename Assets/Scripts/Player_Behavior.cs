@@ -41,12 +41,12 @@ public class Player_Behavior : MonoBehaviour
     {
         if (Input.GetKeyDown(PDKey))
         {
-            Debug.Log("SPACE Called");
+            //Debug.Log("SPACE Called");
             if (HasItem == true && currentItem)
             {
                 //RayCast to Soldier
                 //Code for giving it to the detected soldier
-                Debug.Log("Already Has Item");
+                //Debug.Log("Already Has Item");
 
                 //Carter
                 //Make sure that CurrentSoldier is actually set to something
@@ -58,7 +58,7 @@ public class Player_Behavior : MonoBehaviour
 
                 RemoveDeliveryItem(); 
                 HasItem = false;
-                Debug.Log("Item Delivered");
+                //Debug.Log("Item Delivered");
 
             }
             else if (HasItem == false && !currentItem)
@@ -71,7 +71,7 @@ public class Player_Behavior : MonoBehaviour
                     SetDeliveryItem(CurrentSB.GetComponent<SupplyBox_Behavior>().GetSupplyItem());
                 }
                 HasItem = true;
-                Debug.Log("Item Picked");
+               // Debug.Log("Item Picked");
             }
 
         }

@@ -23,6 +23,6 @@ public class PlayerUI : MonoBehaviour
     {
         scoreText.text = score.ToString();
 
-        Debug.Log("Updated the player score text");
+        //Debug.Log("Updated the player score text");
     }
 }

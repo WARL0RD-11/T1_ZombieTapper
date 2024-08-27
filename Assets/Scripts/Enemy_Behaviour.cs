@@ -59,7 +59,7 @@ public class Enemy_Behaviour : MonoBehaviour
     {
         animator.SetBool("isZombieDead", true);
         new WaitForSeconds(waitAfterDeath);
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     //Function to be called by soldiers when they are delivered the correct item
@@ -68,8 +68,17 @@ public class Enemy_Behaviour : MonoBehaviour
         //Set the speed to 0 so corpses can't move
         enemySpeed = 0.0f;
 
+        animator.SetBool("isZombieDead", true);
+
+        GetComponent<BoxCollider2D>().enabled = false;
+
         //Play animations or something
-        new WaitForSeconds(waitAfterDeath);
-        Destroy(gameObject);
+        //new WaitForSeconds(waitAfterDeath);
+        //Destroy(gameObject);
+    }
+
+    public void DeathOver()
+    {
+        Destroy(this);
     }
 }

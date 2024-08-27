@@ -18,7 +18,7 @@ public class DesiredItemBubble : MonoBehaviour
 
     public void UpdateItemSprite(Sprite sprite)
     {
-        Debug.Log("Set the item bubble sprite");
+        //Debug.Log("Set the item bubble sprite");
         itemRenderer.sprite = sprite;
     }
 }

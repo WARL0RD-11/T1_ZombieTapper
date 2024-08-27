@@ -145,9 +145,10 @@ public class SoldierBehavior : MonoBehaviour
     //Called by the player when they attempt to give the soldier an item
     public void DeliverItem(DeliveryItem item)
     {
-        animator.SetBool("isAsking", false);
+        //animator.SetBool("isAsking", false);
         //Get rid of the current speech bubble
         Destroy(currentSpeechBubble);
+        currentSpeechBubble = null;
 
         //If the item is the correct item
         if (item == wantedItem)
@@ -163,7 +164,7 @@ public class SoldierBehavior : MonoBehaviour
                 //animator.SetBool("isShooting", true);
                 if (!isShooting)
                 {
-                    animator.SetInteger("animIndex", 2);
+                    //animator.SetInteger("animIndex", 2);
                     isShooting = true;
                 }
             }
@@ -206,5 +207,8 @@ public class SoldierBehavior : MonoBehaviour
     private void ShootingOver()
     {
         isShooting = false;
+        animator.SetInteger("animIndex", 0);
+        waitingForItem = false;
+        detectedZombie = null;
     }
 }

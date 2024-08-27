@@ -18,7 +18,7 @@ public class SupplyBox_Behavior : MonoBehaviour
     {
         gM = FindObjectOfType<GameManager>();
 
-        Debug.Log("Held item is " + supplyItem.name);
+        //Debug.Log("Held item is " + supplyItem.name);
 
         supplySprite.sprite = supplyItem.itemSprite;
     }
