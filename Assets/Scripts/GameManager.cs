@@ -71,20 +71,25 @@ public class GameManager : MonoBehaviour
     //Called when a zombie breaches the defenses.
     public void EndGame()
     {
-        gameHasEnded = true;
 
         GameHasEnded();
+
+        gameHasEnded = true;
+
     }
 
     //Tells everything in the game to stop doing things
     private void GameHasEnded()
     {
-        //Code to get everything and pause things like animations and movement by zombies/guards.
-        //Show off the score or something.
-        Debug.Log("Game is over");
-        //Transition to the end game screen
+        if (!gameHasEnded)
+        {
+            //Code to get everything and pause things like animations and movement by zombies/guards.
+            //Show off the score or something.
+            Debug.Log("Game is over");
+            //Transition to the end game screen
 
-        gameOverUI.EndMenuAppear();
+            gameOverUI.EndMenuAppear();
+        }
     }
 
 
