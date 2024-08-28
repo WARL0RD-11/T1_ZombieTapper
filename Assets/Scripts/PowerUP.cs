@@ -21,7 +21,7 @@ public class PowerUP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && IsPlayerInTrigger)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && (IsPlayerInTrigger) && (this.gameObject.CompareTag("PupTurret")))
         {
             Debug.Log("Key Pressed");
             Turret1.IsActivated = true;
