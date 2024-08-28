@@ -69,6 +69,12 @@ public class SoldierBehavior : MonoBehaviour
     private MuzzleFlash_Behavior mfB;
     //private Animation mfF;
 
+    [SerializeField]
+    private GameObject bulletTrail;
+
+    [SerializeField]
+    private float bulletSpeed;
+
     void Start()
     {
         //Gets all the components referenced in the code
@@ -139,6 +145,9 @@ public class SoldierBehavior : MonoBehaviour
                 mfB.PlayAnimation();
                 //mfF.Play();
 
+                GameObject tempTrail = Instantiate(bulletTrail, mfB.transform.position, Quaternion.identity);
+                tempTrail.GetComponent<Rigidbody2D>().velocity = Vector3.left * bulletSpeed * Time.deltaTime;
+                tempTrail.GetComponent<BulletBehavior>().SetDestination(detectedZombie.transform.position);
 
                 //DO DAMAGE TO THE ZOMBIE
                 canShoot = false;
