@@ -7,8 +7,8 @@ using UnityEngine;
 public class Player_Behavior : MonoBehaviour
 {
     [SerializeField] public KeyCode PDKey = KeyCode.Space;
-    [SerializeField] public KeyCode UpKeyPressed = KeyCode.W;
-    [SerializeField] public KeyCode DownKeyPressed = KeyCode.S;
+    [SerializeField] public KeyCode UpKeyPressed = KeyCode.UpArrow;
+    [SerializeField] public KeyCode DownKeyPressed = KeyCode.DownArrow;
 
     public bool HasItem;
 
@@ -26,16 +26,14 @@ public class Player_Behavior : MonoBehaviour
     private LayerMask soldierMask;
 
     private Animator animator;
+    private TurretBehavior TB;
 
     [SerializeField]
     private SpriteRenderer heldItemSprite;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Package"))
-        {
 
-        }
     }
 
     //This Function Checks if the Player Overlaps with the Package and then Presses SPACE. 
