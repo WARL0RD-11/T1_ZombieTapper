@@ -152,7 +152,7 @@ public class SoldierBehavior : MonoBehaviour
                 //DO DAMAGE TO THE ZOMBIE
                 canShoot = false;
 
-                detectedZombie.OnDeath();
+                detectedZombie.ReduceHealth();
                 detectedZombie = null;
 
                 StartCoroutine(ShootCooldown());
