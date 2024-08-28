@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 432032040423382485}
   - component: {fileID: 5871219028434638162}
   - component: {fileID: 2217603014515892041}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.000000059604645, y: 0}

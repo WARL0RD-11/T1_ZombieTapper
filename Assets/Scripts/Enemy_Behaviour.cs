@@ -14,6 +14,8 @@ public class Enemy_Behaviour : MonoBehaviour
     Animator animator;
     GameObject sandBagObject;
     Obstacle_Behaviour obstacleObject;
+    bool canCharacterMove = true;
+    bool canAttack = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,28 +29,32 @@ public class Enemy_Behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!gameManager.GetGameStatus())
+        if (!gameManager.GetGameStatus() && canCharacterMove)
         {
             EnemyMovement();
         }
         else
         {
+            canCharacterMove = false;
             animator.SetBool("isZombieIdle", true);
         }
         //Check if enemy reached the barricade
         if (transform.position.x >= sandBagObject.transform.position.x)
         {
-            animator.SetBool("isZombieIdle", true);
+            canCharacterMove = false;
             gameManager.EndGame();
+        }
+        if(canAttack)
+        {
+            StartCoroutine(AttackObstacle());
+        }
+        else if(canCharacterMove)
+        {
+            animator.SetBool("isZombieIdle", false);
         }
     }
     private void EnemyMovement()
     {
-        //if(this.gameObject.tag == "Enemy" && transform.position.x 
-        //    > (sandBagObject.transform.position.x/2))
-        //{
-        //    enemySpeed += 0.25f; 
-        //}
         //Move enemy on the x-axis
         transform.position += new Vector3(1.0f, 0f, 0) * enemySpeed * Time.deltaTime;
     }
@@ -61,31 +67,38 @@ public class Enemy_Behaviour : MonoBehaviour
         enemySpeed = 0.0f;
         animator.SetBool("isZombieDead", true);
         GetComponent<BoxCollider2D>().enabled = false;
-
-        //Play animations or something
-        //new WaitForSeconds(waitAfterDeath);
-        //Destroy(gameObject);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Obstacle")
         {
-            Debug.Log("Entered Obstacle");
-            StartCoroutine(AttackObstacle());
+            canCharacterMove = false;
+            canAttack = true;
+            animator.SetBool("isZombieIdle", true);
+        }
+    }
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            canCharacterMove = true;
+            canAttack = false;
+            animator.SetBool("isZombieIdle", false);
         }
     }
 
     public IEnumerator AttackObstacle()
     {
-        animator.SetBool("isZombieIdle", true);
-        if (obstacleObject.TakeDamage(enemyPower) < 0)
+        canAttack = false;
+        if (obstacleObject.TakeDamage(enemyPower) == 0)
         {
-            animator.SetBool("isZombieIdle", false);
-            StopAllCoroutines();
-            yield return null;
+           Destroy(obstacleObject.gameObject);
+           StopAllCoroutines();
+           yield return null;
         }
         yield return new WaitForSeconds(attackCoolDown);
+        canAttack = true;
     }
 
     public void DeathOver()

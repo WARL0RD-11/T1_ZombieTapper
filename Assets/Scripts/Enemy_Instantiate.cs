@@ -50,7 +50,7 @@ public class Enemy_Instantiate : MonoBehaviour
 
     private void RandSpawnRate(int i, bool canCreateHoard)
     {
-        float spawnRate = 5.0f;
+        float spawnRate = 4.0f;
         int playerScore = gameManager.GetPlayerScore();
         if(playerScore >= 10 && playerScore < 20)
         {
@@ -62,13 +62,16 @@ public class Enemy_Instantiate : MonoBehaviour
         }
         if (canCreateHoard && Mathf.RoundToInt(Random.Range(0, createHoard)) == createHoard)
         {
-            gameManager.enemySpawnTime[i] = 0f;
             spawnRate = 0f;
         }
         gameManager.enemySpawnTime[i] = spawnRate + Mathf.RoundToInt(Random.Range(0, 2));
         if (createHoard != 0)
         {
             createHoard--;
+        }
+        else
+        {
+            createHoard = 100;
         }
     }
 }
