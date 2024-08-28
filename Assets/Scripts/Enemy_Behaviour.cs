@@ -62,7 +62,7 @@ public class Enemy_Behaviour : MonoBehaviour
     //Function to be called by soldiers when they are delivered the correct item
     public void OnDeath()
     {
-        gameManager.AddScore(1);
+        //gameManager.AddScore(1);
         //Set the speed to 0 so corpses can't move
         enemySpeed = 0.0f;
         animator.SetBool("isZombieDead", true);
