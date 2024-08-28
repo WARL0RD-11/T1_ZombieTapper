@@ -51,6 +51,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 0.25
   health: 3
+  attackCoolDown: 1
+  enemyPower: 1
 --- !u!61 &1761073916831053777
 BoxCollider2D:
   m_ObjectHideFlags: 0

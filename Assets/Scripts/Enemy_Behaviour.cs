@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class Enemy_Behaviour : MonoBehaviour
 {
-    [SerializeField] float enemySpeed = 1.0f;
-    //[SerializeField] Animation deathAnimation;
+    [SerializeField] float enemySpeed = 0.25f;
     [SerializeField] int health = 1;
+    [SerializeField] float attackCoolDown = 1f;
+    [SerializeField] int enemyPower = 1;
 
     GameManager gameManager;
     Animator animator;
     GameObject sandBagObject;
+    Obstacle_Behaviour obstacleObject;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,7 @@ public class Enemy_Behaviour : MonoBehaviour
         gameManager = FindAnyObjectByType<GameManager>();
         animator = GetComponent<Animator>();
         sandBagObject = GameObject.FindGameObjectWithTag("Finish");
+        obstacleObject = FindAnyObjectByType<Obstacle_Behaviour>();
     }
 
     // Update is called once per frame
@@ -30,12 +33,12 @@ public class Enemy_Behaviour : MonoBehaviour
         }
         else
         {
-            animator.SetBool("isGameOver", true);
+            animator.SetBool("isZombieIdle", true);
         }
         //Check if enemy reached the barricade
         if (transform.position.x >= sandBagObject.transform.position.x)
         {
-            animator.SetBool("isGameOver", true);
+            animator.SetBool("isZombieIdle", true);
             gameManager.EndGame();
         }
     }
@@ -62,6 +65,27 @@ public class Enemy_Behaviour : MonoBehaviour
         //Play animations or something
         //new WaitForSeconds(waitAfterDeath);
         //Destroy(gameObject);
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            Debug.Log("Entered Obstacle");
+            StartCoroutine(AttackObstacle());
+        }
+    }
+
+    public IEnumerator AttackObstacle()
+    {
+        animator.SetBool("isZombieIdle", true);
+        if (obstacleObject.TakeDamage(enemyPower) < 0)
+        {
+            animator.SetBool("isZombieIdle", false);
+            StopAllCoroutines();
+            yield return null;
+        }
+        yield return new WaitForSeconds(attackCoolDown);
     }
 
     public void DeathOver()

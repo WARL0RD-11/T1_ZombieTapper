@@ -93,7 +93,7 @@ public class SoldierBehavior : MonoBehaviour
                 //then set the debug line color to red and end it on the position
                 tempColor = Color.red;
                 //Debug.Log("Soldier deteced a zombie");
-                Debug.DrawLine(transform.position, hit.transform.position, tempColor);
+                //Debug.DrawLine(transform.position, hit.transform.position, tempColor);
                 //If this is the first time they've detected a zombie
                 if (!waitingForItem)
                 {
@@ -111,8 +111,8 @@ public class SoldierBehavior : MonoBehaviour
                 //then set the debug line color to green and go off screen
                 tempColor = Color.green;
                 //Debug.Log("Soldier cannot see a zombie");
-                Debug.DrawLine(transform.position, transform.position - Vector3.left * -linecastDistance, tempColor);
-
+                //.DrawLine(transform.position, transform.position - Vector3.left * -linecastDistance, tempColor);
+                
                 animator.SetInteger("animIndex", 0);
 
                 //Doesn't see a zombie so nothing should happen at the moment
@@ -127,7 +127,7 @@ public class SoldierBehavior : MonoBehaviour
         //Get a random delivery item from the game manager
         wantedItem = gM.GetRandomDeliveryItem();
 
-        Debug.Log("Soldier wants " + wantedItem.itemName);
+        //Debug.Log("Soldier wants " + wantedItem.itemName);
 
         currentSpeechBubble = Instantiate(speechBubblePrefab, bubbleCoords.transform.position, Quaternion.identity);
         currentSpeechBubble.GetComponent<DesiredItemBubble>().UpdateItemSprite(wantedItem.itemSprite);
@@ -190,7 +190,7 @@ public class SoldierBehavior : MonoBehaviour
         //Start the StunBehavior coroutine
         StartCoroutine(StunBehavior());
 
-        Debug.Log("soldier has become stunned");
+        //Debug.Log("soldier has become stunned");
 
         animator.SetInteger("animIndex", 0);
     }
@@ -202,7 +202,7 @@ public class SoldierBehavior : MonoBehaviour
     {
         yield return new WaitForSeconds(stunDuration);
         isStunned = false;
-        Debug.Log("soldier recovered from stun");
+        //Debug.Log("soldier recovered from stun");
     }
 
     private void ShootingOver()

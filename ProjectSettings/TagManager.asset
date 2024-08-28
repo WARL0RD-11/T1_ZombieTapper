@@ -8,6 +8,7 @@ TagManager:
   - HasPackage
   - Package2
   - audio
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Zombie
   - Soldier
   - Supply
-  - 
+  - Obstacle
   - 
   - 
   - 
