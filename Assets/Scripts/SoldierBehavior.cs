@@ -12,7 +12,7 @@ public class SoldierBehavior : MonoBehaviour
 
     //Bool to manage if the guard can be delivered to.
     //Delivering the wrong item to the guard means they are stunned
-    private bool isStunned;
+    //private bool isStunned;
 
     //The duration that the guard is stunned if the wrong delivery is given
     private float stunDuration;
@@ -52,7 +52,7 @@ public class SoldierBehavior : MonoBehaviour
     //2 -> shooting
     private Animator animator;
 
-    private bool isShooting;
+    //private bool isShooting;
 
     //Now that soldiers shoot over a duration
     //Give them a starting ammo count
@@ -95,7 +95,7 @@ public class SoldierBehavior : MonoBehaviour
 
         linecastDistance = gM.GetLinecastDistance();
 
-        isShooting = false;
+        //isShooting = false;
 
         currentAmmo = maximumAmmo;
 
@@ -266,7 +266,7 @@ public class SoldierBehavior : MonoBehaviour
     private void BecomeStunned()
     {
         //Set isStunned to true to prevent detection and asking for a new item
-        isStunned = true;
+        //isStunned = true;
 
         //Start the StunBehavior coroutine
         StartCoroutine(StunBehavior());
@@ -282,13 +282,13 @@ public class SoldierBehavior : MonoBehaviour
     private IEnumerator StunBehavior()
     {
         yield return new WaitForSeconds(stunDuration);
-        isStunned = false;
+        //isStunned = false;
         Debug.Log("soldier recovered from stun");
     }
 
     private void ShootingOver()
     {
-        isShooting = false;
+        //isShooting = false;
         animator.SetInteger("animIndex", 0);
         waitingForItem = false;
         detectedZombie = null;
@@ -298,5 +298,10 @@ public class SoldierBehavior : MonoBehaviour
     {
         yield return new WaitForSeconds(fireRate);
         canShoot = true;
+    }
+
+    public void SetFireFireRate(float newRate)
+    {
+        fireRate = newRate;
     }
 }
