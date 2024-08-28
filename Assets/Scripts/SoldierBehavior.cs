@@ -45,7 +45,7 @@ public class SoldierBehavior : MonoBehaviour
     private float linecastDistance;
 
     private Enemy_Behaviour detectedZombie;
-    
+
     //Index of animations
     //0 -> idle
     //1 -> asking
@@ -53,6 +53,27 @@ public class SoldierBehavior : MonoBehaviour
     private Animator animator;
 
     private bool isShooting;
+
+    //Now that soldiers shoot over a duration
+    //Give them a starting ammo count
+    [SerializeField]
+    private int maximumAmmo;
+
+    private int currentAmmo;
+
+    private bool canShoot;
+
+    [SerializeField]
+    private float fireRate;
+
+    private MuzzleFlash_Behavior mfB;
+    //private Animation mfF;
+
+    [SerializeField]
+    private GameObject bulletTrail;
+
+    [SerializeField]
+    private float bulletSpeed;
 
     void Start()
     {
@@ -62,6 +83,10 @@ public class SoldierBehavior : MonoBehaviour
         gM = FindObjectOfType<GameManager>();
         animator = GetComponent<Animator>();
 
+        mfB = GetComponentInChildren<MuzzleFlash_Behavior>();
+
+        //mfF = GetComponentInChildren<Animation>();
+          
         //Gets the stun duration that will be suffered from the game manager
         stunDuration = gM.GetDelayPenalty();
 
@@ -72,6 +97,10 @@ public class SoldierBehavior : MonoBehaviour
 
         isShooting = false;
 
+        currentAmmo = maximumAmmo;
+
+        canShoot = true;
+
         //Test code for stun functionality
         //BecomeStunned();
     }
@@ -81,21 +110,26 @@ public class SoldierBehavior : MonoBehaviour
     {
 
         //Only looks for a zombie if the soldier is not currently stunned
-        if (!isStunned)
-        {
+        //if (!isStunned)
+        //{
 
-            //Send out a 2D raycast and store the hit result (if it exists) in *hit*
-            //Only detects colliders on the Zombie layer to prevent clipping with anything else
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector3.left), linecastDistance, zombieMask);
-            //If hit has a result
-            if (hit.collider != null)
+        //Send out a 2D raycast and store the hit result (if it exists) in *hit*
+        //Only detects colliders on the Zombie layer to prevent clipping with anything else
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector3.left), linecastDistance, zombieMask);
+        //If hit has a result
+        if (hit.collider != null)
+        {
+            //then set the debug line color to red and end it on the position
+            tempColor = Color.red;
+            //Debug.Log("Soldier deteced a zombie");
+            Debug.DrawLine(transform.position, hit.transform.position, tempColor);
+
+            detectedZombie = hit.collider.gameObject.GetComponent<Enemy_Behaviour>();
+
+            if (currentAmmo > 0 && canShoot)
             {
-                //then set the debug line color to red and end it on the position
-                tempColor = Color.red;
-                //Debug.Log("Soldier deteced a zombie");
-                Debug.DrawLine(transform.position, hit.transform.position, tempColor);
                 //If this is the first time they've detected a zombie
-                if (!waitingForItem)
+                /*if (!waitingForItem)
                 {
                     //Start wanting a new item
                     WantsNewItem();
@@ -103,27 +137,62 @@ public class SoldierBehavior : MonoBehaviour
                     //Set the target of the soldier to the enemy that triggered the check
                     detectedZombie = hit.collider.gameObject.GetComponent<Enemy_Behaviour>();
                 }
+                */
 
-            }
-            //If hit does not have a result
-            else
-            {
-                //then set the debug line color to green and go off screen
-                tempColor = Color.green;
-                //Debug.Log("Soldier cannot see a zombie");
-                Debug.DrawLine(transform.position, transform.position - Vector3.left * -linecastDistance, tempColor);
+                animator.SetBool("isShooting", true);
+                animator.SetBool("isAsking", false);
 
-                animator.SetInteger("animIndex", 0);
+                mfB.PlayAnimation();
+                //mfF.Play();
 
-                //Doesn't see a zombie so nothing should happen at the moment
+                GameObject tempTrail = Instantiate(bulletTrail, mfB.transform.position, Quaternion.identity);
+                tempTrail.GetComponent<Rigidbody2D>().velocity = Vector3.left * bulletSpeed * Time.deltaTime;
+                tempTrail.GetComponent<BulletBehavior>().SetDestination(detectedZombie.transform.position);
+
+                //DO DAMAGE TO THE ZOMBIE
+                canShoot = false;
+
+                detectedZombie.OnDeath();
+                detectedZombie = null;
+
+                StartCoroutine(ShootCooldown());
+
+                currentAmmo--;
+                if(currentAmmo <= 0 && !waitingForItem)
+                {
+                    animator.SetBool("isShooting", false);
+                    animator.SetBool("isAsking", true);
+
+                    WantsNewItem();
+                }
+
             }
 
         }
+        //If hit does not have a result
+        else
+        {
+            //then set the debug line color to green and go off screen
+            tempColor = Color.green;
+            //Debug.Log("Soldier cannot see a zombie");
+            Debug.DrawLine(transform.position, transform.position - Vector3.left * -linecastDistance, tempColor);
+
+            animator.SetInteger("animIndex", 0);
+
+            animator.SetBool("isShooting", false);
+
+            //Doesn't see a zombie so nothing should happen at the moment
+        }
+
+        //}
     }
 
     //Called when the soldier wants a new item to be delivered
     private void WantsNewItem()
     {
+
+        animator.SetBool("isAsking", true);
+
         //Get a random delivery item from the game manager
         wantedItem = gM.GetRandomDeliveryItem();
 
@@ -136,10 +205,12 @@ public class SoldierBehavior : MonoBehaviour
         waitingForItem = true;
 
         //animator.SetBool("isAsking", true);
+        /*
         if (!isShooting)
         {
             animator.SetInteger("animIndex", 1);
         }
+        */
     }
 
     //Called by the player when they attempt to give the soldier an item
@@ -156,7 +227,8 @@ public class SoldierBehavior : MonoBehaviour
             //Do something
             //Shoot the zombie
             //Make sure that detectedZombie actually has a value
-            if(detectedZombie)
+            /*
+            if (detectedZombie)
             {
                 //Kill the zombie
                 detectedZombie.OnDeath();
@@ -169,14 +241,24 @@ public class SoldierBehavior : MonoBehaviour
                 }
             }
             //Give the player some points, subject to change
+            */
+
+            animator.SetBool("isAsking", false);
+
+            currentAmmo = maximumAmmo;
+
+            waitingForItem = false;
+
             gM.AddScore(1);
         }
         //If the item is the wrong item
         else
         {
+            //No longer stun the soldier, decided that they would just do nothing
+            //Leaving code in case we need it again later.
             //Stun the soldier
-            waitingForItem=false;
-            BecomeStunned();
+            //waitingForItem = false;
+            //BecomeStunned();
         }
     }
 
@@ -210,5 +292,11 @@ public class SoldierBehavior : MonoBehaviour
         animator.SetInteger("animIndex", 0);
         waitingForItem = false;
         detectedZombie = null;
+    }
+
+    private IEnumerator ShootCooldown()
+    {
+        yield return new WaitForSeconds(fireRate);
+        canShoot = true;
     }
 }

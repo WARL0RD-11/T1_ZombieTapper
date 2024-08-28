@@ -249,7 +249,7 @@ PrefabInstance:
     - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: supplyItem
       value: 
-      objectReference: {fileID: 11400000, guid: 82f1ab96d0b6a624dae088c39a077abf, type: 2}
+      objectReference: {fileID: 11400000, guid: 9c7d09de191928c4188b3ea4c815276d, type: 2}
     - target: {fileID: 7953492119133736993, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Name
       value: SupplyBox2
@@ -331,6 +331,22 @@ PrefabInstance:
       propertyPath: enemySpawnTime.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7588521829188989851, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
+      propertyPath: deliveryItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: e7012c6d1d2541a44adfc42550662156, type: 2}
+    - target: {fileID: 7588521829188989851, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
+      propertyPath: deliveryItems.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9c7d09de191928c4188b3ea4c815276d, type: 2}
+    - target: {fileID: 7588521829188989851, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
+      propertyPath: deliveryItems.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4be3a01c53076b14c8de0ce137a4ce96, type: 2}
+    - target: {fileID: 7588521829188989851, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
+      propertyPath: deliveryItems.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7af1a1bdc7261e640bc0d79ba78278cd, type: 2}
     - target: {fileID: 7588521829188989851, guid: cec19a4afbd805d4ab216f1525289ac3, type: 3}
       propertyPath: enemySpawnTime.Array.data[0]
       value: 2
@@ -504,7 +520,7 @@ GameObject:
   - component: {fileID: 231719185}
   m_Layer: 0
   m_Name: SandBags_Visual
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -518,7 +534,7 @@ Transform:
   m_GameObject: {fileID: 231719183}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.76431, y: 0.0528, z: 0}
+  m_LocalPosition: {x: -0.76431, y: -0.8198, z: 0}
   m_LocalScale: {x: 0.14285713, y: 0.14285713, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -570,7 +586,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 4.3001013, y: 71.73859}
+  m_Size: {x: 4.3001013, y: 59.52222}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -640,6 +656,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+      propertyPath: maximumAmmo
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5907876598019354629, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_Name
       value: Soldier (5)
@@ -647,7 +667,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2332682790561285831, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1142223210}
   m_SourcePrefab: {fileID: 100100000, guid: 938c922497ae7b04680c6e6636933535, type: 3}
 --- !u!1001 &261143266
 PrefabInstance:
@@ -692,7 +715,7 @@ PrefabInstance:
     - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: supplyItem
       value: 
-      objectReference: {fileID: 11400000, guid: 35c2d99edbe417848a963f50c77a1946, type: 2}
+      objectReference: {fileID: 11400000, guid: 7af1a1bdc7261e640bc0d79ba78278cd, type: 2}
     - target: {fileID: 7953492119133736993, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Name
       value: SupplyBox4
@@ -809,6 +832,10 @@ PrefabInstance:
     - target: {fileID: 3715493568349687957, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+      propertyPath: maximumAmmo
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5907876598019354629, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_Name
@@ -995,6 +1022,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: supplyItem
+      value: 
+      objectReference: {fileID: 11400000, guid: e7012c6d1d2541a44adfc42550662156, type: 2}
     - target: {fileID: 6944272071513625935, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -1111,7 +1142,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 10.800501, y: 0.40785694}
+  m_Size: {x: 12.119543, y: 0.40785694}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1126,7 +1157,7 @@ Transform:
   m_GameObject: {fileID: 954722060}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.3529, y: 1, z: 0}
+  m_LocalPosition: {x: -7.0124, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1216,6 +1247,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1142223205 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2332682790561285831, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+  m_PrefabInstance: {fileID: 234003564}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1142223210
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142223205}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 82847fbf701eb28439c6cff6e032f5b7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1232122018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1259,7 +1316,7 @@ PrefabInstance:
     - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: supplyItem
       value: 
-      objectReference: {fileID: 11400000, guid: 40a218b76848e064585718edcec1703a, type: 2}
+      objectReference: {fileID: 11400000, guid: 4be3a01c53076b14c8de0ce137a4ce96, type: 2}
     - target: {fileID: 7953492119133736993, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Name
       value: SupplyBox3
@@ -1376,6 +1433,10 @@ PrefabInstance:
     - target: {fileID: 3715493568349687957, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+      propertyPath: maximumAmmo
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5907876598019354629, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_Name
@@ -1703,6 +1764,10 @@ PrefabInstance:
     - target: {fileID: 3715493568349687957, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+      propertyPath: maximumAmmo
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5907876598019354629, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_Name
