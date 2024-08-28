@@ -9,6 +9,7 @@ TagManager:
   - Package2
   - audio
   - PupTurret
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Zombie
   - Soldier
   - Supply
-  - 
+  - Obstacle
   - 
   - 
   - 
