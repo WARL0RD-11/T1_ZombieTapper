@@ -49,9 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e37f69ad6473fd4fbdbff3e7410047c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpeed: 0.5
-  waitAfterDeath: 2
-  health: 1
+  enemySpeed: 0.25
+  health: 3
 --- !u!61 &1761073916831053777
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -88,7 +87,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5818182, y: 0.64}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -186,7 +185,8 @@ Animation:
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: a9859a3607c027e4c938d48daa64edfd, type: 2}
-  m_Animations: []
+  m_Animations:
+  - {fileID: 7400000, guid: 128109cc8434aac4894d3f24c2653d1a, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0

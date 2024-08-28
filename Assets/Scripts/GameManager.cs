@@ -118,4 +118,9 @@ public class GameManager : MonoBehaviour
     {
         return linecastDistance;
     }
+
+    public int GetPlayerScore()
+    {
+        return playerScore; 
+    }
 }

@@ -7,6 +7,7 @@ public class Enemy_Instantiate : MonoBehaviour
     [SerializeField] public GameObject[] enemyPrefab;
     [SerializeField] Transform parent;
     GameManager gameManager;
+    private int createHoard = 100;
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -28,14 +29,15 @@ public class Enemy_Instantiate : MonoBehaviour
     {
         while (true)
         {
+
             if (enemyPrefab.gameObject.name == "Enemy")
             {
-                gameManager.enemySpawnTime[i] = 2 + Mathf.RoundToInt(Random.Range(-2, 1));
+                RandSpawnRate(i, true);
                 yield return new WaitForSeconds(gameManager.enemySpawnTime[i]);
             }
             else
             {
-                gameManager.enemySpawnTime[i] = 5 + Mathf.RoundToInt(Random.Range(1, 2));
+                RandSpawnRate(i, false);
                 yield return new WaitForSeconds(gameManager.enemySpawnTime[i]);
             }
             var spawnPosition = new Vector3(transform.position.x, Mathf.RoundToInt(
@@ -43,6 +45,30 @@ public class Enemy_Instantiate : MonoBehaviour
             GameObject spawnGameObject = Instantiate(enemyPrefab, spawnPosition,
                    Quaternion.identity);
             spawnGameObject.transform.parent = parent; // Parent clones to a single object
+        }
+    }
+
+    private void RandSpawnRate(int i, bool canCreateHoard)
+    {
+        float spawnRate = 5.0f;
+        int playerScore = gameManager.GetPlayerScore();
+        if(playerScore >= 10 && playerScore < 20)
+        {
+            spawnRate -= 0.5f; 
+        }
+        else if(playerScore >= 20)
+        {
+            spawnRate -= 1f;
+        }
+        if (canCreateHoard && Mathf.RoundToInt(Random.Range(0, createHoard)) == createHoard)
+        {
+            gameManager.enemySpawnTime[i] = 0f;
+            spawnRate = 0f;
+        }
+        gameManager.enemySpawnTime[i] = spawnRate + Mathf.RoundToInt(Random.Range(0, 2));
+        if (createHoard != 0)
+        {
+            createHoard--;
         }
     }
 }

@@ -158,8 +158,9 @@ public class SoldierBehavior : MonoBehaviour
             //Make sure that detectedZombie actually has a value
             if(detectedZombie)
             {
-                //Kill the zombie
-                detectedZombie.OnDeath();
+                //Reduce Zombie Health
+                detectedZombie.ReduceHealth();
+                //detectedZombie.OnDeath();
                 waitingForItem = false;
                 //animator.SetBool("isShooting", true);
                 if (!isShooting)
@@ -169,7 +170,7 @@ public class SoldierBehavior : MonoBehaviour
                 }
             }
             //Give the player some points, subject to change
-            gM.AddScore(1);
+            //gM.AddScore(1);
         }
         //If the item is the wrong item
         else

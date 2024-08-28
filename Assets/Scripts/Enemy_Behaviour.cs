@@ -7,7 +7,6 @@ public class Enemy_Behaviour : MonoBehaviour
 {
     [SerializeField] float enemySpeed = 1.0f;
     //[SerializeField] Animation deathAnimation;
-    [SerializeField] float waitAfterDeath = 2.0f;
     [SerializeField] int health = 1;
 
     GameManager gameManager;
@@ -42,36 +41,22 @@ public class Enemy_Behaviour : MonoBehaviour
     }
     private void EnemyMovement()
     {
+        //if(this.gameObject.tag == "Enemy" && transform.position.x 
+        //    > (sandBagObject.transform.position.x/2))
+        //{
+        //    enemySpeed += 0.25f; 
+        //}
         //Move enemy on the x-axis
         transform.position += new Vector3(1.0f, 0f, 0) * enemySpeed * Time.deltaTime;
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "Bullet" && !gameManager.GetGameStatus())
-        {
-            --health;
-            if(health <=0)
-            {
-                KillEnemy();
-            }
-        }
-
-    }
-    private void KillEnemy()
-    {
-        animator.SetBool("isZombieDead", true);
-        new WaitForSeconds(waitAfterDeath);
-        //Destroy(gameObject);
     }
 
     //Function to be called by soldiers when they are delivered the correct item
     public void OnDeath()
     {
+        gameManager.AddScore(1);
         //Set the speed to 0 so corpses can't move
         enemySpeed = 0.0f;
-
         animator.SetBool("isZombieDead", true);
-
         GetComponent<BoxCollider2D>().enabled = false;
 
         //Play animations or something
@@ -82,5 +67,14 @@ public class Enemy_Behaviour : MonoBehaviour
     public void DeathOver()
     {
         Destroy(this);
+    }
+
+    public void ReduceHealth()
+    {
+        --health;
+        if(health < 0)
+        {
+            OnDeath();
+        }
     }
 }
