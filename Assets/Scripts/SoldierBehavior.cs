@@ -66,6 +66,8 @@ public class SoldierBehavior : MonoBehaviour
     [SerializeField]
     private float fireRate;
 
+    private MuzzleFlash_Behavior mfB;
+    //private Animation mfF;
 
     void Start()
     {
@@ -75,6 +77,10 @@ public class SoldierBehavior : MonoBehaviour
         gM = FindObjectOfType<GameManager>();
         animator = GetComponent<Animator>();
 
+        mfB = GetComponentInChildren<MuzzleFlash_Behavior>();
+
+        //mfF = GetComponentInChildren<Animation>();
+          
         //Gets the stun duration that will be suffered from the game manager
         stunDuration = gM.GetDelayPenalty();
 
@@ -129,6 +135,9 @@ public class SoldierBehavior : MonoBehaviour
 
                 animator.SetBool("isShooting", true);
                 animator.SetBool("isAsking", false);
+
+                mfB.PlayAnimation();
+                //mfF.Play();
 
 
                 //DO DAMAGE TO THE ZOMBIE
