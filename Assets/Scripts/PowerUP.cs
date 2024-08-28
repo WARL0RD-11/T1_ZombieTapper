@@ -10,6 +10,8 @@ public class PowerUP : MonoBehaviour
     [SerializeField]
     private TurretBehavior Turret2;
 
+    private SoldierBehavior Soldier;
+
     private bool IsPlayerInTrigger;
 
     // Start is called before the first frame update
@@ -28,6 +30,11 @@ public class PowerUP : MonoBehaviour
             Turret2.IsActivated = true;
             Debug.Log("Turret SET TO TRUE");
             Destroy(this.gameObject);
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow) && (IsPlayerInTrigger) && (this.gameObject.CompareTag("PupED")))
+        {
+
         }
     }
 
