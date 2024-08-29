@@ -16,8 +16,14 @@ public class AudioManager : MonoBehaviour
     public AudioClip Sniper_Audio;
     public AudioClip pickup_Audio;
     public AudioClip ZombieDead_Audio;
+    public AudioClip ZombieAttack_Audio;
+    public AudioClip ZombieAppear_Audio;
+    public AudioClip ZombieEatFinal_Audio;
     public AudioClip gameStart_Audio;
     public AudioClip gameEnd_Audio;
+    public AudioClip Deliver_Audio;
+    public AudioClip ScreenClean_Audio;
+    public AudioClip AskWeapon_Audio;
 
     public static AudioManager instance;
 

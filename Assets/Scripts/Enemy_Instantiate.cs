@@ -8,6 +8,15 @@ public class Enemy_Instantiate : MonoBehaviour
     [SerializeField] Transform parent;
     GameManager gameManager;
     private int createHoard = 100;
+
+    //Audio
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>();
+    }
+
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -45,6 +54,8 @@ public class Enemy_Instantiate : MonoBehaviour
             GameObject spawnGameObject = Instantiate(enemyPrefab, spawnPosition,
                    Quaternion.identity);
             spawnGameObject.transform.parent = parent; // Parent clones to a single object
+
+            audioManager.PlaySFX(audioManager.ZombieAppear_Audio);
         }
     }
 

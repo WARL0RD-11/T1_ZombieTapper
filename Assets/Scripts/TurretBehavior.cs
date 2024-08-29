@@ -23,6 +23,14 @@ public class TurretBehavior : MonoBehaviour
     private bool IsRotatingForward = true;
 
     private Enemy_Behaviour DetectedZombie;
+
+    //Audio
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>();
+    }
     
     
     // Start is called before the first frame update
@@ -54,6 +62,7 @@ public class TurretBehavior : MonoBehaviour
     {
         RaycastDetection();
         Debug.Log("Turret Firing");
+        audioManager.PlaySFX(audioManager.ScreenClean_Audio);
         float CurrentAngle = transform.eulerAngles.z;
         if (IsRotatingForward)
         {

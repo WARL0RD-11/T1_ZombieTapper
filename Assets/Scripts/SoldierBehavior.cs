@@ -75,6 +75,15 @@ public class SoldierBehavior : MonoBehaviour
     [SerializeField]
     private float bulletSpeed;
 
+    //Audio
+    AudioManager audioManager;
+    private int GuntypeSound;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>();
+    }
+
     void Start()
     {
         //Gets all the components referenced in the code
@@ -103,6 +112,10 @@ public class SoldierBehavior : MonoBehaviour
 
         //Test code for stun functionality
         //BecomeStunned();
+
+        //Change the following line if complete.
+        //GuntypeSound = 0;
+        GuntypeSound = UnityEngine.Random.Range(1, 5);
     }
 
     // Update is called once per frame
@@ -157,6 +170,22 @@ public class SoldierBehavior : MonoBehaviour
 
                 StartCoroutine(ShootCooldown());
 
+                //Play Audio
+                if (GuntypeSound == 1)
+                {
+                    //Rifle
+                    audioManager.PlaySFX(audioManager.Rifle_Audio);
+                } else if (GuntypeSound == 2){
+                    //Shotgun
+                    audioManager.PlaySFX(audioManager.Shotgun_Audio);
+                } else if (GuntypeSound == 3){
+                    //Pistol
+                    audioManager.PlaySFX(audioManager.Pistol_Audio);
+                } else if (GuntypeSound == 4){
+                    //Sniper
+                    audioManager.PlaySFX(audioManager.Sniper_Audio);
+                }
+
                 currentAmmo--;
                 if(currentAmmo <= 0 && !waitingForItem)
                 {
@@ -164,6 +193,9 @@ public class SoldierBehavior : MonoBehaviour
                     animator.SetBool("isAsking", true);
 
                     WantsNewItem();
+                    //Need Change the Following Line: Assign corresponding SoundClip according to gun type
+                    GuntypeSound = UnityEngine.Random.Range(1, 5);
+                    audioManager.PlaySFX(audioManager.AskWeapon_Audio);
                 }
 
             }

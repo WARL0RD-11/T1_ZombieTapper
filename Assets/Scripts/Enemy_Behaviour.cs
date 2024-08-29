@@ -18,6 +18,14 @@ public class Enemy_Behaviour : MonoBehaviour
     bool canCharacterMove = true;
     bool canAttack = false;
 
+    //Audio
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +77,8 @@ public class Enemy_Behaviour : MonoBehaviour
         animator.SetBool("isZombieDead", true);
         GetComponent<BoxCollider2D>().enabled = false;
 
+        //audioManager.PlaySFX(audioManager.ZombieEatFinal_Audio);
+
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -93,6 +103,7 @@ public class Enemy_Behaviour : MonoBehaviour
     public IEnumerator AttackObstacle()
     {
         canAttack = false;
+        audioManager.PlaySFX(audioManager.ZombieAttack_Audio);
         if (obstacleObject.TakeDamage(enemyPower) == 0)
         {
            Destroy(obstacleObject.gameObject);
@@ -109,6 +120,8 @@ public class Enemy_Behaviour : MonoBehaviour
         deathPos.y = deathPos.y - 0.4f;
 
         Instantiate(bloodPoolPrefab, deathPos, Quaternion.identity);
+
+        audioManager.PlaySFX(audioManager.ZombieDead_Audio);
 
         Destroy(this);
     }

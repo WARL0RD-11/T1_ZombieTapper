@@ -31,6 +31,15 @@ public class Player_Behavior : MonoBehaviour
     [SerializeField]
     private SpriteRenderer heldItemSprite;
 
+    //Audio
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>();
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -56,7 +65,7 @@ public class Player_Behavior : MonoBehaviour
                     //Then get its SB script and try to deliver the current item, whatever it is.
                     CurrentSoldier.GetComponent<SoldierBehavior>().DeliverItem(currentItem);
                 }
-
+                audioManager.PlaySFX(audioManager.Deliver_Audio);
                 RemoveDeliveryItem(); 
                 HasItem = false;
                 //Debug.Log("Item Delivered");
@@ -68,6 +77,7 @@ public class Player_Behavior : MonoBehaviour
                 //Make sure that CurrentSB is actually set to something
                 if (CurrentSB)
                 {
+                    audioManager.PlaySFX(audioManager.pickup_Audio);
                     //Then set the player's current delivery item to the supply item from the box
                     SetDeliveryItem(CurrentSB.GetComponent<SupplyBox_Behavior>().GetSupplyItem());
                 }
