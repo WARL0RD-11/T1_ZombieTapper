@@ -61,15 +61,15 @@ public class Enemy_Instantiate : MonoBehaviour
 
     private void RandSpawnRate(int i, bool canCreateHoard)
     {
-        float spawnRate = 4.0f;
+        float spawnRate = 2.0f;
         int playerScore = gameManager.GetPlayerScore();
         if(playerScore >= 10 && playerScore < 20)
         {
-            spawnRate -= 0.5f; 
+            spawnRate -= 0.25f; 
         }
         else if(playerScore >= 20)
         {
-            spawnRate -= 1f;
+            spawnRate -= 0.5f;
         }
         if (canCreateHoard && Mathf.RoundToInt(Random.Range(0, createHoard)) == createHoard)
         {

@@ -746,6 +746,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+      propertyPath: maximumAmmo
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5907876598019354629, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_Name
       value: Soldier (2)
@@ -1067,6 +1071,10 @@ PrefabInstance:
     - target: {fileID: 3715493568349687957, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+      propertyPath: maximumAmmo
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5907876598019354629, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_Name
@@ -2316,6 +2324,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+      propertyPath: maximumAmmo
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5907876598019354629, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_Name
       value: Soldier (1)
@@ -3238,6 +3250,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+      propertyPath: maximumAmmo
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5907876598019354629, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_Name
       value: Soldier (3)
@@ -3275,7 +3291,7 @@ MonoBehaviour:
   ZombieMask:
     serializedVersion: 2
     m_Bits: 0
-  TargetRotationAngle: 0
+  TargetRotationAngle: 45
   IsActivated: 0
 --- !u!114 &1421082179 stripped
 MonoBehaviour:
@@ -4071,7 +4087,7 @@ MonoBehaviour:
   ZombieMask:
     serializedVersion: 2
     m_Bits: 0
-  TargetRotationAngle: 0
+  TargetRotationAngle: 45
   IsActivated: 0
 --- !u!1 &2042173375
 GameObject:

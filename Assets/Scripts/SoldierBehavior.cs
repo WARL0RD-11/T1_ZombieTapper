@@ -105,9 +105,6 @@ public class SoldierBehavior : MonoBehaviour
         linecastDistance = gM.GetLinecastDistance();
 
         //isShooting = false;
-
-        Debug.Log("Game started");
-
         currentAmmo = maximumAmmo;
 
         canShoot = true;
