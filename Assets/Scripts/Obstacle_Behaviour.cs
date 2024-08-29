@@ -11,4 +11,9 @@ public class Obstacle_Behaviour : MonoBehaviour
         health -= damage;
         return health;
     }
+
+    public void DestroyObstacle()
+    {
+        Destroy(gameObject);
+    }
 }

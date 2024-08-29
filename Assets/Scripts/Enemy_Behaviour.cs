@@ -53,11 +53,11 @@ public class Enemy_Behaviour : MonoBehaviour
             canCharacterMove = false;
             gameManager.EndGame();
         }
-        if(canAttack)
+        if (canAttack)
         {
             StartCoroutine(AttackObstacle());
         }
-        else if(canCharacterMove)
+        else if (canCharacterMove)
         {
             animator.SetBool("isZombieIdle", false);
         }
@@ -106,9 +106,10 @@ public class Enemy_Behaviour : MonoBehaviour
         audioManager.PlaySFX(audioManager.ZombieAttack_Audio);
         if (obstacleObject.TakeDamage(enemyPower) == 0)
         {
-           Destroy(obstacleObject.gameObject);
-           StopAllCoroutines();
-           yield return null;
+            //Destroy(obstacleObject.gameObject);
+            obstacleObject.GetComponent<Animator>().SetBool("shouldDie", true);
+            StopAllCoroutines();
+            yield return null;
         }
         yield return new WaitForSeconds(attackCoolDown);
         canAttack = true;
@@ -129,7 +130,7 @@ public class Enemy_Behaviour : MonoBehaviour
     public void ReduceHealth()
     {
         --health;
-        if(health < 0)
+        if (health < 0)
         {
             OnDeath();
         }
