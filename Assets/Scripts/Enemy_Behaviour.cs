@@ -9,6 +9,7 @@ public class Enemy_Behaviour : MonoBehaviour
     [SerializeField] int health = 1;
     [SerializeField] float attackCoolDown = 1f;
     [SerializeField] int enemyPower = 1;
+    [SerializeField] GameObject bloodPoolPrefab;
 
     GameManager gameManager;
     Animator animator;
@@ -67,6 +68,7 @@ public class Enemy_Behaviour : MonoBehaviour
         enemySpeed = 0.0f;
         animator.SetBool("isZombieDead", true);
         GetComponent<BoxCollider2D>().enabled = false;
+
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -103,6 +105,11 @@ public class Enemy_Behaviour : MonoBehaviour
 
     public void DeathOver()
     {
+        Vector3 deathPos = transform.position;
+        deathPos.y = deathPos.y - 0.4f;
+
+        Instantiate(bloodPoolPrefab, deathPos, Quaternion.identity);
+
         Destroy(this);
     }
 
