@@ -180,11 +180,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2483105144785907026, guid: 95c638baa664e3c43946d117d2bf1dd0, type: 3}
       propertyPath: UpKeyPressed
-      value: 273
+      value: 119
       objectReference: {fileID: 0}
     - target: {fileID: 2483105144785907026, guid: 95c638baa664e3c43946d117d2bf1dd0, type: 3}
       propertyPath: DownKeyPressed
-      value: 274
+      value: 115
       objectReference: {fileID: 0}
     - target: {fileID: 4581754343806987492, guid: 95c638baa664e3c43946d117d2bf1dd0, type: 3}
       propertyPath: m_LocalScale.x
