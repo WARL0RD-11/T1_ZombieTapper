@@ -1591,6 +1591,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd16420b80cc954ca03a3f25bf9f2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ZombieMask:
+    serializedVersion: 2
+    m_Bits: 0
+  TargetRotationAngle: 0
+  IsActivated: 0
 --- !u!114 &1136674241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3337,6 +3342,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 984376320628744118, guid: 2857bed1b2cc5244db748427db905798, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359447537558145633, guid: 2857bed1b2cc5244db748427db905798, type: 3}
+      propertyPath: lengthInSec
+      value: 0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359447537558145633, guid: 2857bed1b2cc5244db748427db905798, type: 3}
+      propertyPath: UVModule.fps
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359447537558145633, guid: 2857bed1b2cc5244db748427db905798, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359447537558145633, guid: 2857bed1b2cc5244db748427db905798, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359447537558145633, guid: 2857bed1b2cc5244db748427db905798, type: 3}
+      propertyPath: InitialModule.startLifetime.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359447537558145633, guid: 2857bed1b2cc5244db748427db905798, type: 3}
+      propertyPath: InitialModule.startLifetime.maxCurve.m_Curve.Array.data[1].time
+      value: 0.9536133
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359447537558145633, guid: 2857bed1b2cc5244db748427db905798, type: 3}
+      propertyPath: InitialModule.startLifetime.maxCurve.m_Curve.Array.data[1].value
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5211163374362295682, guid: 2857bed1b2cc5244db748427db905798, type: 3}
