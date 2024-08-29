@@ -92,7 +92,7 @@ public class SoldierBehavior : MonoBehaviour
     private float bulletSpeed;
 
     [SerializeField]
-    private BoxCollider2D flamerBox;
+    private GameObject flamerBox;
 
     [SerializeField]
     private float flamerDuration;
@@ -205,44 +205,15 @@ public class SoldierBehavior : MonoBehaviour
         //Set waitingForItem to true so that its not constantly asking for a new one
         waitingForItem = true;
 
-        //animator.SetBool("isAsking", true);
-        /*
-        if (!isShooting)
-        {
-            animator.SetInteger("animIndex", 1);
-        }
-        */
     }
 
     //Called by the player when they attempt to give the soldier an item
     public void DeliverItem(DeliveryItem item)
     {
-        //animator.SetBool("isAsking", false);
-        //Get rid of the current speech bubble
-        //Destroy(currentSpeechBubble);
-        //currentSpeechBubble = null;
 
         //If the item is the correct item
         if (item == wantedItem)
         {
-            //Do something
-            //Shoot the zombie
-            //Make sure that detectedZombie actually has a value
-            /*
-            if (detectedZombie)
-            {
-                //Kill the zombie
-                detectedZombie.OnDeath();
-                waitingForItem = false;
-                //animator.SetBool("isShooting", true);
-                if (!isShooting)
-                {
-                    //animator.SetInteger("animIndex", 2);
-                    isShooting = true;
-                }
-            }
-            //Give the player some points, subject to change
-            */
 
             animator.SetBool("isAsking", false);
 
@@ -256,14 +227,8 @@ public class SoldierBehavior : MonoBehaviour
             Destroy(currentSpeechBubble);
             currentSpeechBubble = null;
         }
-        //If the item is the wrong item
         else
         {
-            //No longer stun the soldier, decided that they would just do nothing
-            //Leaving code in case we need it again later.
-            //Stun the soldier
-            //waitingForItem = false;
-            //BecomeStunned();
             Debug.Log(item.weapon.ToString());
             currentWeapon = item.weapon;
             currentSPAmmo = 2;
@@ -424,12 +389,12 @@ public class SoldierBehavior : MonoBehaviour
 
     private void FlamerBehavior()
     {
-        animator.SetBool("isShooting", true);
+        animator.SetBool("isShooting", false);
         animator.SetBool("isAsking", false);
 
         if (!flamerInProgress)
         {
-            flamerBox.enabled = true;
+            flamerBox.SetActive(true);
             flamerInProgress = true;
             StartCoroutine(FlamerDuration());
         }
@@ -467,7 +432,7 @@ public class SoldierBehavior : MonoBehaviour
     private IEnumerator FlamerDuration()
     {
         yield return new WaitForSeconds(flamerDuration);
-        flamerBox.enabled = false;
+        flamerBox.SetActive(false);
         flamerInProgress = false;
         ReturnToRifle();
     }

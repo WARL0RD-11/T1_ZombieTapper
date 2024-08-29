@@ -48,7 +48,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2711819817250545122
 Transform:
   m_ObjectHideFlags: 0
@@ -98,11 +98,11 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -1.6870981, y: -0.020167828}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    border: {x: 0.25, y: 0.25, z: 0.25, w: 0.25}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -280,7 +280,7 @@ MonoBehaviour:
   sgSpread: 0.05
   bulletTrail: {fileID: 2005182882119898316, guid: e78a8355fcd77914485c73f9ede303b8, type: 3}
   bulletSpeed: 20
-  flamerBox: {fileID: 6927766086495141437}
+  flamerBox: {fileID: 3964258023267442278}
   flamerDuration: 5
 --- !u!95 &7945691714383495266
 Animator:
