@@ -6,15 +6,14 @@ using UnityEngine.UI;
 
 public class DeadMenu : MonoBehaviour
 {
-    [SerializeField] public Button DeadMenu_Replay;
+    [SerializeField] public Button DeadMenu_FirstB;
     [SerializeField] public GameObject EndMenu;
-
 
 
     public void EndMenuAppear()
     {
         EndMenu.SetActive(true);
-        DeadMenu_Replay.Select();
+        DeadMenu_FirstB.Select();
     }
 
     public void restart()
