@@ -1015,6 +1015,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 374806919}
   m_CullTransparentMesh: 1
+--- !u!114 &403049755 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+  m_PrefabInstance: {fileID: 750869041}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4790227a20a084f4bb20dece5275d56d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &470712107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1229,6 +1240,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -250}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &523803390 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+  m_PrefabInstance: {fileID: 715874563}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4790227a20a084f4bb20dece5275d56d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &623014607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1673,6 +1695,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804004713}
   m_CullTransparentMesh: 1
+--- !u!114 &827696331 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+  m_PrefabInstance: {fileID: 203142798}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4790227a20a084f4bb20dece5275d56d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &880238577 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
+  m_PrefabInstance: {fileID: 470712107}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4790227a20a084f4bb20dece5275d56d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &922460298
 GameObject:
   m_ObjectHideFlags: 0
@@ -2830,6 +2874,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerUP_EnergyDrink
       objectReference: {fileID: 0}
+    - target: {fileID: 9030074414748878811, guid: 2016f9abd8d3b164aac6d7bb8cd121d6, type: 3}
+      propertyPath: m_TagString
+      value: PupED
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2935,6 +2983,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Turret1: {fileID: 1917807577}
   Turret2: {fileID: 1067255591}
+  Soldier1: {fileID: 523803390}
+  Soldier2: {fileID: 880238577}
+  Soldier3: {fileID: 403049755}
+  Soldier4: {fileID: 827696331}
+  NewRate: 0.1
 --- !u!1001 &7867816095580895179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3097,6 +3150,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Turret1: {fileID: 1917807577}
   Turret2: {fileID: 1067255591}
+  Soldier1: {fileID: 0}
+  Soldier2: {fileID: 0}
+  Soldier3: {fileID: 0}
+  Soldier4: {fileID: 0}
+  NewRate: 0
 --- !u!50 &7867816095580895185
 Rigidbody2D:
   serializedVersion: 4
