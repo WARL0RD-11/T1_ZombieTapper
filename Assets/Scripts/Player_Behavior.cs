@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Player_Behavior : MonoBehaviour
 {
-    [SerializeField] public KeyCode PDKey = KeyCode.Space;
+    [SerializeField] public KeyCode PDKey = KeyCode.Return;
     [SerializeField] public KeyCode UpKeyPressed = KeyCode.UpArrow;
     [SerializeField] public KeyCode DownKeyPressed = KeyCode.DownArrow;
 

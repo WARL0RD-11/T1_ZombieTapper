@@ -37,16 +37,17 @@ public class PowerUP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && (IsPlayerInTrigger) && (this.gameObject.CompareTag("PupTurret")))
+        if (Input.GetKeyDown(KeyCode.W) && (IsPlayerInTrigger) && (this.gameObject.CompareTag("PupTurret")))
         {
             Debug.Log("Key Pressed");
             Turret1.IsActivated = true;
             Turret2.IsActivated = true;
             Debug.Log("Turret SET TO TRUE");
             Destroy(this.gameObject);
+            Destroy(GameObject.FindWithTag("PupED"));
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow) && (IsPlayerInTrigger) && (this.gameObject.CompareTag("PupED")))
+        if (Input.GetKeyDown(KeyCode.S) && (IsPlayerInTrigger) && (this.gameObject.CompareTag("PupED")))
         {
             Debug.Log("ENERGY DRINK");
             Soldier1.SetFireFireRate(NewRate);
@@ -54,6 +55,7 @@ public class PowerUP : MonoBehaviour
             Soldier3.SetFireFireRate(NewRate);
             Soldier4.SetFireFireRate(NewRate);
             Destroy(this.gameObject);
+            Destroy(GameObject.FindWithTag("PupTurret"));
         }
     }
 
