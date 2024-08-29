@@ -9,7 +9,7 @@ public class TurretBehavior : MonoBehaviour
     private LayerMask ZombieMask;
 
     [SerializeField]
-    private float TargetRotationAngle;
+    private float TargetRotationAngle; //amplitude?
 
     [SerializeField]
     public bool IsActivated;
@@ -18,9 +18,10 @@ public class TurretBehavior : MonoBehaviour
     private GameManager GameManager;
     private Color TempColor;
     //private Vector3 TempRotation = new Vector3(0.0f, 0.0f, -45.0f);
-    private float RotationSpeed = 2f;
-    private float StartAngle;
-    private bool IsRotatingForward = true;
+    private float RotationSpeed = 2f; //frequency
+    private Quaternion StartRot;
+    private Quaternion EndRot;
+    //private bool IsRotatingForward = true;
 
     private Enemy_Behaviour DetectedZombie;
 
@@ -38,9 +39,9 @@ public class TurretBehavior : MonoBehaviour
     {
         GameManager = FindObjectOfType<GameManager>();
         LineCastDistance = 11.0f;
-        TargetRotationAngle = 45.0f ;
+        //TargetRotationAngle = 45.0f;
 
-        StartAngle = transform.eulerAngles.z;
+        StartRot = transform.rotation;
         IsActivated = false;
     }
 
@@ -53,6 +54,7 @@ public class TurretBehavior : MonoBehaviour
             {
                 RotationBouncer();
                 Invoke("DeactivateTurret", 5);
+                //RotationBouncer(0.0f);
             }
         }
 
@@ -63,31 +65,11 @@ public class TurretBehavior : MonoBehaviour
         RaycastDetection();
         Debug.Log("Turret Firing");
         audioManager.PlaySFX(audioManager.ScreenClean_Audio);
-        float CurrentAngle = transform.eulerAngles.z;
-        if (IsRotatingForward)
-        {
-            if(CurrentAngle < StartAngle + TargetRotationAngle)
-            {
-                transform.Rotate(0,0,TargetRotationAngle * RotationSpeed * Time.deltaTime);
-                //Debug.Log("Turret Rotating CLOCKWISE");
-            }
-            else
-            {
-                IsRotatingForward = false;
-            }
-        }
-        else
-        {
-            if (CurrentAngle > StartAngle)
-            {
-                transform.Rotate(0, 0, TargetRotationAngle * -RotationSpeed * Time.deltaTime);
-                //Debug.Log("Turret Rotating COUNTER-CLOCKWISE");
-            }
-            else
-            {
-                IsRotatingForward = true;
-            }
-        }
+        //float CurrentAngle = transform.eulerAngles.z;
+        float oscillation = Mathf.Sin(Time.deltaTime * RotationSpeed) + TargetRotationAngle;
+        EndRot = StartRot * Quaternion.Euler(0,0,oscillation) ;
+        transform.rotation = Quaternion.Lerp(transform.rotation, EndRot, Time.deltaTime * RotationSpeed);
+
     }
 
     private void RaycastDetection()
@@ -118,5 +100,7 @@ public class TurretBehavior : MonoBehaviour
     {
         IsActivated = false;
         Debug.Log("Turret Deactivated");
+        EndRot = StartRot * Quaternion.Euler(0, 0, 0);
+        transform.rotation = Quaternion.Lerp(transform.rotation, StartRot, Time.deltaTime * RotationSpeed);
     }
 }
