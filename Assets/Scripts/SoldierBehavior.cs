@@ -106,6 +106,8 @@ public class SoldierBehavior : MonoBehaviour
 
         //isShooting = false;
 
+        Debug.Log("Game started");
+
         currentAmmo = maximumAmmo;
 
         canShoot = true;
