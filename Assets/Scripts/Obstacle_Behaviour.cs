@@ -9,6 +9,7 @@ public class Obstacle_Behaviour : MonoBehaviour
     public int TakeDamage(int damage)
     {
         health -= damage;
+        GetComponent<Animator>().SetTrigger("isDamaged");
         return health;
     }
 

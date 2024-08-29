@@ -45,7 +45,7 @@ public class Enemy_Behaviour : MonoBehaviour
         else
         {
             canCharacterMove = false;
-            animator.SetBool("isZombieIdle", true);
+            //animator.SetBool("isZombieIdle", true);
         }
         //Check if enemy reached the barricade
         if (transform.position.x >= sandBagObject.transform.position.x)
@@ -59,7 +59,7 @@ public class Enemy_Behaviour : MonoBehaviour
         }
         else if (canCharacterMove)
         {
-            animator.SetBool("isZombieIdle", false);
+            //animator.SetBool("isZombieIdle", false);
         }
     }
     private void EnemyMovement()
@@ -87,7 +87,8 @@ public class Enemy_Behaviour : MonoBehaviour
         {
             canCharacterMove = false;
             canAttack = true;
-            animator.SetBool("isZombieIdle", true);
+            //animator.SetBool("isZombieIdle", true);
+            animator.SetBool("isAttacking", true);
         }
     }
     public void OnTriggerExit2D(Collider2D collision)
@@ -96,7 +97,8 @@ public class Enemy_Behaviour : MonoBehaviour
         {
             canCharacterMove = true;
             canAttack = false;
-            animator.SetBool("isZombieIdle", false);
+            //animator.SetBool("isZombieIdle", false);
+            animator.SetBool("isAttacking", false);
         }
     }
 
@@ -108,7 +110,7 @@ public class Enemy_Behaviour : MonoBehaviour
         {
             //Destroy(obstacleObject.gameObject);
             obstacleObject.GetComponent<Animator>().SetBool("shouldDie", true);
-            StopAllCoroutines();
+            //StopCoroutine(AttackObstacle());
             yield return null;
         }
         yield return new WaitForSeconds(attackCoolDown);
