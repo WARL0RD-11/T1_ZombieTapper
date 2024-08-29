@@ -968,6 +968,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524566596}
   m_CullTransparentMesh: 1
+--- !u!1001 &552662511
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 984376320628744118, guid: 2857bed1b2cc5244db748427db905798, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.2275395
+      objectReference: {fileID: 0}
+    - target: {fileID: 984376320628744118, guid: 2857bed1b2cc5244db748427db905798, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.5356488
+      objectReference: {fileID: 0}
+    - target: {fileID: 984376320628744118, guid: 2857bed1b2cc5244db748427db905798, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.009449237
+      objectReference: {fileID: 0}
+    - target: {fileID: 984376320628744118, guid: 2857bed1b2cc5244db748427db905798, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 984376320628744118, guid: 2857bed1b2cc5244db748427db905798, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 984376320628744118, guid: 2857bed1b2cc5244db748427db905798, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 984376320628744118, guid: 2857bed1b2cc5244db748427db905798, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 984376320628744118, guid: 2857bed1b2cc5244db748427db905798, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 984376320628744118, guid: 2857bed1b2cc5244db748427db905798, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 984376320628744118, guid: 2857bed1b2cc5244db748427db905798, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5211163374362295682, guid: 2857bed1b2cc5244db748427db905798, type: 3}
+      propertyPath: m_Name
+      value: Blood_Spray
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2857bed1b2cc5244db748427db905798, type: 3}
 --- !u!1 &599441968
 GameObject:
   m_ObjectHideFlags: 0
@@ -3353,16 +3410,8 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1359447537558145633, guid: 2857bed1b2cc5244db748427db905798, type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1359447537558145633, guid: 2857bed1b2cc5244db748427db905798, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 0.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 1359447537558145633, guid: 2857bed1b2cc5244db748427db905798, type: 3}
-      propertyPath: InitialModule.startLifetime.minMaxState
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1359447537558145633, guid: 2857bed1b2cc5244db748427db905798, type: 3}
       propertyPath: InitialModule.startLifetime.maxCurve.m_Curve.Array.data[1].time
@@ -3414,3 +3463,4 @@ SceneRoots:
   - {fileID: 2092333273}
   - {fileID: 1804352480}
   - {fileID: 2100481013296845429}
+  - {fileID: 552662511}
