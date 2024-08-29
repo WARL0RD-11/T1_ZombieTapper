@@ -6,6 +6,7 @@ public class Obstacle_Behaviour : MonoBehaviour
 {
     [SerializeField] public int health = 10;
 
+
     public int TakeDamage(int damage)
     {
         health -= damage;

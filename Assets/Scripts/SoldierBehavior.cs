@@ -165,8 +165,8 @@ public class SoldierBehavior : MonoBehaviour
                 //DO DAMAGE TO THE ZOMBIE
                 canShoot = false;
 
-                detectedZombie.ReduceHealth();
-                detectedZombie = null;
+                //detectedZombie.ReduceHealth();
+                //detectedZombie = null;
 
                 StartCoroutine(ShootCooldown());
 
@@ -212,6 +212,8 @@ public class SoldierBehavior : MonoBehaviour
             animator.SetInteger("animIndex", 0);
 
             animator.SetBool("isShooting", false);
+
+            detectedZombie = null;
 
             //Doesn't see a zombie so nothing should happen at the moment
         }

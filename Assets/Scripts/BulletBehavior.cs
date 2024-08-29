@@ -8,6 +8,9 @@ public class BulletBehavior : MonoBehaviour
 
     private Vector3 target;
 
+    [SerializeField]
+    private LayerMask zombieMask;
+
     public void Start()
     {
         startingPoint = transform.position;
@@ -24,7 +27,25 @@ public class BulletBehavior : MonoBehaviour
     {
         if(transform.position.x <= target.x)
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
         }
+    }
+    /*
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        //if(collision.gameObject.layer == zombieMask)
+        //{
+            collision.gameObject.GetComponent<Enemy_Behaviour>().ReduceHealth();
+
+            Destroy(gameObject); 
+        //}
+    }
+    */
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        collision.gameObject.GetComponent<Enemy_Behaviour>().ReduceHealth();
+
+        Destroy(gameObject);
     }
 }
