@@ -3290,7 +3290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ZombieMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   TargetRotationAngle: 45
   IsActivated: 0
 --- !u!114 &1421082179 stripped
@@ -4086,7 +4086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ZombieMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   TargetRotationAngle: 45
   IsActivated: 0
 --- !u!1 &2042173375
