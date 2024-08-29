@@ -282,6 +282,10 @@ public class SoldierBehavior : MonoBehaviour
             waitingForItem = false;
 
             gM.AddScore(1);
+
+            //Get rid of the current speech bubble
+            Destroy(currentSpeechBubble);
+            currentSpeechBubble = null;
         }
         //If the item is the wrong item
         else
