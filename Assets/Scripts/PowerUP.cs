@@ -10,14 +10,28 @@ public class PowerUP : MonoBehaviour
     [SerializeField]
     private TurretBehavior Turret2;
 
-    private SoldierBehavior Soldier;
+    [SerializeField]
+    private SoldierBehavior Soldier1;
+
+    [SerializeField]
+    private SoldierBehavior Soldier2;
+
+    [SerializeField]
+    private SoldierBehavior Soldier3;
+
+    [SerializeField]
+    private SoldierBehavior Soldier4;
 
     private bool IsPlayerInTrigger;
+
+    [SerializeField]
+    private float NewRate;
 
     // Start is called before the first frame update
     void Start()
     {
         IsPlayerInTrigger = false;
+        NewRate = .1f;
     }
 
     // Update is called once per frame
@@ -34,7 +48,12 @@ public class PowerUP : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.DownArrow) && (IsPlayerInTrigger) && (this.gameObject.CompareTag("PupED")))
         {
-
+            Debug.Log("ENERGY DRINK");
+            Soldier1.SetFireFireRate(NewRate);
+            Soldier2.SetFireFireRate(NewRate);
+            Soldier3.SetFireFireRate(NewRate);
+            Soldier4.SetFireFireRate(NewRate);
+            Destroy(this.gameObject);
         }
     }
 
@@ -45,6 +64,15 @@ public class PowerUP : MonoBehaviour
         {
             Debug.Log("Player Overlapping");
             IsPlayerInTrigger=true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Player Not HEre ");
+            IsPlayerInTrigger = false;
         }
     }
 }
