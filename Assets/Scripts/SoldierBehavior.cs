@@ -142,13 +142,14 @@ public class SoldierBehavior : MonoBehaviour
                 animator.SetBool("isShooting", true);
                 animator.SetBool("isAsking", false);
 
-                mfB.PlayAnimation();
+                //mfB.PlayAnimation();
                 //mfF.Play();
 
+                /*
                 GameObject tempTrail = Instantiate(bulletTrail, mfB.transform.position, Quaternion.identity);
                 tempTrail.GetComponent<Rigidbody2D>().velocity = Vector3.left * bulletSpeed * Time.deltaTime;
                 tempTrail.GetComponent<BulletBehavior>().SetDestination(detectedZombie.transform.position);
-
+                */
                 //DO DAMAGE TO THE ZOMBIE
                 canShoot = false;
 
@@ -303,5 +304,15 @@ public class SoldierBehavior : MonoBehaviour
     public void SetFireFireRate(float newRate)
     {
         fireRate = newRate;
+    }
+
+    public void ShootVisual()
+    {
+
+        mfB.PlayAnimation();
+
+        GameObject tempTrail = Instantiate(bulletTrail, mfB.transform.position, Quaternion.identity);
+        tempTrail.GetComponent<Rigidbody2D>().velocity = Vector3.left * bulletSpeed;
+        tempTrail.GetComponent<BulletBehavior>().SetDestination(detectedZombie.transform.position);
     }
 }
