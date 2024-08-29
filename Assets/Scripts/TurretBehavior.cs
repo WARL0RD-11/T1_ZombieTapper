@@ -9,7 +9,7 @@ public class TurretBehavior : MonoBehaviour
     private LayerMask ZombieMask;
 
     [SerializeField]
-    private float TargetRotationAngle;
+    private float TargetRotationAngle; //amplitude?
 
     [SerializeField]
     public bool IsActivated;
@@ -18,8 +18,8 @@ public class TurretBehavior : MonoBehaviour
     private GameManager GameManager;
     private Color TempColor;
     //private Vector3 TempRotation = new Vector3(0.0f, 0.0f, -45.0f);
-    private float RotationSpeed = 2f;
-    private float StartAngle;
+    private float RotationSpeed = 2f; //frequency
+    private Quaternion StartRot;
     private bool IsRotatingForward = true;
 
     private Enemy_Behaviour DetectedZombie;
@@ -38,9 +38,9 @@ public class TurretBehavior : MonoBehaviour
     {
         GameManager = FindObjectOfType<GameManager>();
         LineCastDistance = 11.0f;
-        TargetRotationAngle = 45.0f ;
+        //TargetRotationAngle = 45.0f;
 
-        StartAngle = transform.eulerAngles.z;
+        StartRot = transform.rotation;
         IsActivated = false;
     }
 
@@ -63,31 +63,10 @@ public class TurretBehavior : MonoBehaviour
         RaycastDetection();
         Debug.Log("Turret Firing");
         audioManager.PlaySFX(audioManager.ScreenClean_Audio);
-        float CurrentAngle = transform.eulerAngles.z;
-        if (IsRotatingForward)
-        {
-            if(CurrentAngle < StartAngle + TargetRotationAngle)
-            {
-                transform.Rotate(0,0,TargetRotationAngle * RotationSpeed * Time.deltaTime);
-                //Debug.Log("Turret Rotating CLOCKWISE");
-            }
-            else
-            {
-                IsRotatingForward = false;
-            }
-        }
-        else
-        {
-            if (CurrentAngle > StartAngle)
-            {
-                transform.Rotate(0, 0, TargetRotationAngle * -RotationSpeed * Time.deltaTime);
-                //Debug.Log("Turret Rotating COUNTER-CLOCKWISE");
-            }
-            else
-            {
-                IsRotatingForward = true;
-            }
-        }
+        //float CurrentAngle = transform.eulerAngles.z;
+        float oscillation = Mathf.Sin(Time.time * RotationSpeed) + TargetRotationAngle;
+
+        transform.rotation = StartRot * Quaternion.Euler(0,0,oscillation);
     }
 
     private void RaycastDetection()
@@ -100,8 +79,8 @@ public class TurretBehavior : MonoBehaviour
         {
             TempColor = Color.red;
             Debug.DrawLine(transform.position, ZombieDetect.transform.position, TempColor);
-            DetectedZombie = ZombieDetect.collider.gameObject.GetComponent<Enemy_Behaviour>();
-            DetectedZombie.OnDeath();
+            //DetectedZombie = ZombieDetect.collider.gameObject.GetComponent<Enemy_Behaviour>();
+            //DetectedZombie.OnDeath();
         }
         else
         {
