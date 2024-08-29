@@ -44,8 +44,10 @@ public class BulletBehavior : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.GetComponent<Enemy_Behaviour>().ReduceHealth();
-
-        Destroy(gameObject);
+        if(collision.gameObject.GetComponent<Enemy_Behaviour>())
+        {
+            collision.gameObject.GetComponent<Enemy_Behaviour>().ReduceHealth();
+            Destroy(gameObject);
+        }
     }
 }

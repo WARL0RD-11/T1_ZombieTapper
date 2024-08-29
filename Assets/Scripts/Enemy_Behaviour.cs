@@ -16,7 +16,7 @@ public class Enemy_Behaviour : MonoBehaviour
     GameObject sandBagObject;
     Obstacle_Behaviour obstacleObject;
     bool canCharacterMove = true;
-    bool canAttack = false;
+    static bool canAttack = false;
 
     //Audio
     AudioManager audioManager;
@@ -42,10 +42,11 @@ public class Enemy_Behaviour : MonoBehaviour
         {
             EnemyMovement();
         }
-        else
+        else if(gameManager.GetGameStatus()) 
         {
             canCharacterMove = false;
-            //animator.SetBool("isZombieIdle", true);
+            canAttack = false;
+            animator.SetBool("isZombieIdle", true);
         }
         //Check if enemy reached the barricade
         if (transform.position.x >= sandBagObject.transform.position.x)
@@ -53,13 +54,18 @@ public class Enemy_Behaviour : MonoBehaviour
             canCharacterMove = false;
             gameManager.EndGame();
         }
-        if (canAttack)
+        if (canAttack && obstacleObject)
         {
-            StartCoroutine(AttackObstacle());
-        }
-        else if (canCharacterMove)
-        {
-            //animator.SetBool("isZombieIdle", false);
+            audioManager.PlaySFX(audioManager.ZombieAttack_Audio);
+            if (obstacleObject.TakeDamage(enemyPower) <= 0)
+            {
+                obstacleObject.GetComponent<Animator>().SetBool("shouldDie", true);
+                //StopAllCoroutines();
+            }
+            else
+            {
+                StartCoroutine(WaitForAttack());
+            }
         }
     }
     private void EnemyMovement()
@@ -80,7 +86,6 @@ public class Enemy_Behaviour : MonoBehaviour
         //audioManager.PlaySFX(audioManager.ZombieEatFinal_Audio);
 
     }
-
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Obstacle")
@@ -102,17 +107,9 @@ public class Enemy_Behaviour : MonoBehaviour
         }
     }
 
-    public IEnumerator AttackObstacle()
+    public IEnumerator WaitForAttack()
     {
         canAttack = false;
-        audioManager.PlaySFX(audioManager.ZombieAttack_Audio);
-        if (obstacleObject.TakeDamage(enemyPower) == 0)
-        {
-            //Destroy(obstacleObject.gameObject);
-            obstacleObject.GetComponent<Animator>().SetBool("shouldDie", true);
-            //StopCoroutine(AttackObstacle());
-            yield return null;
-        }
         yield return new WaitForSeconds(attackCoolDown);
         canAttack = true;
     }
