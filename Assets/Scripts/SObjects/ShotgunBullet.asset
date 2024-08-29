@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Shotgun Bullet
   itemSprite: {fileID: 21300000, guid: 8e26444c7b516f340a811cd33636a6a2, type: 3}
+  weapon: 1

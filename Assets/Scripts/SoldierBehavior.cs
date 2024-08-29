@@ -4,8 +4,14 @@ using System.Collections.Generic;
 using System.Transactions;
 using UnityEngine;
 
+public enum Weapon { Rifle, Shotgun, Flamer, Sniper };
+
 public class SoldierBehavior : MonoBehaviour
 {
+
+
+    private Weapon currentWeapon;
+
     //Private components needed by the soldier
     private BoxCollider2D bC2D;
     private SpriteRenderer spRend;
@@ -61,10 +67,20 @@ public class SoldierBehavior : MonoBehaviour
 
     private int currentAmmo;
 
+    private int currentSPAmmo;
+
     private bool canShoot;
 
+    private bool canShotgun;
+
     [SerializeField]
-    private float fireRate;
+    private float rifleFireRate;
+
+    [SerializeField]
+    private float sgFireRate;
+
+    [SerializeField]
+    private float sgSpread;
 
     private MuzzleFlash_Behavior mfB;
     //private Animation mfF;
@@ -74,6 +90,13 @@ public class SoldierBehavior : MonoBehaviour
 
     [SerializeField]
     private float bulletSpeed;
+
+    [SerializeField]
+    private BoxCollider2D flamerBox;
+
+    [SerializeField]
+    private float flamerDuration;
+    private bool flamerInProgress;
 
     //Audio
     AudioManager audioManager;
@@ -95,7 +118,7 @@ public class SoldierBehavior : MonoBehaviour
         mfB = GetComponentInChildren<MuzzleFlash_Behavior>();
 
         //mfF = GetComponentInChildren<Animation>();
-          
+
         //Gets the stun duration that will be suffered from the game manager
         stunDuration = gM.GetDelayPenalty();
 
@@ -108,6 +131,10 @@ public class SoldierBehavior : MonoBehaviour
         currentAmmo = maximumAmmo;
 
         canShoot = true;
+        canShotgun = true;
+        flamerInProgress = false;
+
+        currentWeapon = Weapon.Rifle;
 
         //Test code for stun functionality
         //BecomeStunned();
@@ -138,67 +165,7 @@ public class SoldierBehavior : MonoBehaviour
 
             detectedZombie = hit.collider.gameObject.GetComponent<Enemy_Behaviour>();
 
-            if (currentAmmo > 0 && canShoot)
-            {
-                //If this is the first time they've detected a zombie
-                /*if (!waitingForItem)
-                {
-                    //Start wanting a new item
-                    WantsNewItem();
-
-                    //Set the target of the soldier to the enemy that triggered the check
-                    detectedZombie = hit.collider.gameObject.GetComponent<Enemy_Behaviour>();
-                }
-                */
-
-                animator.SetBool("isShooting", true);
-                animator.SetBool("isAsking", false);
-
-                //mfB.PlayAnimation();
-                //mfF.Play();
-
-                /*
-                GameObject tempTrail = Instantiate(bulletTrail, mfB.transform.position, Quaternion.identity);
-                tempTrail.GetComponent<Rigidbody2D>().velocity = Vector3.left * bulletSpeed * Time.deltaTime;
-                tempTrail.GetComponent<BulletBehavior>().SetDestination(detectedZombie.transform.position);
-                */
-                //DO DAMAGE TO THE ZOMBIE
-                canShoot = false;
-
-                //detectedZombie.ReduceHealth();
-                //detectedZombie = null;
-
-                StartCoroutine(ShootCooldown());
-
-                //Play Audio
-                if (GuntypeSound == 1)
-                {
-                    //Rifle
-                    audioManager.PlaySFX(audioManager.Rifle_Audio);
-                } else if (GuntypeSound == 2){
-                    //Shotgun
-                    audioManager.PlaySFX(audioManager.Shotgun_Audio);
-                } else if (GuntypeSound == 3){
-                    //Pistol
-                    audioManager.PlaySFX(audioManager.Pistol_Audio);
-                } else if (GuntypeSound == 4){
-                    //Sniper
-                    audioManager.PlaySFX(audioManager.Sniper_Audio);
-                }
-
-                currentAmmo--;
-                if(currentAmmo <= 0 && !waitingForItem)
-                {
-                    animator.SetBool("isShooting", false);
-                    animator.SetBool("isAsking", true);
-
-                    WantsNewItem();
-                    //Need Change the Following Line: Assign corresponding SoundClip according to gun type
-                    GuntypeSound = UnityEngine.Random.Range(1, 5);
-                    audioManager.PlaySFX(audioManager.AskWeapon_Audio);
-                }
-
-            }
+            WeaponStateBehavior();
 
         }
         //If hit does not have a result
@@ -297,6 +264,9 @@ public class SoldierBehavior : MonoBehaviour
             //Stun the soldier
             //waitingForItem = false;
             //BecomeStunned();
+            Debug.Log(item.weapon.ToString());
+            currentWeapon = item.weapon;
+            currentSPAmmo = 2;
         }
     }
 
@@ -334,13 +304,19 @@ public class SoldierBehavior : MonoBehaviour
 
     private IEnumerator ShootCooldown()
     {
-        yield return new WaitForSeconds(fireRate);
+        yield return new WaitForSeconds(rifleFireRate);
         canShoot = true;
+    }
+
+    private IEnumerator ShotgunCooldown()
+    {
+        yield return new WaitForSeconds(sgFireRate);
+        canShotgun = true;
     }
 
     public void SetFireFireRate(float newRate)
     {
-        fireRate = newRate;
+        rifleFireRate = newRate;
     }
 
     public void ShootVisual()
@@ -349,7 +325,151 @@ public class SoldierBehavior : MonoBehaviour
         mfB.PlayAnimation();
 
         GameObject tempTrail = Instantiate(bulletTrail, mfB.transform.position, Quaternion.identity);
+        tempTrail.GetComponent<BulletBehavior>().SetAttributes(false, 1.0f,2.0f);
         tempTrail.GetComponent<Rigidbody2D>().velocity = Vector3.left * bulletSpeed;
         tempTrail.GetComponent<BulletBehavior>().SetDestination(detectedZombie.transform.position);
+
     }
+
+    private void WeaponStateBehavior()
+    {
+        switch (currentWeapon)
+        {
+            case Weapon.Rifle:
+
+                //Debug.Log("Rifle behavior");
+                RifleBehavior();
+                break;
+
+            case Weapon.Flamer:
+
+                //Debug.Log("Flamer behavior");
+                FlamerBehavior();
+                break;
+
+            case Weapon.Sniper:
+
+                //Debug.Log("Sniper behavior");
+                SniperBehavior();
+                break;
+
+            case Weapon.Shotgun:
+
+                //Debug.Log("Shotgun behavior");
+                ShotgunBehavior();
+                break;
+
+            default:
+                break;
+        }
+
+
+    }
+
+
+
+    private void RifleBehavior()
+    {
+        animator.SetBool("isShooting", true);
+        animator.SetBool("isAsking", false);
+        if (canShoot)
+        {
+            canShoot = false;
+            currentAmmo--;
+            if (currentAmmo <= 0)
+            {
+                wantedItem = gM.GetDeliveryItems()[0];
+                canShoot = false;
+                waitingForItem = true;
+                animator.SetBool("isShooting", false);
+                animator.SetBool("isAsking", true);
+            }
+            else
+            {
+                StartCoroutine(ShootCooldown());
+            }
+        }
+    }
+
+    private void ShotgunBehavior()
+    {
+        animator.SetBool("isShooting", false);
+        animator.SetBool("isAsking", false);
+        animator.SetTrigger("hasShotgun");
+
+        if (canShotgun)
+        {
+            canShotgun = false;
+            currentSPAmmo--;
+            if (currentSPAmmo <= 0)
+            {
+                Debug.Log("out of ammo");
+                animator.SetTrigger("hasShotgun");
+
+                ReturnToRifle();
+            }
+            else
+            {
+                StartCoroutine(ShotgunCooldown());
+            }
+        }
+    }
+
+    private void SniperBehavior()
+    {
+        animator.SetBool("isShooting", true);
+        animator.SetBool("isAsking", false);
+
+    }
+
+    private void FlamerBehavior()
+    {
+        animator.SetBool("isShooting", true);
+        animator.SetBool("isAsking", false);
+
+        if (!flamerInProgress)
+        {
+            flamerBox.enabled = true;
+            flamerInProgress = true;
+            StartCoroutine(FlamerDuration());
+        }
+    }
+
+    private void ReturnToRifle()
+    {
+        canShoot = true;
+        currentWeapon = Weapon.Rifle;
+    }
+
+    public void ShotgunAttack()
+    {
+        mfB.PlayAnimation();
+        Vector3 initialDirection = Vector3.left;
+        initialDirection.y = sgSpread;
+
+        for (int i = 0; i < 6; i++)
+        {
+            GameObject tempBullet = Instantiate(bulletTrail, mfB.transform.position, Quaternion.identity);
+
+            Vector3 temp = initialDirection;
+
+            temp.y = initialDirection.y - i * (sgSpread / 2.0f);
+
+            tempBullet.GetComponent<Rigidbody2D>().velocity = temp * bulletSpeed;
+
+            tempBullet.GetComponent<BulletBehavior>().SetAttributes(false, 7.0f,0.4f);
+
+
+        }
+
+    }
+
+    private IEnumerator FlamerDuration()
+    {
+        yield return new WaitForSeconds(flamerDuration);
+        flamerBox.enabled = false;
+        flamerInProgress = false;
+        ReturnToRifle();
+    }
+
 }

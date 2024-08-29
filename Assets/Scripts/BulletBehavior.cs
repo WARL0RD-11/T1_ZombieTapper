@@ -11,10 +11,24 @@ public class BulletBehavior : MonoBehaviour
     [SerializeField]
     private LayerMask zombieMask;
 
+    private bool isPiercing;
+
+    private float bulletDamage;
+
+    private float bulletLife;
+
+    public void SetAttributes(bool piercing, float damage, float lifeSpan)
+    {
+        isPiercing = piercing;
+        bulletDamage = damage;
+        bulletLife = lifeSpan;
+    }
+
     public void Start()
     {
         startingPoint = transform.position;
         //Debug.Log(startingPoint);
+        Destroy(gameObject, bulletLife);
     }
 
     public void SetDestination(Vector3 end)
@@ -44,8 +58,17 @@ public class BulletBehavior : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.GetComponent<Enemy_Behaviour>().ReduceHealth();
 
-        Destroy(gameObject);
+        if (collision.gameObject.GetComponent<Enemy_Behaviour>() != null)
+        {
+            collision.gameObject.GetComponent<Enemy_Behaviour>().ReduceHealth();
+
+            if(!isPiercing)
+            {
+                Destroy(gameObject);
+            }
+        }
+        
+
     }
 }
