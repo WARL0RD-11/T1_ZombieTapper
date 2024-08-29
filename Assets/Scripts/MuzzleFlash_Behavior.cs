@@ -18,7 +18,13 @@ public class MuzzleFlash_Behavior : MonoBehaviour
     {
         //anim.Play("MuzzleFlash_Fire");
         //anim.Play();
+        animator.SetBool("isShowing", true);
         animator.Play(0, -1, 0f);
+        //animator.SetBool("isShowing", false);
     }
 
+    public void FlashGone()
+    {
+        animator.SetBool("isShowing", false);
+    }
 }
