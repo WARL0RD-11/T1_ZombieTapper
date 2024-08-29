@@ -133,5 +133,9 @@ public class Enemy_Behaviour : MonoBehaviour
         {
             OnDeath();
         }
+        else
+        {
+            GetComponentInChildren<ParticleSystem>().Play();
+        }
     }
 }
