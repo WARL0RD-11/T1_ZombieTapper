@@ -2121,6 +2121,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: PupTurret
       objectReference: {fileID: 0}
+    - target: {fileID: 817179485490959555, guid: 204f242896d68a44c89462d9ef58b980, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5014615304184824858, guid: 204f242896d68a44c89462d9ef58b980, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.34164986
