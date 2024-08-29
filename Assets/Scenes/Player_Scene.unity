@@ -142,7 +142,7 @@ MonoBehaviour:
   ZombieMask:
     serializedVersion: 2
     m_Bits: 64
-  TargetRotationAngle: 315
+  TargetRotationAngle: 330
   IsActivated: 0
 --- !u!1 &93230716
 GameObject:
@@ -2640,7 +2640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7052320711125021430, guid: a01e940ef37f25348a7e956baeabe471, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.09
+      value: -0.157
       objectReference: {fileID: 0}
     - target: {fileID: 8158119014781799959, guid: a01e940ef37f25348a7e956baeabe471, type: 3}
       propertyPath: m_LocalScale.x
@@ -2724,7 +2724,7 @@ MonoBehaviour:
   ZombieMask:
     serializedVersion: 2
     m_Bits: 64
-  TargetRotationAngle: 45
+  TargetRotationAngle: 30
   IsActivated: 0
 --- !u!4 &1246671277 stripped
 Transform:
@@ -3509,7 +3509,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8158119014781799959, guid: a01e940ef37f25348a7e956baeabe471, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.06
+      value: -4.81
       objectReference: {fileID: 0}
     - target: {fileID: 8158119014781799959, guid: a01e940ef37f25348a7e956baeabe471, type: 3}
       propertyPath: m_LocalPosition.z

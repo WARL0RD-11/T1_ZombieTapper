@@ -20,7 +20,8 @@ public class TurretBehavior : MonoBehaviour
     //private Vector3 TempRotation = new Vector3(0.0f, 0.0f, -45.0f);
     private float RotationSpeed = 2f; //frequency
     private Quaternion StartRot;
-    private bool IsRotatingForward = true;
+    private Quaternion EndRot;
+    //private bool IsRotatingForward = true;
 
     private Enemy_Behaviour DetectedZombie;
 
@@ -53,6 +54,7 @@ public class TurretBehavior : MonoBehaviour
             {
                 RotationBouncer();
                 Invoke("DeactivateTurret", 5);
+                //RotationBouncer(0.0f);
             }
         }
 
@@ -64,9 +66,10 @@ public class TurretBehavior : MonoBehaviour
         Debug.Log("Turret Firing");
         audioManager.PlaySFX(audioManager.ScreenClean_Audio);
         //float CurrentAngle = transform.eulerAngles.z;
-        float oscillation = Mathf.Sin(Time.time * RotationSpeed) + TargetRotationAngle;
+        float oscillation = Mathf.Sin(Time.deltaTime * RotationSpeed) + TargetRotationAngle;
+        EndRot = StartRot * Quaternion.Euler(0,0,oscillation) ;
+        transform.rotation = Quaternion.Lerp(transform.rotation, EndRot, Time.deltaTime * RotationSpeed);
 
-        transform.rotation = StartRot * Quaternion.Euler(0,0,oscillation);
     }
 
     private void RaycastDetection()
@@ -79,8 +82,8 @@ public class TurretBehavior : MonoBehaviour
         {
             TempColor = Color.red;
             Debug.DrawLine(transform.position, ZombieDetect.transform.position, TempColor);
-            //DetectedZombie = ZombieDetect.collider.gameObject.GetComponent<Enemy_Behaviour>();
-            //DetectedZombie.OnDeath();
+            DetectedZombie = ZombieDetect.collider.gameObject.GetComponent<Enemy_Behaviour>();
+            DetectedZombie.OnDeath();
         }
         else
         {
@@ -97,5 +100,7 @@ public class TurretBehavior : MonoBehaviour
     {
         IsActivated = false;
         Debug.Log("Turret Deactivated");
+        EndRot = StartRot * Quaternion.Euler(0, 0, 0);
+        transform.rotation = Quaternion.Lerp(transform.rotation, StartRot, Time.deltaTime * RotationSpeed);
     }
 }
