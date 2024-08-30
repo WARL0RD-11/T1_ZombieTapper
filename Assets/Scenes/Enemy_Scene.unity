@@ -1122,6 +1122,7 @@ MonoBehaviour:
   Soldier3: {fileID: 0}
   Soldier4: {fileID: 0}
   NewRate: 0
+  Delay: 0
 --- !u!1 &380310710
 GameObject:
   m_ObjectHideFlags: 0
@@ -2000,6 +2001,7 @@ MonoBehaviour:
   Soldier3: {fileID: 1421082179}
   Soldier4: {fileID: 716648348}
   NewRate: 0.1
+  Delay: 0
 --- !u!1001 &688583133
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3132,7 +3134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4178289755662226517, guid: 7670628d78a83484b969e42fbbcc706f, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3494,7 +3496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4178289755662226517, guid: 7670628d78a83484b969e42fbbcc706f, type: 3}
       propertyPath: m_SortingOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4468,7 +4470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4178289755662226517, guid: 7670628d78a83484b969e42fbbcc706f, type: 3}
       propertyPath: m_SortingOrder
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
