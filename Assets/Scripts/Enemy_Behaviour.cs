@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,7 +17,8 @@ public class Enemy_Behaviour : MonoBehaviour
     GameObject sandBagObject;
     Obstacle_Behaviour obstacleObject;
     bool canCharacterMove = true;
-    static bool canAttack = false;
+    bool canAttack = false;
+    private List<GameObject> targetsInRange = new List<GameObject>();
 
     //Audio
     AudioManager audioManager;
@@ -32,7 +34,7 @@ public class Enemy_Behaviour : MonoBehaviour
         gameManager = FindAnyObjectByType<GameManager>();
         animator = GetComponent<Animator>();
         sandBagObject = GameObject.FindGameObjectWithTag("Finish");
-        obstacleObject = FindAnyObjectByType<Obstacle_Behaviour>();
+        //obstacleObject = FindAnyObjectByType<Obstacle_Behaviour>();
     }
 
     // Update is called once per frame
@@ -45,8 +47,9 @@ public class Enemy_Behaviour : MonoBehaviour
         else if(gameManager.GetGameStatus()) 
         {
             canCharacterMove = false;
-            canAttack = false;
+            //canAttack = false;
             animator.SetBool("isZombieIdle", true);
+            animator.SetBool("isAttacking", false);
         }
         //Check if enemy reached the barricade
         if (transform.position.x >= sandBagObject.transform.position.x)
@@ -54,18 +57,9 @@ public class Enemy_Behaviour : MonoBehaviour
             canCharacterMove = false;
             gameManager.EndGame();
         }
-        if (canAttack && obstacleObject)
+        if (canAttack )
         {
-            audioManager.PlaySFX(audioManager.ZombieAttack_Audio);
-            if (obstacleObject.TakeDamage(enemyPower) <= 0)
-            {
-                obstacleObject.GetComponent<Animator>().SetBool("shouldDie", true);
-                //StopAllCoroutines();
-            }
-            else
-            {
-                StartCoroutine(WaitForAttack());
-            }
+            StartCoroutine(WaitForAttack());
         }
     }
     private void EnemyMovement()
@@ -90,6 +84,7 @@ public class Enemy_Behaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "Obstacle")
         {
+            targetsInRange.Add(collision.gameObject);
             canCharacterMove = false;
             canAttack = true;
             //animator.SetBool("isZombieIdle", true);
@@ -109,9 +104,18 @@ public class Enemy_Behaviour : MonoBehaviour
 
     public IEnumerator WaitForAttack()
     {
-        canAttack = false;
-        yield return new WaitForSeconds(attackCoolDown);
-        canAttack = true;
+        foreach (var target in targetsInRange)
+        {
+            canAttack = false;
+            audioManager.PlaySFX(audioManager.ZombieAttack_Audio);
+            if (target && target.GetComponent<Obstacle_Behaviour>().TakeDamage(enemyPower) <= 0)
+            {
+                target.GetComponent<Animator>().SetBool("shouldDie", true);
+                StopAllCoroutines();
+            }
+            yield return new WaitForSeconds(attackCoolDown);
+            canAttack = true;
+        }
     }
 
     public void DeathOver()
