@@ -54,6 +54,7 @@ public class Enemy_Behaviour : MonoBehaviour
         //Check if enemy reached the barricade
         if (transform.position.x >= sandBagObject.transform.position.x)
         {
+            animator.SetBool("isZombieEnd", true);
             canCharacterMove = false;
             gameManager.EndGame();
         }
