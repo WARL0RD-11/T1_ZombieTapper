@@ -95,6 +95,9 @@ public class SoldierBehavior : MonoBehaviour
     private float flamerDuration;
     private bool flamerInProgress;
 
+    [SerializeField]
+    private ParticleSystem flamerVFX;
+
     //Audio
     AudioManager audioManager;
     private int GuntypeSound;
@@ -416,6 +419,7 @@ public class SoldierBehavior : MonoBehaviour
             flamerBox.SetActive(true);
             flamerInProgress = true;
             StartCoroutine(FlamerDuration());
+            flamerVFX.Play();
         }
     }
 
