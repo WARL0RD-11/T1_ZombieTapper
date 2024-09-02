@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 
@@ -80,8 +81,9 @@ public class Player_Behavior : MonoBehaviour
                     audioManager.PlaySFX(audioManager.pickup_Audio);
                     //Then set the player's current delivery item to the supply item from the box
                     SetDeliveryItem(CurrentSB.GetComponent<SupplyBox_Behavior>().GetSupplyItem());
+                    CurrentSB.GetComponent<SupplyBox_Behavior>().TakeItem();
                 }
-                HasItem = true;
+                    HasItem = true;
                // Debug.Log("Item Picked");
             }
 
