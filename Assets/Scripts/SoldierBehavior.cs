@@ -55,13 +55,7 @@ public class SoldierBehavior : MonoBehaviour
 
     private Enemy_Behaviour detectedZombie;
 
-    //Index of animations
-    //0 -> idle
-    //1 -> asking
-    //2 -> shooting
     private Animator animator;
-
-    //private bool isShooting;
 
     //Now that soldiers shoot over a duration
     //Give them a starting ammo count
@@ -390,12 +384,6 @@ public class SoldierBehavior : MonoBehaviour
             currentSPAmmo--;
             if (currentSPAmmo <= 0)
             {
-                //Debug.Log("out of ammo");
-                //animator.SetTrigger("hasShotgun");
-                //animator.ResetTrigger("hasShotgun");
-
-                //StopCoroutine(ShotgunCooldown());
-
                 ReturnToRifle();
             }
             else

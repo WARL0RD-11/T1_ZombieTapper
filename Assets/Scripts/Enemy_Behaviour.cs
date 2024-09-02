@@ -131,9 +131,10 @@ public class Enemy_Behaviour : MonoBehaviour
         Destroy(this);
     }
 
-    public void ReduceHealth()
+    public void ReduceHealth(int amount)
     {
-        --health;
+        //--health;
+        health -= amount;
         if (health < 0)
         {
             OnDeath();

@@ -61,7 +61,7 @@ public class BulletBehavior : MonoBehaviour
 
         if (collision.gameObject.GetComponent<Enemy_Behaviour>() != null)
         {
-            collision.gameObject.GetComponent<Enemy_Behaviour>().ReduceHealth();
+            collision.gameObject.GetComponent<Enemy_Behaviour>().ReduceHealth((int)bulletDamage);
 
             if(!isPiercing)
             {
