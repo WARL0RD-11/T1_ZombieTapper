@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 1761073916831053777}
   - component: {fileID: 3331056892479374585}
   - component: {fileID: 214229960895547481}
+  - component: {fileID: 4012248905851581581}
   - component: {fileID: 7032947166807652720}
   m_Layer: 6
-  m_Name: Enemy
+  m_Name: Enemy 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8, y: -3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7056917908509660274}
@@ -49,10 +50,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e37f69ad6473fd4fbdbff3e7410047c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpeed: 0.25
-  health: 8
-  attackCoolDown: 1
-  enemyPower: 1
+  enemySpeed: 0.65
+  health: 5
+  attackCoolDown: 2
+  enemyPower: 2
   bloodPoolPrefab: {fileID: 2757200110915968827, guid: f61caa260e1970f4fb83e47f16ad1b5d, type: 3}
 --- !u!61 &1761073916831053777
 BoxCollider2D:
@@ -168,7 +169,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 1631153327, guid: 67806e5507c461c4a8e880ceca12229c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.3915094, b: 0.3915094, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -178,6 +179,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!111 &4012248905851581581
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2772351504547192300}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: a9859a3607c027e4c938d48daa64edfd, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 128109cc8434aac4894d3f24c2653d1a, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!95 &7032947166807652720
 Animator:
   serializedVersion: 5

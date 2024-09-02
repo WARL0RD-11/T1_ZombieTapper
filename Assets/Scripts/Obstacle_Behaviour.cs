@@ -4,14 +4,26 @@ using UnityEngine;
 
 public class Obstacle_Behaviour : MonoBehaviour
 {
-    [SerializeField] public int health = 10;
+    [SerializeField] public int maxHealth = 10;
+    private int currentHealth;
 
+    private void Start()
+    {
+        currentHealth = maxHealth;
+    }
 
     public int TakeDamage(int damage)
     {
-        health -= damage;
-        GetComponent<Animator>().SetTrigger("isDamaged");
-        return health;
+        currentHealth -= damage;
+        if (currentHealth > 0)
+        {
+            GetComponent<Animator>().SetTrigger("isDamaged");
+        }
+        else
+        {
+            GetComponent<Animator>().ResetTrigger("isDamaged");
+        }
+        return currentHealth;
     }
 
     public void DestroyObstacle()

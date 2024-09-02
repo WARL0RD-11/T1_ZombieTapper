@@ -36,17 +36,26 @@ public class Enemy_Instantiate : MonoBehaviour
 
     public IEnumerator SpawnEnemy(GameObject enemyPrefab, int i)
     {
+        float spawnRate = 0.0f;
         while (true)
         {
 
             if (enemyPrefab.gameObject.name == "Enemy")
             {
-                RandSpawnRate(i, true);
+                spawnRate = 2.0f;
+                RandSpawnRate(spawnRate,i, true);
+                yield return new WaitForSeconds(gameManager.enemySpawnTime[i]);
+            }
+            else if(enemyPrefab.gameObject.name == "Enemy 1")
+            {
+                spawnRate = 3.0f;
+                RandSpawnRate(spawnRate, i, false);
                 yield return new WaitForSeconds(gameManager.enemySpawnTime[i]);
             }
             else
             {
-                RandSpawnRate(i, false);
+                spawnRate = 15f;
+                RandSpawnRate(spawnRate, i, false);
                 yield return new WaitForSeconds(gameManager.enemySpawnTime[i]);
             }
             var spawnPosition = new Vector3(transform.position.x, Mathf.RoundToInt(
@@ -59,9 +68,8 @@ public class Enemy_Instantiate : MonoBehaviour
         }
     }
 
-    private void RandSpawnRate(int i, bool canCreateHoard)
+    private void RandSpawnRate(float spawnRate,int i, bool canCreateHoard)
     {
-        float spawnRate = 1.0f;
         int playerScore = gameManager.GetPlayerScore();
         if(playerScore >= 10 && playerScore < 20)
         {
