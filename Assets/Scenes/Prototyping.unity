@@ -698,6 +698,14 @@ PrefabInstance:
       propertyPath: supplyItem
       value: 
       objectReference: {fileID: 11400000, guid: e7012c6d1d2541a44adfc42550662156, type: 2}
+    - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: cooldownTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: SupplyItemCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6944272071513625935, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Offset.x
       value: 0
@@ -2638,6 +2646,14 @@ PrefabInstance:
       propertyPath: supplyItem
       value: 
       objectReference: {fileID: 11400000, guid: 7af1a1bdc7261e640bc0d79ba78278cd, type: 2}
+    - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: cooldownTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: SupplyItemCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6944272071513625935, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Offset.x
       value: 0
@@ -2846,6 +2862,10 @@ PrefabInstance:
     - target: {fileID: 2593085153897028985, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Offset.y
       value: 0.00000011920929
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: isInfinite
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: supplyItem
@@ -3099,6 +3119,14 @@ PrefabInstance:
       propertyPath: supplyItem
       value: 
       objectReference: {fileID: 11400000, guid: 4be3a01c53076b14c8de0ce137a4ce96, type: 2}
+    - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: cooldownTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: SupplyItemCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6944272071513625935, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Offset.x
       value: 0
