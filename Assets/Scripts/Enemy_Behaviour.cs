@@ -128,7 +128,7 @@ public class Enemy_Behaviour : MonoBehaviour
 
         audioManager.PlaySFX(audioManager.ZombieDead_Audio);
 
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 
     public void ReduceHealth(int amount)
