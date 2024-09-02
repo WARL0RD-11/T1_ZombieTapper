@@ -6,9 +6,12 @@ using UnityEngine;
 
 public enum Weapon { Rifle, Shotgun, Flamer, Sniper };
 
+public enum SoldierState { Idle, Firing, Waiting };
+
 public class SoldierBehavior : MonoBehaviour
 {
 
+    private SoldierState currentSState;
 
     private Weapon currentWeapon;
 
@@ -135,6 +138,7 @@ public class SoldierBehavior : MonoBehaviour
         flamerInProgress = false;
 
         currentWeapon = Weapon.Rifle;
+        currentSState = SoldierState.Idle;
 
         //Test code for stun functionality
         //BecomeStunned();
@@ -165,7 +169,10 @@ public class SoldierBehavior : MonoBehaviour
 
             detectedZombie = hit.collider.gameObject.GetComponent<Enemy_Behaviour>();
 
-            WeaponStateBehavior();
+            if (currentSState != SoldierState.Waiting)
+            {
+                WeaponStateBehavior();
+            }
 
         }
         //If hit does not have a result
@@ -192,10 +199,13 @@ public class SoldierBehavior : MonoBehaviour
     private void WantsNewItem()
     {
 
+        currentSState = SoldierState.Waiting;
+
         animator.SetBool("isAsking", true);
 
         //Get a random delivery item from the game manager
-        wantedItem = gM.GetRandomDeliveryItem();
+        //wantedItem = gM.GetRandomDeliveryItem();
+        wantedItem = gM.GetDeliveryItems()[0];
 
         Debug.Log("Soldier wants " + wantedItem.itemName);
 
@@ -226,13 +236,22 @@ public class SoldierBehavior : MonoBehaviour
             //Get rid of the current speech bubble
             Destroy(currentSpeechBubble);
             currentSpeechBubble = null;
+
+            currentWeapon = Weapon.Rifle;
+
+            animator.ResetTrigger("hasShotgun");
+            animator.ResetTrigger("hasSniper");
+            animator.ResetTrigger("hasFlamer");
         }
         else
         {
             Debug.Log(item.weapon.ToString());
             currentWeapon = item.weapon;
-            currentSPAmmo = 2;
+            currentSPAmmo = 3;
         }
+
+        currentSState = SoldierState.Idle;
+
     }
 
     //Called when the player delivers the wrong item to the soldier
@@ -331,8 +350,6 @@ public class SoldierBehavior : MonoBehaviour
 
     }
 
-
-
     private void RifleBehavior()
     {
         animator.SetBool("isShooting", true);
@@ -343,11 +360,16 @@ public class SoldierBehavior : MonoBehaviour
             currentAmmo--;
             if (currentAmmo <= 0)
             {
+
+                Debug.Log("Out of ammo");
+
                 wantedItem = gM.GetDeliveryItems()[0];
                 canShoot = false;
                 waitingForItem = true;
                 animator.SetBool("isShooting", false);
                 animator.SetBool("isAsking", true);
+
+                WantsNewItem();
             }
             else
             {
@@ -368,8 +390,11 @@ public class SoldierBehavior : MonoBehaviour
             currentSPAmmo--;
             if (currentSPAmmo <= 0)
             {
-                Debug.Log("out of ammo");
-                animator.SetTrigger("hasShotgun");
+                //Debug.Log("out of ammo");
+                //animator.SetTrigger("hasShotgun");
+                //animator.ResetTrigger("hasShotgun");
+
+                //StopCoroutine(ShotgunCooldown());
 
                 ReturnToRifle();
             }
@@ -384,6 +409,10 @@ public class SoldierBehavior : MonoBehaviour
     {
         animator.SetBool("isShooting", true);
         animator.SetBool("isAsking", false);
+        animator.SetTrigger("hasSniper");
+
+        canShoot = false;
+
 
     }
 
@@ -391,6 +420,8 @@ public class SoldierBehavior : MonoBehaviour
     {
         animator.SetBool("isShooting", false);
         animator.SetBool("isAsking", false);
+
+        canShoot = false;
 
         if (!flamerInProgress)
         {
@@ -402,8 +433,13 @@ public class SoldierBehavior : MonoBehaviour
 
     private void ReturnToRifle()
     {
-        canShoot = true;
+
+        animator.ResetTrigger("hasShotgun");
+        animator.ResetTrigger("hasSniper");
+        animator.ResetTrigger("hasFlamer");
+        canShoot = false;
         currentWeapon = Weapon.Rifle;
+        WantsNewItem();
     }
 
     public void ShotgunAttack()
@@ -422,10 +458,21 @@ public class SoldierBehavior : MonoBehaviour
 
             tempBullet.GetComponent<Rigidbody2D>().velocity = temp * bulletSpeed;
 
-            tempBullet.GetComponent<BulletBehavior>().SetAttributes(false, 7.0f,0.4f);
+            tempBullet.GetComponent<BulletBehavior>().SetAttributes(false, 7.0f,1.0f);
 
 
         }
+
+    }
+
+    public void SniperAttack()
+    {
+        mfB.PlayAnimation();
+
+        GameObject tempTrail = Instantiate(bulletTrail, mfB.transform.position, Quaternion.identity);
+        tempTrail.GetComponent<BulletBehavior>().SetAttributes(true, 100.0f, 5.0f);
+        tempTrail.GetComponent<Rigidbody2D>().velocity = Vector3.left * bulletSpeed;
+        tempTrail.GetComponent<BulletBehavior>().SetDestination(detectedZombie.transform.position);
 
     }
 

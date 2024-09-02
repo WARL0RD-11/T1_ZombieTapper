@@ -274,7 +274,7 @@ MonoBehaviour:
     m_Bits: 64
   speechBubblePrefab: {fileID: 7545094513806686253, guid: 0f450db5e65b90e4bbbab767bfbec834, type: 3}
   bubbleCoords: {fileID: 280828244024678843}
-  maximumAmmo: 100
+  maximumAmmo: 5
   rifleFireRate: 0.5
   sgFireRate: 0.7
   sgSpread: 0.05
