@@ -178,8 +178,11 @@ public class SoldierBehavior : MonoBehaviour
             //Debug.Log("Soldier deteced a zombie");
             Debug.DrawLine(transform.position, hit.transform.position, tempColor);
 
+            //Set the detectedZombie to a variable so we can reference it later down the line this frame
             detectedZombie = hit.collider.gameObject.GetComponent<Enemy_Behaviour>();
 
+            //If the soldier isn't currently waiting for an item
+            //Do the weapon state machine
             if (currentSState != SoldierState.Waiting)
             {
                 WeaponStateBehavior();
@@ -194,10 +197,9 @@ public class SoldierBehavior : MonoBehaviour
             //Debug.Log("Soldier cannot see a zombie");
             Debug.DrawLine(transform.position, transform.position - Vector3.left * -linecastDistance, tempColor);
 
-            animator.SetInteger("animIndex", 0);
-
             animator.SetBool("isShooting", false);
 
+            //No zombie, no variable
             detectedZombie = null;
 
             //Doesn't see a zombie so nothing should happen at the moment
@@ -232,7 +234,8 @@ public class SoldierBehavior : MonoBehaviour
     public void DeliverItem(DeliveryItem item)
     {
 
-        //If the item is the correct item
+        //If the item is the default rifle
+        //Fill their ammo back up and get back to shooting
         if (item.weapon == Weapon.Rifle)
         {
 
@@ -256,6 +259,9 @@ public class SoldierBehavior : MonoBehaviour
             animator.ResetTrigger("hasSniper");
             animator.ResetTrigger("hasFlamer");
         }
+        //if it's a special weapon
+        //switch to that weapon and give them 3 shots if it's the shotgun
+        //the other two weapons function differently
         else
         {
             Debug.Log(item.weapon.ToString());
@@ -267,41 +273,17 @@ public class SoldierBehavior : MonoBehaviour
                 waitingForItem = false;
             }
         }
-
+        //Get rid of the speech bubble regardless of if they got rifle bullets or special ammo
         if(currentSpeechBubble)
         {
             Destroy(currentSpeechBubble);
             currentSpeechBubble = null;
         }
-
+        //set their state back to idle 
         currentSState = SoldierState.Idle;
 
     }
-
-    //Called when the player delivers the wrong item to the soldier
-    private void BecomeStunned()
-    {
-        //Set isStunned to true to prevent detection and asking for a new item
-        //isStunned = true;
-
-        //Start the StunBehavior coroutine
-        StartCoroutine(StunBehavior());
-
-        Debug.Log("soldier has become stunned");
-
-        animator.SetInteger("animIndex", 0);
-    }
-
-    //Part of stun behavior
-    //Basically waits the duration specified in GameManager's penalty
-    //Then recovers the soldier from stun to act as normal
-    private IEnumerator StunBehavior()
-    {
-        yield return new WaitForSeconds(stunDuration);
-        //isStunned = false;
-        Debug.Log("soldier recovered from stun");
-    }
-
+    //Called by the animator to tell the code that the shooting animation finished
     private void ShootingOver()
     {
         //isShooting = false;
@@ -309,39 +291,47 @@ public class SoldierBehavior : MonoBehaviour
         waitingForItem = false;
         detectedZombie = null;
     }
-
+    //Cooldown between shots allowed by the code
+    //Might be outdated, just shoots based on the animation now
     private IEnumerator ShootCooldown()
     {
         yield return new WaitForSeconds(rifleFireRate);
         canShoot = true;
     }
-
+    //Cooldown between shotgun shots
+    //Same as rifle, might be outdated since it's all anim based
     private IEnumerator ShotgunCooldown()
     {
         yield return new WaitForSeconds(sgFireRate);
         canShotgun = true;
     }
-
+    //Set the firerate of the soldier through outside factors
+    //Made for the powerup, however
+    //Need to fix now that anim based shooting is a thing, idk if this actually does anything now
     public void SetFireFireRate(float newRate)
     {
         rifleFireRate = newRate;
     }
-
+    //Used to be just making the visual
+    //Now handles all the Rifle shooting logic
     public void ShootVisual()
     {
-
+        //Play the muzzle flash animation
         mfB.PlayAnimation();
 
+        //Create the bullet prefab and set all the attributes 
         GameObject tempTrail = Instantiate(bulletTrail, mfB.transform.position, Quaternion.identity);
         tempTrail.GetComponent<BulletBehavior>().SetAttributes(false, rifleDamage,2.0f);
         tempTrail.GetComponent<Rigidbody2D>().velocity = Vector3.left * bulletSpeed;
         tempTrail.GetComponent<BulletBehavior>().SetDestination(detectedZombie.transform.position);
 
+        //Since a bullet was shot, reduce ammo by 1
         currentAmmo--;
+        //If the soldier has run out of ammo
         if (currentAmmo <= 0)
         {
-
-            Debug.Log("Out of ammo");
+            //Then make them ask for ammo and wait
+            //Debug.Log("Out of ammo");
 
             wantedItem = gM.GetDeliveryItems()[0];
             canShoot = false;
@@ -353,7 +343,10 @@ public class SoldierBehavior : MonoBehaviour
         }
 
     }
-
+    //State machine for the weapon type the soldier currently has, called in update when the soldier can actually see something
+    //Not actually sure if this is useful anymore
+    //WAS useful when all attack logic was linetracing, but now that bullets actually interact in the game might be outdated and could be refactored
+    //Still nice to have
     private void WeaponStateBehavior()
     {
         switch (currentWeapon)
@@ -388,7 +381,9 @@ public class SoldierBehavior : MonoBehaviour
 
 
     }
-
+    //Weapon.Rifle state behavior
+    //Outdated, mostly does nothing now
+    //Behavior now executed by the animation itself to line up with the visuals
     private void RifleBehavior()
     {
         animator.SetBool("isShooting", true);
@@ -420,7 +415,8 @@ public class SoldierBehavior : MonoBehaviour
             */
         }
     }
-
+    //Weapon.Shotgun behavior
+    //Makes sure that the soldier is able to shoot all their shotgun shells before switching back to rifle
     private void ShotgunBehavior()
     {
         animator.SetBool("isShooting", false);
@@ -442,21 +438,23 @@ public class SoldierBehavior : MonoBehaviour
         }
     }
 
+    //Weapon.Sniper behavior
+    //Only shoots a single time before switching back
     private void SniperBehavior()
     {
         animator.SetBool("isShooting", true);
         animator.SetBool("isAsking", false);
         animator.SetTrigger("hasSniper");
-
         canShoot = false;
-
-
     }
 
+    //Weapon.Flamer behavior
+    //Unlike the other weapons, just uses a trigger box instead of bullets
     private void FlamerBehavior()
     {
         animator.SetBool("isShooting", false);
         animator.SetBool("isAsking", false);
+        animator.SetTrigger("hasFlamer");
 
         canShoot = false;
 
@@ -470,6 +468,8 @@ public class SoldierBehavior : MonoBehaviour
         }
     }
 
+    //Code called when running out of special ammos
+    //Switches back to rifle and waits for ammo to reload
     private void ReturnToRifle()
     {
 
@@ -481,6 +481,9 @@ public class SoldierBehavior : MonoBehaviour
         WantsNewItem();
     }
 
+    //Actual shotgun behavior
+    //Creates a spread of 5 (currently) bullets in a fan
+    //Big damage with no falloff
     public void ShotgunAttack()
     {
         mfB.PlayAnimation();
@@ -504,6 +507,9 @@ public class SoldierBehavior : MonoBehaviour
 
     }
 
+    //Actual sniper behavior
+    //A single shot but does massive damage and pierces through all the zombies making a strong wave clear or anti-tank option
+    //The supply box shooouuuld have a long cooldown to compensate, making this a last resort weapon
     public void SniperAttack()
     {
         mfB.PlayAnimation();
@@ -515,6 +521,9 @@ public class SoldierBehavior : MonoBehaviour
 
     }
 
+    //Handles the flamer behavior
+    //Actual attack behavior is handled in FLamer_Behavior.cs since it uses a separate triggerBox2D to do weapon logic
+    //Just lasts for a duration before switching back to rifle.
     private IEnumerator FlamerDuration()
     {
         yield return new WaitForSeconds(flamerDuration);
