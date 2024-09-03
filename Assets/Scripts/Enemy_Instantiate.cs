@@ -58,13 +58,16 @@ public class Enemy_Instantiate : MonoBehaviour
                 RandSpawnRate(spawnRate, i, false);
                 yield return new WaitForSeconds(gameManager.enemySpawnTime[i]);
             }
-            var spawnPosition = new Vector3(transform.position.x, Mathf.RoundToInt(
-                                Random.Range(-2, 2)) * 1.5f, 0); //Generate random lane for enemy
-            GameObject spawnGameObject = Instantiate(enemyPrefab, spawnPosition,
-                   Quaternion.identity);
-            spawnGameObject.transform.parent = parent; // Parent clones to a single object
-
-            audioManager.PlaySFX(audioManager.ZombieAppear_Audio);
+            int randomLane = Mathf.RoundToInt(Random.Range(-3, 3));
+            if(randomLane != 0)
+            {
+                Vector3 spawnPosition = new Vector3(transform.position.x, Mathf.RoundToInt(3 / randomLane), 0);
+                //Generate random lane for enemy
+                GameObject spawnGameObject = Instantiate(enemyPrefab, spawnPosition,
+                       Quaternion.identity);
+                spawnGameObject.transform.parent = parent; // Parent clones to a single object
+                audioManager.PlaySFX(audioManager.ZombieAppear_Audio);
+            } 
         }
     }
 
