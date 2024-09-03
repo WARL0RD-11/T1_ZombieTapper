@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6dc84ff1f17e16b4f952e7c0a3deec91, type: 3}
-  m_Name: RifleBullet
+  m_Name: Flamer
   m_EditorClassIdentifier: 
-  itemName: Rifle Bullet
-  itemSprite: {fileID: 21300000, guid: 8e9225063a685824d83c4c357ec2b3b2, type: 3}
-  weapon: 0
+  itemName: Flamer
+  itemSprite: {fileID: 21300000, guid: 20ab7fedddc9f3641b34d60969fbaa04, type: 3}
+  weapon: 2
