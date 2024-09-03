@@ -142,6 +142,22 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2307389867986459086, guid: 204f242896d68a44c89462d9ef58b980, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 99337e06a8802f349a8a6b901ea498f3, type: 3}
+    - target: {fileID: 2307389867986459086, guid: 204f242896d68a44c89462d9ef58b980, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307389867986459086, guid: 204f242896d68a44c89462d9ef58b980, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307389867986459086, guid: 204f242896d68a44c89462d9ef58b980, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5014615304184824858, guid: 204f242896d68a44c89462d9ef58b980, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.34164986
@@ -1345,6 +1361,7 @@ MonoBehaviour:
   PDKey: 32
   UpKeyPressed: 273
   DownKeyPressed: 274
+  GridSize: 2
   HasItem: 0
   supplyMask:
     serializedVersion: 2
