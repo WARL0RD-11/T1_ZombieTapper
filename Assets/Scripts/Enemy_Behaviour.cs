@@ -109,6 +109,7 @@ public class Enemy_Behaviour : MonoBehaviour
         deathPos.y = deathPos.y - 0.4f;
         Instantiate(bloodPoolPrefab, deathPos, Quaternion.identity);
         audioManager.PlaySFX(audioManager.ZombieDead_Audio);
+        gameManager.AddScore(1);
         Destroy(this.gameObject);
     }
 
