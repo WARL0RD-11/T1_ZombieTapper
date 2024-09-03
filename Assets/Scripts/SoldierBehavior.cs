@@ -19,10 +19,6 @@ public class SoldierBehavior : MonoBehaviour
     private BoxCollider2D bC2D;
     private SpriteRenderer spRend;
 
-    //Bool to manage if the guard can be delivered to.
-    //Delivering the wrong item to the guard means they are stunned
-    //private bool isStunned;
-
     //The duration that the guard is stunned if the wrong delivery is given
     private float stunDuration;
 

@@ -12,7 +12,7 @@ public class Flamer_Behavior : MonoBehaviour
         if (collision.GetComponent<Enemy_Behaviour>() != null)
         {
             //Destroy(collision.gameObject);
-            collision.gameObject.GetComponent<Enemy_Behaviour>().ReduceHealth(50);
+            collision.gameObject.GetComponent<Enemy_Behaviour>().ReduceHealth(damage);
         }
     }
 

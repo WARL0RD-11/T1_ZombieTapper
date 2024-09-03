@@ -270,20 +270,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4790227a20a084f4bb20dece5275d56d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speechBubblePrefab: {fileID: 7545094513806686253, guid: 0f450db5e65b90e4bbbab767bfbec834, type: 3}
+  bubbleCoords: {fileID: 280828244024678843}
+  flamerBox: {fileID: 3964258023267442278}
+  bulletTrail: {fileID: 2005182882119898316, guid: e78a8355fcd77914485c73f9ede303b8, type: 3}
+  flamerVFX: {fileID: 2853053889372999975}
+  fBehavior: {fileID: 1524190843088950829}
   zombieMask:
     serializedVersion: 2
     m_Bits: 64
-  speechBubblePrefab: {fileID: 7545094513806686253, guid: 0f450db5e65b90e4bbbab767bfbec834, type: 3}
-  bubbleCoords: {fileID: 280828244024678843}
   maximumAmmo: 5
   rifleFireRate: 0.5
   sgFireRate: 0.7
   sgSpread: 0.05
-  bulletTrail: {fileID: 2005182882119898316, guid: e78a8355fcd77914485c73f9ede303b8, type: 3}
   bulletSpeed: 20
-  flamerBox: {fileID: 3964258023267442278}
   flamerDuration: 5
-  flamerVFX: {fileID: 2853053889372999975}
+  flamerDamage: 25
+  sniperDamage: 100
+  shotgunDamage: 7
+  rifleDamage: 4
 --- !u!95 &7945691714383495266
 Animator:
   serializedVersion: 5
