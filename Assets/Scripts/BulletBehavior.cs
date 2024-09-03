@@ -17,6 +17,12 @@ public class BulletBehavior : MonoBehaviour
 
     private float bulletLife;
 
+    [SerializeField]
+    private Material rifleMat;
+
+    [SerializeField]
+    private Material sniperMat;
+
     //Function to act as psuedo constructor
     //Lets the object making a bullet set all the attributes of the bullet without having to do multiple setters
     //Descriptions should be self explanatory
@@ -25,6 +31,15 @@ public class BulletBehavior : MonoBehaviour
         isPiercing = piercing;
         bulletDamage = damage;
         bulletLife = lifeSpan;
+
+        if(isPiercing)
+        {
+            GetComponent<TrailRenderer>().material = sniperMat;
+        }
+        else
+        {
+            GetComponent<TrailRenderer>().material = rifleMat;
+        }
     }
 
     //When the bullet is created, set the lifespan to bulletLife so that they auto destroy if they somehow don't hit a zombie

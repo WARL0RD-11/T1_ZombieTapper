@@ -190,6 +190,8 @@ MonoBehaviour:
   zombieMask:
     serializedVersion: 2
     m_Bits: 64
+  rifleMat: {fileID: 2100000, guid: 544a619726a44c04490d39ed5472940c, type: 2}
+  sniperMat: {fileID: 2100000, guid: d5100080844cd61478ea3846b953d66b, type: 2}
 --- !u!61 &7278200231119284761
 BoxCollider2D:
   m_ObjectHideFlags: 0
