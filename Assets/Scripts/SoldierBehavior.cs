@@ -39,28 +39,13 @@ public class SoldierBehavior : MonoBehaviour
     //No functionality in final project
     private Color tempColor;
 
-    //Layermask for the raycast2D to only see zombies to prevent funky interactions
-    [SerializeField]
-    private LayerMask zombieMask;
-
-    [SerializeField]
-    private GameObject speechBubblePrefab;
-
     private GameObject currentSpeechBubble;
-
-    [SerializeField]
-    private GameObject bubbleCoords;
 
     private float linecastDistance;
 
     private Enemy_Behaviour detectedZombie;
 
     private Animator animator;
-
-    //Now that soldiers shoot over a duration
-    //Give them a starting ammo count
-    [SerializeField]
-    private int maximumAmmo;
 
     private int currentAmmo;
 
@@ -69,6 +54,40 @@ public class SoldierBehavior : MonoBehaviour
     private bool canShoot;
 
     private bool canShotgun;
+
+    private MuzzleFlash_Behavior mfB;
+    //private Animation mfF;
+
+    private bool flamerInProgress;
+
+    [Header("Component Settings")]
+
+    [SerializeField]
+    private GameObject speechBubblePrefab;
+
+    [SerializeField]
+    private GameObject bubbleCoords;
+
+    [SerializeField]
+    private GameObject flamerBox;
+    
+    [SerializeField]
+    private GameObject bulletTrail;
+
+    [SerializeField]
+    private ParticleSystem flamerVFX;
+
+    [SerializeField]
+    private Flamer_Behavior fBehavior;
+
+    //Layermask for the raycast2D to only see zombies to prevent funky interactions
+    [SerializeField]
+    private LayerMask zombieMask;
+
+    [Header("Attack Settings")]
+
+    [SerializeField]
+    private int maximumAmmo;
 
     [SerializeField]
     private float rifleFireRate;
@@ -79,24 +98,23 @@ public class SoldierBehavior : MonoBehaviour
     [SerializeField]
     private float sgSpread;
 
-    private MuzzleFlash_Behavior mfB;
-    //private Animation mfF;
-
-    [SerializeField]
-    private GameObject bulletTrail;
-
     [SerializeField]
     private float bulletSpeed;
 
     [SerializeField]
-    private GameObject flamerBox;
-
-    [SerializeField]
     private float flamerDuration;
-    private bool flamerInProgress;
 
     [SerializeField]
-    private ParticleSystem flamerVFX;
+    private int flamerDamage;
+
+    [SerializeField]
+    private int sniperDamage;
+
+    [SerializeField]
+    private int shotgunDamage;
+
+    [SerializeField]
+    private int rifleDamage;
 
     //Audio
     AudioManager audioManager;
@@ -319,7 +337,7 @@ public class SoldierBehavior : MonoBehaviour
         mfB.PlayAnimation();
 
         GameObject tempTrail = Instantiate(bulletTrail, mfB.transform.position, Quaternion.identity);
-        tempTrail.GetComponent<BulletBehavior>().SetAttributes(false, 1.0f,2.0f);
+        tempTrail.GetComponent<BulletBehavior>().SetAttributes(false, rifleDamage,2.0f);
         tempTrail.GetComponent<Rigidbody2D>().velocity = Vector3.left * bulletSpeed;
         tempTrail.GetComponent<BulletBehavior>().SetDestination(detectedZombie.transform.position);
 
@@ -452,6 +470,7 @@ public class SoldierBehavior : MonoBehaviour
             flamerInProgress = true;
             StartCoroutine(FlamerDuration());
             flamerVFX.Play();
+            fBehavior.SetFlamerDamage(flamerDamage);
         }
     }
 
@@ -482,7 +501,7 @@ public class SoldierBehavior : MonoBehaviour
 
             tempBullet.GetComponent<Rigidbody2D>().velocity = temp * bulletSpeed;
 
-            tempBullet.GetComponent<BulletBehavior>().SetAttributes(false, 7.0f,1.0f);
+            tempBullet.GetComponent<BulletBehavior>().SetAttributes(false, shotgunDamage,1.0f);
 
 
         }
@@ -494,7 +513,7 @@ public class SoldierBehavior : MonoBehaviour
         mfB.PlayAnimation();
 
         GameObject tempTrail = Instantiate(bulletTrail, mfB.transform.position, Quaternion.identity);
-        tempTrail.GetComponent<BulletBehavior>().SetAttributes(true, 100.0f, 5.0f);
+        tempTrail.GetComponent<BulletBehavior>().SetAttributes(true, sniperDamage, 5.0f);
         tempTrail.GetComponent<Rigidbody2D>().velocity = Vector3.left * bulletSpeed;
         tempTrail.GetComponent<BulletBehavior>().SetDestination(detectedZombie.transform.position);
 
