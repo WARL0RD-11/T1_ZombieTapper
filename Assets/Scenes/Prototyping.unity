@@ -694,6 +694,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5431967546934047930, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431967546934047930, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: supplyItem
       value: 
@@ -2645,6 +2653,14 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.00000011920929
       objectReference: {fileID: 0}
+    - target: {fileID: 5431967546934047930, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431967546934047930, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: supplyItem
       value: 
@@ -2868,6 +2884,14 @@ PrefabInstance:
     - target: {fileID: 2593085153897028985, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Offset.y
       value: 0.00000011920929
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431967546934047930, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431967546934047930, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: isInfinite
@@ -3123,6 +3147,14 @@ PrefabInstance:
     - target: {fileID: 2593085153897028985, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Offset.y
       value: 0.00000011920929
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431967546934047930, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431967546934047930, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: supplyItem

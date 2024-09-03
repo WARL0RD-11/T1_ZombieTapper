@@ -219,7 +219,7 @@ public class SoldierBehavior : MonoBehaviour
     {
 
         //If the item is the correct item
-        if (item == wantedItem)
+        if (item.weapon == Weapon.Rifle)
         {
 
             animator.SetBool("isAsking", false);
@@ -235,6 +235,8 @@ public class SoldierBehavior : MonoBehaviour
             currentSpeechBubble = null;
 
             currentWeapon = Weapon.Rifle;
+
+            canShoot = true;
 
             animator.ResetTrigger("hasShotgun");
             animator.ResetTrigger("hasSniper");
@@ -355,6 +357,9 @@ public class SoldierBehavior : MonoBehaviour
         {
             canShoot = false;
             currentAmmo--;
+
+            Debug.Log(currentAmmo);
+
             if (currentAmmo <= 0)
             {
 
