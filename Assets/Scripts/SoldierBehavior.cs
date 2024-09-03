@@ -231,8 +231,8 @@ public class SoldierBehavior : MonoBehaviour
             gM.AddScore(1);
 
             //Get rid of the current speech bubble
-            Destroy(currentSpeechBubble);
-            currentSpeechBubble = null;
+            //Destroy(currentSpeechBubble);
+            //currentSpeechBubble = null;
 
             currentWeapon = Weapon.Rifle;
 
@@ -247,6 +247,24 @@ public class SoldierBehavior : MonoBehaviour
             Debug.Log(item.weapon.ToString());
             currentWeapon = item.weapon;
             currentSPAmmo = 3;
+
+            if(waitingForItem)
+            {
+                waitingForItem = false;
+                /*
+                if(currentSpeechBubble)
+                {
+                    Destroy(currentSpeechBubble);
+                    currentSpeechBubble = null;
+                }
+                */
+            }
+        }
+
+        if(currentSpeechBubble)
+        {
+            Destroy(currentSpeechBubble);
+            currentSpeechBubble = null;
         }
 
         currentSState = SoldierState.Idle;
@@ -312,6 +330,21 @@ public class SoldierBehavior : MonoBehaviour
         tempTrail.GetComponent<Rigidbody2D>().velocity = Vector3.left * bulletSpeed;
         tempTrail.GetComponent<BulletBehavior>().SetDestination(detectedZombie.transform.position);
 
+        currentAmmo--;
+        if (currentAmmo <= 0)
+        {
+
+            Debug.Log("Out of ammo");
+
+            wantedItem = gM.GetDeliveryItems()[0];
+            canShoot = false;
+            waitingForItem = true;
+            animator.SetBool("isShooting", false);
+            animator.SetBool("isAsking", true);
+
+            WantsNewItem();
+        }
+
     }
 
     private void WeaponStateBehavior()
@@ -355,11 +388,11 @@ public class SoldierBehavior : MonoBehaviour
         animator.SetBool("isAsking", false);
         if (canShoot)
         {
-            canShoot = false;
-            currentAmmo--;
+            //canShoot = false;
+            //currentAmmo--;
 
-            Debug.Log(currentAmmo);
-
+            //Debug.Log(currentAmmo);
+            /*
             if (currentAmmo <= 0)
             {
 
@@ -377,6 +410,7 @@ public class SoldierBehavior : MonoBehaviour
             {
                 StartCoroutine(ShootCooldown());
             }
+            */
         }
     }
 
