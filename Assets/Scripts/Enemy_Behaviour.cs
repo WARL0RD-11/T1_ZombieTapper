@@ -52,7 +52,7 @@ public class Enemy_Behaviour : MonoBehaviour
             canCharacterMove = false;
             gameManager.EndGame();
         }
-        if (canAttack )
+        if (canAttack)
         {
             StartCoroutine(WaitForAttack());
         }
