@@ -59,7 +59,7 @@ public class Enemy_Instantiate : MonoBehaviour
                 yield return new WaitForSeconds(gameManager.enemySpawnTime[i]);
             }
             var spawnPosition = new Vector3(transform.position.x, Mathf.RoundToInt(
-                                Random.Range(-2, 2)) * 2, 0); //Generate random lane for enemy
+                                Random.Range(-2, 2)) * 1.5f, 0); //Generate random lane for enemy
             GameObject spawnGameObject = Instantiate(enemyPrefab, spawnPosition,
                    Quaternion.identity);
             spawnGameObject.transform.parent = parent; // Parent clones to a single object
