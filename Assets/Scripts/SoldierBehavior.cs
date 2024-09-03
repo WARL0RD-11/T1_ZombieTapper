@@ -222,6 +222,12 @@ public class SoldierBehavior : MonoBehaviour
 
         Debug.Log("Soldier wants " + wantedItem.itemName);
 
+        if(currentSpeechBubble)
+        {
+            Destroy(currentSpeechBubble);
+            currentSpeechBubble = null;
+        }
+
         currentSpeechBubble = Instantiate(speechBubblePrefab, bubbleCoords.transform.position, Quaternion.identity);
         currentSpeechBubble.GetComponent<DesiredItemBubble>().UpdateItemSprite(wantedItem.itemSprite);
 

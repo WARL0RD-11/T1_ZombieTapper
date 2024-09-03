@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -11,6 +12,7 @@ public class Enemy_Behaviour : MonoBehaviour
     [SerializeField] float enemySpeed = 0.25f;
     [SerializeField] float attackCoolDown = 1f;
     [SerializeField] GameObject bloodPoolPrefab;
+    [SerializeField] private float AnimTimeScale;
 
     GameManager gameManager;
     Animator animator;
@@ -31,6 +33,7 @@ public class Enemy_Behaviour : MonoBehaviour
         gameManager = FindAnyObjectByType<GameManager>();
         animator = GetComponent<Animator>();
         sandBagObject = GameObject.FindGameObjectWithTag("Finish");
+        animator.speed = AnimTimeScale;
     }
 
     void Update()

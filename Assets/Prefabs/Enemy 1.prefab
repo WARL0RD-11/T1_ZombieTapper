@@ -50,11 +50,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e37f69ad6473fd4fbdbff3e7410047c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpeed: 0.65
   health: 5
-  attackCoolDown: 2
   enemyPower: 2
+  enemySpeed: 2
+  attackCoolDown: 2
   bloodPoolPrefab: {fileID: 2757200110915968827, guid: f61caa260e1970f4fb83e47f16ad1b5d, type: 3}
+  AnimTimeScale: 3
 --- !u!61 &1761073916831053777
 BoxCollider2D:
   m_ObjectHideFlags: 0
