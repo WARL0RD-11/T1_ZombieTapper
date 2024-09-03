@@ -2213,7 +2213,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 7af1a1bdc7261e640bc0d79ba78278cd, type: 2}
     - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: cooldownTime
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: SupplyItemCount
@@ -3008,11 +3008,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 32d712b183210ac4c91b43e0dc33abef, type: 2}
     - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: cooldownTime
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: SupplyItemCount
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6944272071513625935, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Offset.x
@@ -3768,11 +3768,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 47ed18f13ba456c43ad1932cba8e9978, type: 2}
     - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: cooldownTime
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6885044317913120196, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: SupplyItemCount
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6944272071513625935, guid: bca9ea523189df64ba56de178d8979cf, type: 3}
       propertyPath: m_Offset.x
