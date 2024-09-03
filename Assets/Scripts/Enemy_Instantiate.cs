@@ -42,19 +42,19 @@ public class Enemy_Instantiate : MonoBehaviour
 
             if (enemyPrefab.gameObject.name == "Enemy")
             {
-                spawnRate = 2.0f;
+                spawnRate = 0.75f;
                 RandSpawnRate(spawnRate,i, true);
                 yield return new WaitForSeconds(gameManager.enemySpawnTime[i]);
             }
             else if(enemyPrefab.gameObject.name == "Enemy 1")
             {
-                spawnRate = 3.0f;
+                spawnRate = 3.5f;
                 RandSpawnRate(spawnRate, i, false);
                 yield return new WaitForSeconds(gameManager.enemySpawnTime[i]);
             }
             else
             {
-                spawnRate = 15f;
+                spawnRate = 25f;
                 RandSpawnRate(spawnRate, i, false);
                 yield return new WaitForSeconds(gameManager.enemySpawnTime[i]);
             }
