@@ -88,6 +88,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("Game is over");
             //Transition to the end game screen
 
+            gameOverUI.enabled = true;
+
             gameOverUI.EndMenuAppear();
         }
     }
