@@ -251,13 +251,6 @@ public class SoldierBehavior : MonoBehaviour
             if(waitingForItem)
             {
                 waitingForItem = false;
-                /*
-                if(currentSpeechBubble)
-                {
-                    Destroy(currentSpeechBubble);
-                    currentSpeechBubble = null;
-                }
-                */
             }
         }
 

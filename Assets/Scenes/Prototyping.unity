@@ -1359,6 +1359,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BarbedWire Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3604081445757086343, guid: 7670628d78a83484b969e42fbbcc706f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2278,7 +2282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: maximumAmmo
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5907876598019354629, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_Name
@@ -2583,7 +2587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: maximumAmmo
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5907876598019354629, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_Name
@@ -2840,11 +2844,72 @@ PrefabInstance:
       propertyPath: m_Name
       value: BarbedWire Variant (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3604081445757086343, guid: 7670628d78a83484b969e42fbbcc706f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7670628d78a83484b969e42fbbcc706f, type: 3}
+--- !u!1001 &1335854879
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2772351504547192300, guid: fbd9a907a00deef4c90d41f379c5bc5b, type: 3}
+      propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296996134837635889, guid: fbd9a907a00deef4c90d41f379c5bc5b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.6783993
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296996134837635889, guid: fbd9a907a00deef4c90d41f379c5bc5b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.16530684
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296996134837635889, guid: fbd9a907a00deef4c90d41f379c5bc5b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296996134837635889, guid: fbd9a907a00deef4c90d41f379c5bc5b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296996134837635889, guid: fbd9a907a00deef4c90d41f379c5bc5b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296996134837635889, guid: fbd9a907a00deef4c90d41f379c5bc5b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296996134837635889, guid: fbd9a907a00deef4c90d41f379c5bc5b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296996134837635889, guid: fbd9a907a00deef4c90d41f379c5bc5b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296996134837635889, guid: fbd9a907a00deef4c90d41f379c5bc5b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296996134837635889, guid: fbd9a907a00deef4c90d41f379c5bc5b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fbd9a907a00deef4c90d41f379c5bc5b, type: 3}
 --- !u!1001 &1369854928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3103,6 +3168,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BarbedWire Variant (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3604081445757086343, guid: 7670628d78a83484b969e42fbbcc706f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3302,7 +3371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: maximumAmmo
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5907876598019354629, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_Name
@@ -3844,6 +3913,10 @@ PrefabInstance:
     - target: {fileID: 3604081445757086343, guid: 7670628d78a83484b969e42fbbcc706f, type: 3}
       propertyPath: m_Name
       value: BarbedWire Variant (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3604081445757086343, guid: 7670628d78a83484b969e42fbbcc706f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4562,7 +4635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: maximumAmmo
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5907876598019354629, guid: 938c922497ae7b04680c6e6636933535, type: 3}
       propertyPath: m_Name
@@ -5035,3 +5108,4 @@ SceneRoots:
   - {fileID: 1385955365}
   - {fileID: 24413284}
   - {fileID: 913450355}
+  - {fileID: 1335854879}
