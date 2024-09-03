@@ -3242,7 +3242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b7b5a18a88f8843a77e28b9ece7fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameScene_Name: Staging
+  GameScene_Name: Tutorial
   StartMenu: {fileID: 1231076135}
   OptionMenu: {fileID: 747136742}
   InstructMenu: {fileID: 992575009}
