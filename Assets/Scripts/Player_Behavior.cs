@@ -10,6 +10,7 @@ public class Player_Behavior : MonoBehaviour
     [SerializeField] public KeyCode PDKey = KeyCode.Return;
     [SerializeField] public KeyCode UpKeyPressed = KeyCode.UpArrow;
     [SerializeField] public KeyCode DownKeyPressed = KeyCode.DownArrow;
+    [SerializeField] public float GridSize = 2.0f;
 
     public bool HasItem;
 
@@ -92,14 +93,13 @@ public class Player_Behavior : MonoBehaviour
 
     void PlayerMovement()
     {
-        float GridSize = 2.0f;
         Vector3 NewPos;
 
         if (Input.GetKeyDown(DownKeyPressed))
         {
             
             NewPos = transform.position - new Vector3(0, GridSize, 0);
-            NewPos.y = Mathf.Clamp(NewPos.y, -4, GridSize);
+            NewPos.y = Mathf.Clamp(NewPos.y, -3, 3);
             transform.position = NewPos;
 
             RaycastDetections();
@@ -110,7 +110,7 @@ public class Player_Behavior : MonoBehaviour
         else if (Input.GetKeyDown(UpKeyPressed))
         {
             NewPos = transform.position + new Vector3(0, GridSize, 0);
-            NewPos.y = Mathf.Clamp(NewPos.y, -4, GridSize);
+            NewPos.y = Mathf.Clamp(NewPos.y, -3, 3);
             transform.position = NewPos;
 
             RaycastDetections();
