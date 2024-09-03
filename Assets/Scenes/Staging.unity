@@ -1633,6 +1633,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab:
   - {fileID: 2772351504547192300, guid: fbd9a907a00deef4c90d41f379c5bc5b, type: 3}
+  - {fileID: 2772351504547192300, guid: 923bf8d1720ec7a4da3cb6c14426c505, type: 3}
+  - {fileID: 2772351504547192300, guid: e429058697ec9e544acaba749b45aa9d, type: 3}
   parent: {fileID: 1621559283}
 --- !u!4 &570873858
 Transform:

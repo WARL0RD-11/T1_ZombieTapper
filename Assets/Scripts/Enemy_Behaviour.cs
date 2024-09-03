@@ -42,6 +42,7 @@ public class Enemy_Behaviour : MonoBehaviour
         else if(gameManager.GetGameStatus()) 
         {
             canCharacterMove = false;
+            canAttack = false;  
             animator.SetBool("isZombieIdle", true);
             animator.SetBool("isAttacking", false);
         }
