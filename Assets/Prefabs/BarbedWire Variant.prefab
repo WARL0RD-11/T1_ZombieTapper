@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: health
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 432032040423382485, guid: d93fb9b242cbfb24f971cb045d51dee6, type: 3}
+      propertyPath: warningPrefab
+      value: 
+      objectReference: {fileID: 462107662412235522, guid: 477d27a960be9c645b68c684b693d397, type: 3}
+    - target: {fileID: 432032040423382485, guid: d93fb9b242cbfb24f971cb045d51dee6, type: 3}
+      propertyPath: warningDistance
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5721248723870652287, guid: d93fb9b242cbfb24f971cb045d51dee6, type: 3}
       propertyPath: m_Name
       value: BarbedWire Variant

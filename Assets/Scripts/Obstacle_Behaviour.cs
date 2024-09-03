@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Obstacle_Behaviour : MonoBehaviour
 {
     [SerializeField] public int maxHealth = 10;
     private int currentHealth;
+
+    [SerializeField]
+    private GameObject warningPrefab;
+
+    [SerializeField]
+    private float warningDistance;
 
     private void Start()
     {
@@ -28,6 +35,13 @@ public class Obstacle_Behaviour : MonoBehaviour
 
     public void DestroyObstacle()
     {
+
+        Vector3 temp = transform.position;
+        temp.x = transform.position.x + warningDistance;
+
+        Instantiate(warningPrefab, transform.position, Quaternion.identity);
+        Instantiate(warningPrefab, temp, Quaternion.identity);
+
         Destroy(gameObject);
     }
 }
