@@ -745,12 +745,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Turret1: {fileID: 158127999}
   Turret2: {fileID: 107482399}
-  Soldier1: {fileID: 0}
-  Soldier2: {fileID: 0}
-  Soldier3: {fileID: 0}
-  Soldier4: {fileID: 0}
   NewRate: 0
-  Delay: 0
+  Delay: 40
+  InitDelay: 5
 --- !u!1 &397842012
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,17 +1244,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 938c922497ae7b04680c6e6636933535, type: 3}
---- !u!114 &528027644 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
-  m_PrefabInstance: {fileID: 528027643}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4790227a20a084f4bb20dece5275d56d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &553741959
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1453,17 +1439,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 938c922497ae7b04680c6e6636933535, type: 3}
---- !u!114 &587677113 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
-  m_PrefabInstance: {fileID: 587677112}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4790227a20a084f4bb20dece5275d56d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &615468130
 GameObject:
   m_ObjectHideFlags: 0
@@ -3102,17 +3077,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 938c922497ae7b04680c6e6636933535, type: 3}
---- !u!114 &1022702297 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
-  m_PrefabInstance: {fileID: 1022702296}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4790227a20a084f4bb20dece5275d56d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1033458601
 GameObject:
   m_ObjectHideFlags: 0
@@ -3443,17 +3407,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 938c922497ae7b04680c6e6636933535, type: 3}
---- !u!114 &1288718850 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4733590699159019926, guid: 938c922497ae7b04680c6e6636933535, type: 3}
-  m_PrefabInstance: {fileID: 1288718849}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4790227a20a084f4bb20dece5275d56d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1291515382
 GameObject:
   m_ObjectHideFlags: 0
@@ -4690,12 +4643,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Turret1: {fileID: 0}
   Turret2: {fileID: 0}
-  Soldier1: {fileID: 1022702297}
-  Soldier2: {fileID: 1288718850}
-  Soldier3: {fileID: 587677113}
-  Soldier4: {fileID: 528027644}
   NewRate: 0.1
   Delay: 0
+  InitDelay: 0
 --- !u!1001 &2049511049
 PrefabInstance:
   m_ObjectHideFlags: 0
