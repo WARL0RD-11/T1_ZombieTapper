@@ -8,8 +8,8 @@ using UnityEngine;
 public class Player_Behavior : MonoBehaviour
 {
     [SerializeField] public KeyCode PDKey = KeyCode.Return;
-    [SerializeField] public KeyCode UpKeyPressed = KeyCode.W;
-    [SerializeField] public KeyCode DownKeyPressed = KeyCode.S;
+    [SerializeField] public KeyCode UpKeyPressed = KeyCode.UpArrow;
+    [SerializeField] public KeyCode DownKeyPressed = KeyCode.DownArrow;
     [SerializeField] public float GridSize = 2.0f;
 
     public bool HasItem;
