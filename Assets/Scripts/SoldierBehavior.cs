@@ -323,7 +323,7 @@ public class SoldierBehavior : MonoBehaviour
     public void ShootVisual()
     {
         //Play the muzzle flash animation
-        mfB.PlayAnimation();
+        mfB.PlayAnimation(0);
 
         //Create the bullet prefab and set all the attributes 
         GameObject tempTrail = Instantiate(bulletTrail, mfB.transform.position, Quaternion.identity);
@@ -492,7 +492,7 @@ public class SoldierBehavior : MonoBehaviour
     //Big damage with no falloff
     public void ShotgunAttack()
     {
-        mfB.PlayAnimation();
+        mfB.PlayAnimation(2);
         Vector3 initialDirection = Vector3.left;
         initialDirection.y = sgSpread;
 
@@ -518,7 +518,7 @@ public class SoldierBehavior : MonoBehaviour
     //The supply box shooouuuld have a long cooldown to compensate, making this a last resort weapon
     public void SniperAttack()
     {
-        mfB.PlayAnimation();
+        mfB.PlayAnimation(1);
 
         GameObject tempTrail = Instantiate(bulletTrail, mfB.transform.position, Quaternion.identity);
         tempTrail.GetComponent<BulletBehavior>().SetAttributes(true, sniperDamage, 5.0f);

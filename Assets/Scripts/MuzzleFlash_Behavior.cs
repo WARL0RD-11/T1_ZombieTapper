@@ -14,11 +14,12 @@ public class MuzzleFlash_Behavior : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void PlayAnimation()
+    public void PlayAnimation(int index)
     {
         //anim.Play("MuzzleFlash_Fire");
         //anim.Play();
         animator.SetBool("isShowing", true);
+        animator.SetInteger("muzzleIndex", index);
         animator.Play(0, -1, 0f);
         //animator.SetBool("isShowing", false);
     }
