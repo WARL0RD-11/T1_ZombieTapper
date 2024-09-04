@@ -14,6 +14,12 @@ public class TutorialMover : MonoBehaviour
     [SerializeField]
     private int nextSceneIndex;
 
+    [SerializeField]
+    private GameObject returnButton;
+
+    [SerializeField]
+    private GameObject returnText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,5 +41,7 @@ public class TutorialMover : MonoBehaviour
         yield return new WaitForSeconds(minTime);
         Debug.Log("Can transition");
         canTransition = true;
+        returnButton.active = true;
+        returnText.active = true;
     }
 }
