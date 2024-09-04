@@ -23,7 +23,12 @@ public class PowerUP : MonoBehaviour
     void Start()
     {
         IsPlayerInTrigger = false;
+<<<<<<< Updated upstream
         StartCoroutine(HidePowerupOnStart(this.gameObject, InitDelay));
+=======
+        NewRate = .1f;
+        //Delay = 8.0f;
+>>>>>>> Stashed changes
     }
 
     // Update is called once per frame
