@@ -75,7 +75,7 @@ public class TurretBehavior : MonoBehaviour
     {
         RaycastDetection();
         Debug.Log("Turret Firing");
-        audioManager.PlaySFX(audioManager.ScreenClean_Audio);
+        
         //float CurrentAngle = transform.eulerAngles.z;
         float oscillation = Mathf.Sin(Time.deltaTime * RotationSpeed) + TargetRotationAngle;
         EndRot = StartRot * Quaternion.Euler(0,0,oscillation) ;
@@ -93,10 +93,16 @@ public class TurretBehavior : MonoBehaviour
         {
             TempColor = Color.red;
             Debug.DrawLine(transform.position, ZombieDetect.transform.position, TempColor);
+            
             DetectedZombie = ZombieDetect.collider.gameObject.GetComponent<Enemy_Behaviour>();
             //DetectedZombie.OnDeath();
+            
 
             GameObject temp = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            if (!audioManager.TurretSource.isPlaying)
+            {
+                audioManager.PlayTurret();
+            }
             temp.GetComponent<BulletBehavior>().SetAttributes(false, bulletDamage, 2.0f);
             temp.GetComponent<Rigidbody2D>().velocity = (DetectedZombie.transform.position - temp.transform.position).normalized * bulletSpeed;
         }

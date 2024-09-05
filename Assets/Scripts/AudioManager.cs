@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -9,6 +10,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource SFXSource;
     [SerializeField] AudioSource EnemySource;
     [SerializeField] AudioSource GunSource;
+    [SerializeField] AudioSource FlameSource;
+    [SerializeField] public AudioSource TurretSource;
 
 
     [Header("Audio Clip")]
@@ -61,5 +64,24 @@ public class AudioManager : MonoBehaviour
     public void PlayGun(AudioClip clip)
     {
         GunSource.PlayOneShot(clip);
+    }
+
+    public void PlayFlame()
+    {
+        FlameSource.Play();
+    }
+
+    public void EndFlame()
+    {
+        FlameSource.Stop();
+    }
+    public void PlayTurret()
+    {
+        TurretSource.Play();
+    }
+
+    public void StopTurret()
+    {
+        TurretSource.Stop();
     }
 }
