@@ -39,22 +39,29 @@ public class Enemy_Instantiate : MonoBehaviour
         float spawnRate = 0.0f;
         while (true)
         {
-
-            if (enemyPrefab.gameObject.name == "Enemy")
+            if (enemyPrefab.gameObject.name == "Runner")
             {
                 spawnRate = 0.75f;
                 RandSpawnRate(spawnRate,i, true);
                 yield return new WaitForSeconds(gameManager.enemySpawnTime[i]);
             }
-            else if(enemyPrefab.gameObject.name == "Enemy 1")
+            else if(enemyPrefab.gameObject.name == "Clicker")
             {
                 spawnRate = 3.5f;
                 RandSpawnRate(spawnRate, i, false);
                 yield return new WaitForSeconds(gameManager.enemySpawnTime[i]);
             }
-            else
+            else if(enemyPrefab.gameObject.name == "Bloater")
             {
-                spawnRate = 25f;
+                if (gameManager.GetPlayerScore() % 50 == 0)
+                {
+                    spawnRate = 10f;
+                }
+                else
+                {
+                    spawnRate = 25f;
+                }
+                //spawnRate = 25f;
                 RandSpawnRate(spawnRate, i, false);
                 yield return new WaitForSeconds(gameManager.enemySpawnTime[i]);
             }
@@ -79,7 +86,7 @@ public class Enemy_Instantiate : MonoBehaviour
         {
             spawnRate -= 0.25f; 
         }
-        else if(playerScore >= 20)
+        else if(playerScore % 50 == 0)
         {
             spawnRate -= 0.5f;
         }
@@ -87,7 +94,7 @@ public class Enemy_Instantiate : MonoBehaviour
         {
             spawnRate = 0f;
         }
-        gameManager.enemySpawnTime[i] = spawnRate + Mathf.RoundToInt(Random.Range(0, 2));
+        gameManager.enemySpawnTime[i] = spawnRate + Mathf.RoundToInt(Random.Range(0, 1));
         if (createHoard != 0)
         {
             createHoard--;
