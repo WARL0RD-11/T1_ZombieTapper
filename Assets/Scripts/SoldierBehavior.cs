@@ -546,10 +546,12 @@ public class SoldierBehavior : MonoBehaviour
     //Just lasts for a duration before switching back to rifle.
     private IEnumerator FlamerDuration()
     {
-        audioManager.PlayFlame(audioManager.Flamethrower_Audio);
+        //audioManager.PlayFlame(audioManager.Flamethrower_Audio);
+        audioManager.PlayFlame();
         yield return new WaitForSeconds(flamerDuration);
         flamerBox.SetActive(false);
         flamerInProgress = false;
+        audioManager.EndFlame();
         ReturnToRifle();
     }
 

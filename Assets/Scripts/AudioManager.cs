@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -65,9 +66,14 @@ public class AudioManager : MonoBehaviour
         GunSource.PlayOneShot(clip);
     }
 
-    public void PlayFlame(AudioClip clip)
+    public void PlayFlame()
     {
-        FlameSource.PlayOneShot(clip);
+        FlameSource.Play();
+    }
+
+    public void EndFlame()
+    {
+        FlameSource.Stop();
     }
     public void PlayTurret(AudioClip clip)
     {
