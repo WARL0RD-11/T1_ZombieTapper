@@ -286,7 +286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &169018044
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1198,8 +1198,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -195}
-  m_SizeDelta: {x: 450, y: 100}
+  m_AnchoredPosition: {x: 0, y: -132.6}
+  m_SizeDelta: {x: 450, y: 182.173}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &673551762
 MonoBehaviour:
@@ -1223,9 +1223,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.6666667, g: 1, b: 0.5294118, a: 1}
-    m_SelectedColor: {r: 0.6666667, g: 1, b: 0.5294118, a: 1}
+    m_HighlightedColor: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
+    m_PressedColor: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
+    m_SelectedColor: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1247,7 +1247,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1605599931}
         m_TargetAssemblyTypeName: UIManagement, Assembly-CSharp
-        m_MethodName: Quit
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1277,8 +1277,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 22b178f830d8d2349955c3265768f86c, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2014,8 +2014,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 25}
-  m_SizeDelta: {x: 450, y: 100}
+  m_AnchoredPosition: {x: 0, y: 34.276825}
+  m_SizeDelta: {x: 312.3944, y: 118.5536}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1111395226
 MonoBehaviour:
@@ -2039,9 +2039,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_PressedColor: {r: 0.6666667, g: 1, b: 0.5294118, a: 1}
-    m_SelectedColor: {r: 0.6666667, g: 1, b: 0.5294118, a: 1}
+    m_HighlightedColor: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
+    m_PressedColor: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
+    m_SelectedColor: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2093,8 +2093,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: d2df06bcaa9151a45a509c214e44105b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2523,13 +2523,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 1367410594}
   SFXSource: {fileID: 616156195}
-  EnemySource: {fileID: 877197492}
-  GunSource: {fileID: 627834272}
+  EnemySource: {fileID: 0}
+  GunSource: {fileID: 0}
   background_Audio: {fileID: 8300000, guid: e35e3640fd5826146b5e3737b4ebce2d, type: 3}
-  Rifle_Audio: {fileID: 8300000, guid: 87835ac02f56c504a81e43a3724c2282, type: 3}
+  Rifle_Audio: {fileID: 8300000, guid: e8086e105e72c504684c5208599ed7b1, type: 3}
   Shotgun_Audio: {fileID: 8300000, guid: 8c5f50686638f01499cd273efd270c3b, type: 3}
-  Flamethrower_Audio: {fileID: 8300000, guid: e1d43325a783e0a409d08060e798c18d, type: 3}
-  Sniper_Audio: {fileID: 8300000, guid: 2e059eeaa56605a4983e5e02c4702153, type: 3}
+  Flamethrower_Audio: {fileID: 0}
+  Sniper_Audio: {fileID: 8300000, guid: f8e38c61453389b4a99e358e15d85063, type: 3}
   pickup_Audio: {fileID: 8300000, guid: 26438a081f76e9449b3e7376ce3dfeb1, type: 3}
   ZombieDead_Audio: {fileID: 8300000, guid: c9ce7e0fe80ef5e439b47df79eaba075, type: 3}
   ZombieAttack_Audio: {fileID: 8300000, guid: fcfe3001939d2b44699f29936f19f13b, type: 3}
@@ -2538,7 +2538,7 @@ MonoBehaviour:
   gameStart_Audio: {fileID: 8300000, guid: ec6f4c885d63d044c86ee29f2066e84c, type: 3}
   gameEnd_Audio: {fileID: 8300000, guid: 52e177676e1b2bb46a334c7dc7ad8820, type: 3}
   Deliver_Audio: {fileID: 8300000, guid: 1ac86b3760cdff344b6e32cdf6617ded, type: 3}
-  ScreenClean_Audio: {fileID: 8300000, guid: 1df83fb8b192c264bb5127442ca43f91, type: 3}
+  ScreenClean_Audio: {fileID: 8300000, guid: 2c8ddb551c2d2e94698eadb6259ac354, type: 3}
   AskWeapon_Audio: {fileID: 8300000, guid: 2825c5474da0a9f418981c97a027ad94, type: 3}
 --- !u!4 &1262972499
 Transform:
@@ -2740,7 +2740,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.6
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3636,8 +3636,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -85}
-  m_SizeDelta: {x: 450, y: 100}
+  m_AnchoredPosition: {x: 0, y: -60.2098}
+  m_SizeDelta: {x: 450, y: 161.6851}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1784258534
 MonoBehaviour:
@@ -3661,9 +3661,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.6666667, g: 1, b: 0.5294118, a: 1}
-    m_SelectedColor: {r: 0.6666667, g: 1, b: 0.5294118, a: 1}
+    m_HighlightedColor: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
+    m_PressedColor: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
+    m_SelectedColor: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3685,7 +3685,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1605599931}
         m_TargetAssemblyTypeName: UIManagement, Assembly-CSharp
-        m_MethodName: Open_OptionMenu
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3715,8 +3715,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: b1d21f1a6f85dd54cb2122cb9f6d0680, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3750,7 +3750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1890133049
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4120,7 +4120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2138939524
 RectTransform:
   m_ObjectHideFlags: 0
