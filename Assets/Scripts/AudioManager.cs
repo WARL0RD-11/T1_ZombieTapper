@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource EnemySource;
     [SerializeField] AudioSource GunSource;
     [SerializeField] AudioSource FlameSource;
-    [SerializeField] AudioSource TurretSource;
+    [SerializeField] public AudioSource TurretSource;
 
 
     [Header("Audio Clip")]
@@ -75,8 +75,13 @@ public class AudioManager : MonoBehaviour
     {
         FlameSource.Stop();
     }
-    public void PlayTurret(AudioClip clip)
+    public void PlayTurret()
     {
-        TurretSource.PlayOneShot(clip);
+        TurretSource.Play();
+    }
+
+    public void StopTurret()
+    {
+        TurretSource.Stop();
     }
 }

@@ -99,12 +99,12 @@ public class TurretBehavior : MonoBehaviour
             
 
             GameObject temp = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            if (!audioManager.TurretSource.isPlaying)
+            {
+                audioManager.PlayTurret();
+            }
             temp.GetComponent<BulletBehavior>().SetAttributes(false, bulletDamage, 2.0f);
             temp.GetComponent<Rigidbody2D>().velocity = (DetectedZombie.transform.position - temp.transform.position).normalized * bulletSpeed;
-            if (temp != null) 
-            {
-                Invoke("PlaySound", 0.1f);
-            }
         }
         else
         {
@@ -123,10 +123,5 @@ public class TurretBehavior : MonoBehaviour
         Debug.Log("Turret Deactivated");
         EndRot = StartRot * Quaternion.Euler(0, 0, 0);
         transform.rotation = Quaternion.Lerp(transform.rotation, StartRot, Time.deltaTime * RotationSpeed);
-    }
-
-    private void PlaySound()
-    {
-        audioManager.PlaySFX(audioManager.ScreenClean_Audio);
     }
 }
