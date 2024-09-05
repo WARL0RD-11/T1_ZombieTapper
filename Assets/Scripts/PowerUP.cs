@@ -11,32 +11,24 @@ public class PowerUP : MonoBehaviour
     [SerializeField]
     private TurretBehavior Turret2;
 
-    [SerializeField]
-    private SoldierBehavior Soldier1;
-
-    [SerializeField]
-    private SoldierBehavior Soldier2;
-
-    [SerializeField]
-    private SoldierBehavior Soldier3;
-
-    [SerializeField]
-    private SoldierBehavior Soldier4;
-
     private bool IsPlayerInTrigger;
 
     [SerializeField]
-    private float NewRate;
+    private float Delay;
 
     [SerializeField]
-    private float Delay;
+    private float InitDelay;
 
     // Start is called before the first frame update
     void Start()
     {
         IsPlayerInTrigger = false;
+<<<<<<< Updated upstream
+        StartCoroutine(HidePowerupOnStart(this.gameObject, InitDelay));
+=======
         NewRate = .1f;
-        Delay = 8.0f;
+        //Delay = 8.0f;
+>>>>>>> Stashed changes
     }
 
     // Update is called once per frame
@@ -51,20 +43,7 @@ public class PowerUP : MonoBehaviour
            
             StartCoroutine(HideShowPowerUp(this.gameObject, Delay));
             //Destroy(this.gameObject);
-            StartCoroutine(HideShowPowerUp(GameObject.FindWithTag("PupED"), Delay));
-        }
-
-        if (Input.GetKeyDown(KeyCode.S) && (IsPlayerInTrigger) && (this.gameObject.CompareTag("PupED")))
-        {
-            Debug.Log("ENERGY DRINK");
-            Soldier1.SetFireFireRate(NewRate);
-            Soldier2.SetFireFireRate(NewRate);
-            Soldier3.SetFireFireRate(NewRate);
-            Soldier4.SetFireFireRate(NewRate);
-            StartCoroutine(HideShowPowerUp(this.gameObject, Delay));
-            //Destroy(this.gameObject);
-            StartCoroutine(HideShowPowerUp(GameObject.FindWithTag("PupTurret"), Delay));
-
+            //StartCoroutine(HideShowPowerUp(GameObject.FindWithTag("PupED"), Delay));
         }
     }
 
@@ -94,6 +73,18 @@ public class PowerUP : MonoBehaviour
             PowerUpObject.GetComponent<SpriteRenderer>().enabled = false;
             PowerUpObject.GetComponent<BoxCollider2D>().enabled = false;
             yield return new WaitForSeconds(delay);
+            PowerUpObject.GetComponent<SpriteRenderer>().enabled = true;
+            PowerUpObject.GetComponent<BoxCollider2D>().enabled = true;
+        }
+    }
+
+    private IEnumerator HidePowerupOnStart(GameObject PowerUpObject, float InitDelay)
+    {
+        if (PowerUpObject != null)
+        {
+            PowerUpObject.GetComponent<SpriteRenderer>().enabled = false;
+            PowerUpObject.GetComponent<BoxCollider2D>().enabled = false;
+            yield return new WaitForSeconds(InitDelay);
             PowerUpObject.GetComponent<SpriteRenderer>().enabled = true;
             PowerUpObject.GetComponent<BoxCollider2D>().enabled = true;
         }
