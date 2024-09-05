@@ -28,7 +28,7 @@ public class EndZoneBehavior : MonoBehaviour
         if (gM != null)
         {
             //End the game if somethinng on the zombie physics layer enters the trigger
-            audioManager.PlaySFX(audioManager.ZombieEatFinal_Audio);
+            audioManager.PlayEnemySound(audioManager.ZombieEatFinal_Audio);
             gM.EndGame();
         }
     }

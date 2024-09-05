@@ -95,7 +95,7 @@ public class Enemy_Behaviour : MonoBehaviour
         foreach (var target in targetsInRange)
         {
             canAttack = false;
-            audioManager.PlaySFX(audioManager.ZombieAttack_Audio);
+            audioManager.PlayEnemySound(audioManager.ZombieAttack_Audio);
             if (target && target.GetComponent<Obstacle_Behaviour>().TakeDamage(enemyPower) <= 0)
             {
                 target.GetComponent<Animator>().SetBool("shouldDie", true);
@@ -111,7 +111,7 @@ public class Enemy_Behaviour : MonoBehaviour
         Vector3 deathPos = transform.position;
         deathPos.y = deathPos.y - 0.4f;
         Instantiate(bloodPoolPrefab, deathPos, Quaternion.identity);
-        audioManager.PlaySFX(audioManager.ZombieDead_Audio);
+        audioManager.PlayEnemySound(audioManager.ZombieDead_Audio);
         gameManager.AddScore(1);
         Destroy(this.gameObject);
     }

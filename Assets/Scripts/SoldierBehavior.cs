@@ -114,7 +114,7 @@ public class SoldierBehavior : MonoBehaviour
 
     //Audio
     AudioManager audioManager;
-    private int GuntypeSound;
+    //private int GuntypeSound;
 
     private void Awake()
     {
@@ -156,7 +156,7 @@ public class SoldierBehavior : MonoBehaviour
 
         //Change the following line if complete.
         //GuntypeSound = 0;
-        GuntypeSound = UnityEngine.Random.Range(1, 5);
+        //GuntypeSound = UnityEngine.Random.Range(1, 5);
     }
 
     // Update is called once per frame
@@ -258,6 +258,7 @@ public class SoldierBehavior : MonoBehaviour
             //currentSpeechBubble = null;
 
             currentWeapon = Weapon.Rifle;
+            //GuntypeSound = 0;
 
             canShoot = true;
 
@@ -361,24 +362,28 @@ public class SoldierBehavior : MonoBehaviour
 
                 //Debug.Log("Rifle behavior");
                 RifleBehavior();
+                //GuntypeSound = 0;
                 break;
 
             case Weapon.Flamer:
 
                 //Debug.Log("Flamer behavior");
-                FlamerBehavior();
+                FlamerBehavior(); 
+                //GuntypeSound = 1;
                 break;
 
             case Weapon.Sniper:
 
                 //Debug.Log("Sniper behavior");
                 SniperBehavior();
+                //GuntypeSound = 2;
                 break;
 
             case Weapon.Shotgun:
 
                 //Debug.Log("Shotgun behavior");
                 ShotgunBehavior();
+                //GuntypeSound = 3;
                 break;
 
             default:
@@ -394,6 +399,7 @@ public class SoldierBehavior : MonoBehaviour
     {
         animator.SetBool("isShooting", true);
         animator.SetBool("isAsking", false);
+        audioManager.PlayGun(audioManager.Rifle_Audio);
         if (canShoot)
         {
             //canShoot = false;
@@ -428,6 +434,7 @@ public class SoldierBehavior : MonoBehaviour
         animator.SetBool("isShooting", false);
         animator.SetBool("isAsking", false);
         animator.SetTrigger("hasShotgun");
+        audioManager.PlayGun(audioManager.Shotgun_Audio);
 
         if (canShotgun)
         {
@@ -451,6 +458,7 @@ public class SoldierBehavior : MonoBehaviour
         animator.SetBool("isShooting", true);
         animator.SetBool("isAsking", false);
         animator.SetTrigger("hasSniper");
+        audioManager.PlayGun(audioManager.Sniper_Audio);
         canShoot = false;
     }
 
@@ -460,6 +468,7 @@ public class SoldierBehavior : MonoBehaviour
     {
         animator.SetBool("isShooting", false);
         animator.SetBool("isAsking", false);
+        audioManager.PlayGun(audioManager.Flamethrower_Audio);
         animator.SetTrigger("hasFlamer");
 
         canShoot = false;

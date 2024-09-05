@@ -66,7 +66,8 @@ public class Enemy_Instantiate : MonoBehaviour
                 GameObject spawnGameObject = Instantiate(enemyPrefab, spawnPosition,
                        Quaternion.identity);
                 spawnGameObject.transform.parent = parent; // Parent clones to a single object
-                audioManager.PlaySFX(audioManager.ZombieAppear_Audio);
+                
+                audioManager.PlayEnemySound(audioManager.ZombieAppear_Audio);
             } 
         }
     }
