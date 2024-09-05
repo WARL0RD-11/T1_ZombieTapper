@@ -8,6 +8,9 @@ TagManager:
   - HasPackage
   - Package2
   - audio
+  - PupTurret
+  - PupED
+  - Obstacle
   layers:
   - Default
   - TransparentFX

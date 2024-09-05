@@ -7,6 +7,14 @@ public class EndZoneBehavior : MonoBehaviour
     //Directs to the game manager in the level
     private GameManager gM;
 
+    //Audio
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +28,7 @@ public class EndZoneBehavior : MonoBehaviour
         if (gM != null)
         {
             //End the game if somethinng on the zombie physics layer enters the trigger
+            audioManager.PlayEnemySound(audioManager.ZombieEatFinal_Audio);
             gM.EndGame();
         }
     }

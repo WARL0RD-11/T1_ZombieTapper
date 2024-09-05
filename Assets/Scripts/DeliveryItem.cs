@@ -14,4 +14,7 @@ public class DeliveryItem : ScriptableObject
     //I do not remember if this is the correct format but I can fix later.
     [SerializeField]
     public Sprite itemSprite;
+
+    [SerializeField]
+    public Weapon weapon;
 }

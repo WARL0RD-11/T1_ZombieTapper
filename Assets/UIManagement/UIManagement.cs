@@ -40,7 +40,7 @@ public class UIManagement : MonoBehaviour
     public void StartGame()
     {
         audioManager.PlaySFX(audioManager.gameStart_Audio);
-        SceneManager.LoadScene(GameScene_Name);
+        SceneManager.LoadScene(1);
     }
 
     public void GetScene(string Scene_Name)

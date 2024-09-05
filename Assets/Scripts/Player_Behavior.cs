@@ -1,14 +1,16 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 
 public class Player_Behavior : MonoBehaviour
 {
-    [SerializeField] public KeyCode PDKey = KeyCode.Space;
-    [SerializeField] public KeyCode UpKeyPressed = KeyCode.W;
-    [SerializeField] public KeyCode DownKeyPressed = KeyCode.S;
+    [SerializeField] public KeyCode PDKey = KeyCode.Return;
+    [SerializeField] public KeyCode UpKeyPressed = KeyCode.UpArrow;
+    [SerializeField] public KeyCode DownKeyPressed = KeyCode.DownArrow;
+    [SerializeField] public float GridSize = 2.0f;
 
     public bool HasItem;
 
@@ -26,16 +28,23 @@ public class Player_Behavior : MonoBehaviour
     private LayerMask soldierMask;
 
     private Animator animator;
+    private TurretBehavior TB;
 
     [SerializeField]
     private SpriteRenderer heldItemSprite;
 
+    //Audio
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>();
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Package"))
-        {
 
-        }
     }
 
     //This Function Checks if the Player Overlaps with the Package and then Presses SPACE. 
@@ -58,7 +67,7 @@ public class Player_Behavior : MonoBehaviour
                     //Then get its SB script and try to deliver the current item, whatever it is.
                     CurrentSoldier.GetComponent<SoldierBehavior>().DeliverItem(currentItem);
                 }
-
+                audioManager.PlaySFX(audioManager.Deliver_Audio);
                 RemoveDeliveryItem(); 
                 HasItem = false;
                 //Debug.Log("Item Delivered");
@@ -70,10 +79,12 @@ public class Player_Behavior : MonoBehaviour
                 //Make sure that CurrentSB is actually set to something
                 if (CurrentSB)
                 {
+                    audioManager.PlaySFX(audioManager.pickup_Audio);
                     //Then set the player's current delivery item to the supply item from the box
                     SetDeliveryItem(CurrentSB.GetComponent<SupplyBox_Behavior>().GetSupplyItem());
+                    CurrentSB.GetComponent<SupplyBox_Behavior>().TakeItem();
                 }
-                HasItem = true;
+                    HasItem = true;
                // Debug.Log("Item Picked");
             }
 
@@ -82,14 +93,13 @@ public class Player_Behavior : MonoBehaviour
 
     void PlayerMovement()
     {
-        float GridSize = 2.0f;
         Vector3 NewPos;
 
         if (Input.GetKeyDown(DownKeyPressed))
         {
             
             NewPos = transform.position - new Vector3(0, GridSize, 0);
-            NewPos.y = Mathf.Clamp(NewPos.y, -4, GridSize);
+            NewPos.y = Mathf.Clamp(NewPos.y, -3, 3);
             transform.position = NewPos;
 
             RaycastDetections();
@@ -100,7 +110,7 @@ public class Player_Behavior : MonoBehaviour
         else if (Input.GetKeyDown(UpKeyPressed))
         {
             NewPos = transform.position + new Vector3(0, GridSize, 0);
-            NewPos.y = Mathf.Clamp(NewPos.y, -4, GridSize);
+            NewPos.y = Mathf.Clamp(NewPos.y, -3, 3);
             transform.position = NewPos;
 
             RaycastDetections();

@@ -3,30 +3,57 @@ using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 
-public class DumpsterBehavior : MonoBehaviour
+public class TurretBehavior : MonoBehaviour
 {
     [SerializeField]
     private LayerMask ZombieMask;
 
     [SerializeField]
-    private float TargetRotationAngle;
+    private float TargetRotationAngle; //amplitude?
+
+    [SerializeField]
+    public bool IsActivated;
 
     private float LineCastDistance;
     private GameManager GameManager;
     private Color TempColor;
     //private Vector3 TempRotation = new Vector3(0.0f, 0.0f, -45.0f);
-    private float RotationSpeed = 2f;
-    private float StartAngle;
-    private bool IsRotatingForward = true;
+    private float RotationSpeed = 2f; //frequency
+    private Quaternion StartRot;
+    private Quaternion EndRot;
+    //private bool IsRotatingForward = true;
+
+    [Header("Bullet Properties")]
+
+    [SerializeField]
+    private GameObject bulletPrefab;
+
+    [SerializeField]
+    private int bulletDamage;
+
+    [SerializeField]
+    private float bulletSpeed;
+
+    private Enemy_Behaviour DetectedZombie;
+
+    //Audio
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>();
+    }
+    
     
     // Start is called before the first frame update
     void Start()
     {
         GameManager = FindObjectOfType<GameManager>();
-        LineCastDistance = 100.0f;
-        TargetRotationAngle = 45.0f ;
+        LineCastDistance = 11.0f;
+        //TargetRotationAngle = 45.0f;
 
-        StartAngle = transform.eulerAngles.z;
+        StartRot = transform.rotation;
+        IsActivated = false;
     }
 
     // Update is called once per frame
@@ -34,7 +61,12 @@ public class DumpsterBehavior : MonoBehaviour
     {
         if (!GameManager.GetGameStatus())
         {
-            RotationBouncer();
+            if (IsActivated)
+            {
+                RotationBouncer();
+                Invoke("DeactivateTurret", 5);
+                //RotationBouncer(0.0f);
+            }
         }
 
     }
@@ -42,29 +74,13 @@ public class DumpsterBehavior : MonoBehaviour
     private void RotationBouncer()
     {
         RaycastDetection();
-        float CurrentAngle = transform.eulerAngles.z;
-        if (IsRotatingForward)
-        {
-            if(CurrentAngle < StartAngle + TargetRotationAngle)
-            {
-                transform.Rotate(0,0,TargetRotationAngle * RotationSpeed * Time.deltaTime);
-            }
-            else
-            {
-                IsRotatingForward = false;
-            }
-        }
-        else
-        {
-            if (CurrentAngle > StartAngle)
-            {
-                transform.Rotate(0, 0, TargetRotationAngle * -RotationSpeed * Time.deltaTime);
-            }
-            else
-            {
-                IsRotatingForward = true;
-            }
-        }
+        Debug.Log("Turret Firing");
+        audioManager.PlaySFX(audioManager.ScreenClean_Audio);
+        //float CurrentAngle = transform.eulerAngles.z;
+        float oscillation = Mathf.Sin(Time.deltaTime * RotationSpeed) + TargetRotationAngle;
+        EndRot = StartRot * Quaternion.Euler(0,0,oscillation) ;
+        transform.rotation = Quaternion.Lerp(transform.rotation, EndRot, Time.deltaTime * RotationSpeed);
+
     }
 
     private void RaycastDetection()
@@ -76,18 +92,30 @@ public class DumpsterBehavior : MonoBehaviour
         if (ZombieDetect.collider != null)
         {
             TempColor = Color.red;
-            //Debug.Log("Turret deteced a zombie");
             Debug.DrawLine(transform.position, ZombieDetect.transform.position, TempColor);
+            DetectedZombie = ZombieDetect.collider.gameObject.GetComponent<Enemy_Behaviour>();
+            //DetectedZombie.OnDeath();
+
+            GameObject temp = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            temp.GetComponent<BulletBehavior>().SetAttributes(false, bulletDamage, 2.0f);
+            temp.GetComponent<Rigidbody2D>().velocity = (DetectedZombie.transform.position - temp.transform.position).normalized * bulletSpeed;
         }
         else
         {
-            //then set the debug line color to green and go off screen
             TempColor = Color.green;
             //Debug.Log("Soldier cannot see a zombie");
-            //Debug.DrawLine(transform.position, transform.position - Vector3.left * -LineCastDistance, TempColor);
+            Debug.DrawLine(transform.position, transform.position - Vector3.left * -LineCastDistance, TempColor);
 
 
             //Doesn't see a zombie so nothing should happen at the moment
         }
+    }
+
+    private void DeactivateTurret()
+    {
+        IsActivated = false;
+        Debug.Log("Turret Deactivated");
+        EndRot = StartRot * Quaternion.Euler(0, 0, 0);
+        transform.rotation = Quaternion.Lerp(transform.rotation, StartRot, Time.deltaTime * RotationSpeed);
     }
 }

@@ -7,17 +7,26 @@ public class AudioManager : MonoBehaviour
     [Header("Audio Source")]
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
+    [SerializeField] AudioSource EnemySource;
+    [SerializeField] AudioSource GunSource;
+
 
     [Header("Audio Clip")]
     public AudioClip background_Audio;
     public AudioClip Rifle_Audio;
     public AudioClip Shotgun_Audio;
-    public AudioClip Pistol_Audio;
+    public AudioClip Flamethrower_Audio;
     public AudioClip Sniper_Audio;
     public AudioClip pickup_Audio;
     public AudioClip ZombieDead_Audio;
+    public AudioClip ZombieAttack_Audio;
+    public AudioClip ZombieAppear_Audio;
+    public AudioClip ZombieEatFinal_Audio;
     public AudioClip gameStart_Audio;
     public AudioClip gameEnd_Audio;
+    public AudioClip Deliver_Audio;
+    public AudioClip ScreenClean_Audio;
+    public AudioClip AskWeapon_Audio;
 
     public static AudioManager instance;
 
@@ -42,5 +51,15 @@ public class AudioManager : MonoBehaviour
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);
+    }
+
+    public void PlayEnemySound(AudioClip clip)
+    {
+        EnemySource.PlayOneShot(clip);
+    }
+
+    public void PlayGun(AudioClip clip)
+    {
+        GunSource.PlayOneShot(clip);
     }
 }

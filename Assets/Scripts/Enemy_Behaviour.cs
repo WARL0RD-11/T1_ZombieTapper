@@ -1,86 +1,132 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Enemy_Behaviour : MonoBehaviour
 {
-    [SerializeField] float enemySpeed = 1.0f;
-    //[SerializeField] Animation deathAnimation;
-    [SerializeField] float waitAfterDeath = 2.0f;
     [SerializeField] int health = 1;
+    [SerializeField] int enemyPower = 1;
+    [SerializeField] float enemySpeed = 0.25f;
+    [SerializeField] float attackCoolDown = 1f;
+    [SerializeField] GameObject bloodPoolPrefab;
+    [SerializeField] private float AnimTimeScale;
 
     GameManager gameManager;
     Animator animator;
     GameObject sandBagObject;
+    AudioManager audioManager;
 
-    // Start is called before the first frame update
+    bool canCharacterMove = true;
+    bool canAttack = false;
+    List<GameObject> targetsInRange = new List<GameObject>();
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>();
+    }
+
     void Start()
     {
         gameManager = FindAnyObjectByType<GameManager>();
         animator = GetComponent<Animator>();
         sandBagObject = GameObject.FindGameObjectWithTag("Finish");
+        animator.speed = AnimTimeScale;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (!gameManager.GetGameStatus())
+        if (!gameManager.GetGameStatus() && canCharacterMove)
         {
             EnemyMovement();
         }
-        else
+        else if(gameManager.GetGameStatus()) 
         {
-            animator.SetBool("isGameOver", true);
+            canCharacterMove = false;
+            canAttack = false;  
+            animator.SetBool("isZombieIdle", true);
+            animator.SetBool("isAttacking", false);
         }
-        //Check if enemy reached the barricade
         if (transform.position.x >= sandBagObject.transform.position.x)
         {
-            animator.SetBool("isGameOver", true);
+            animator.SetBool("isZombieEnd", true);
+            canCharacterMove = false;
             gameManager.EndGame();
+        }
+        if (canAttack)
+        {
+            StartCoroutine(WaitForAttack());
         }
     }
     private void EnemyMovement()
     {
-        //Move enemy on the x-axis
         transform.position += new Vector3(1.0f, 0f, 0) * enemySpeed * Time.deltaTime;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "Bullet" && !gameManager.GetGameStatus())
-        {
-            --health;
-            if(health <=0)
-            {
-                KillEnemy();
-            }
-        }
-
-    }
-    private void KillEnemy()
-    {
-        animator.SetBool("isZombieDead", true);
-        new WaitForSeconds(waitAfterDeath);
-        //Destroy(gameObject);
-    }
-
-    //Function to be called by soldiers when they are delivered the correct item
     public void OnDeath()
     {
-        //Set the speed to 0 so corpses can't move
         enemySpeed = 0.0f;
-
         animator.SetBool("isZombieDead", true);
-
         GetComponent<BoxCollider2D>().enabled = false;
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            targetsInRange.Add(collision.gameObject);
+            canCharacterMove = false;
+            canAttack = true;
+            animator.SetBool("isAttacking", true);
+        }
+    }
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            canCharacterMove = true;
+            canAttack = false;
+            animator.SetBool("isAttacking", false);
+        }
+    }
 
-        //Play animations or something
-        //new WaitForSeconds(waitAfterDeath);
-        //Destroy(gameObject);
+    public IEnumerator WaitForAttack()
+    {
+        foreach (var target in targetsInRange)
+        {
+            canAttack = false;
+            audioManager.PlayEnemySound(audioManager.ZombieAttack_Audio);
+            if (target && target.GetComponent<Obstacle_Behaviour>().TakeDamage(enemyPower) <= 0)
+            {
+                target.GetComponent<Animator>().SetBool("shouldDie", true);
+                StopAllCoroutines();
+            }
+            yield return new WaitForSeconds(attackCoolDown);
+            canAttack = true;
+        }
     }
 
     public void DeathOver()
     {
-        Destroy(this);
+        Vector3 deathPos = transform.position;
+        deathPos.y = deathPos.y - 0.4f;
+        Instantiate(bloodPoolPrefab, deathPos, Quaternion.identity);
+        audioManager.PlayEnemySound(audioManager.ZombieDead_Audio);
+        gameManager.AddScore(1);
+        Destroy(this.gameObject);
+    }
+
+    public void ReduceHealth(int amount)
+    {
+        //--health;
+        health -= amount;
+        if (health < 0)
+        {
+            OnDeath();
+        }
+        else
+        {
+            GetComponentInChildren<ParticleSystem>().Play();
+        }
     }
 }
