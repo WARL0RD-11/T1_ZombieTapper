@@ -332,6 +332,9 @@ public class SoldierBehavior : MonoBehaviour
         tempTrail.GetComponent<Rigidbody2D>().velocity = Vector3.left * bulletSpeed;
         tempTrail.GetComponent<BulletBehavior>().SetDestination(detectedZombie.transform.position);
 
+
+        //Set Audio
+        audioManager.PlayGun(audioManager.Rifle_Audio);
         //Since a bullet was shot, reduce ammo by 1
         currentAmmo--;
         //If the soldier has run out of ammo
@@ -399,7 +402,7 @@ public class SoldierBehavior : MonoBehaviour
     {
         animator.SetBool("isShooting", true);
         animator.SetBool("isAsking", false);
-        audioManager.PlayGun(audioManager.Rifle_Audio);
+        
         if (canShoot)
         {
             //canShoot = false;
@@ -434,7 +437,7 @@ public class SoldierBehavior : MonoBehaviour
         animator.SetBool("isShooting", false);
         animator.SetBool("isAsking", false);
         animator.SetTrigger("hasShotgun");
-        audioManager.PlayGun(audioManager.Shotgun_Audio);
+        
 
         if (canShotgun)
         {
@@ -458,7 +461,7 @@ public class SoldierBehavior : MonoBehaviour
         animator.SetBool("isShooting", true);
         animator.SetBool("isAsking", false);
         animator.SetTrigger("hasSniper");
-        audioManager.PlayGun(audioManager.Sniper_Audio);
+        
         canShoot = false;
     }
 
@@ -468,7 +471,7 @@ public class SoldierBehavior : MonoBehaviour
     {
         animator.SetBool("isShooting", false);
         animator.SetBool("isAsking", false);
-        audioManager.PlayGun(audioManager.Flamethrower_Audio);
+        
         animator.SetTrigger("hasFlamer");
 
         canShoot = false;
@@ -520,6 +523,7 @@ public class SoldierBehavior : MonoBehaviour
 
         }
 
+        audioManager.PlayGun(audioManager.Shotgun_Audio);
     }
 
     //Actual sniper behavior
@@ -528,6 +532,7 @@ public class SoldierBehavior : MonoBehaviour
     public void SniperAttack()
     {
         mfB.PlayAnimation(1);
+        audioManager.PlayGun(audioManager.Sniper_Audio);
 
         GameObject tempTrail = Instantiate(bulletTrail, mfB.transform.position, Quaternion.identity);
         tempTrail.GetComponent<BulletBehavior>().SetAttributes(true, sniperDamage, 5.0f);
@@ -541,9 +546,12 @@ public class SoldierBehavior : MonoBehaviour
     //Just lasts for a duration before switching back to rifle.
     private IEnumerator FlamerDuration()
     {
+        //audioManager.PlayFlame(audioManager.Flamethrower_Audio);
+        audioManager.PlayFlame();
         yield return new WaitForSeconds(flamerDuration);
         flamerBox.SetActive(false);
         flamerInProgress = false;
+        audioManager.EndFlame();
         ReturnToRifle();
     }
 
