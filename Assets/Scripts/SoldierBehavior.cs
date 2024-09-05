@@ -434,13 +434,14 @@ public class SoldierBehavior : MonoBehaviour
     //Makes sure that the soldier is able to shoot all their shotgun shells before switching back to rifle
     private void ShotgunBehavior()
     {
+
         animator.SetBool("isShooting", false);
         animator.SetBool("isAsking", false);
-        animator.SetTrigger("hasShotgun");
-        
 
         if (canShotgun)
         {
+            animator.SetTrigger("hasShotgun");
+
             canShotgun = false;
             currentSPAmmo--;
             if (currentSPAmmo <= 0)
