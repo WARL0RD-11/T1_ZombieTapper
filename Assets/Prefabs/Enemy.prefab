@@ -51,10 +51,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 8
   enemyPower: 1
-  enemySpeed: 0.25
+  enemySpeed: 0.4
   attackCoolDown: 1
   bloodPoolPrefab: {fileID: 2757200110915968827, guid: f61caa260e1970f4fb83e47f16ad1b5d, type: 3}
   AnimTimeScale: 1
+  spawnRate: 0.75
 --- !u!61 &1761073916831053777
 BoxCollider2D:
   m_ObjectHideFlags: 0
