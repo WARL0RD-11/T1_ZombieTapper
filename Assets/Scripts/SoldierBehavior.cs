@@ -186,6 +186,7 @@ public class SoldierBehavior : MonoBehaviour
             if (currentSState != SoldierState.Waiting)
             {
                 WeaponStateBehavior();
+                animator.ResetTrigger("shouldIdle");
             }
 
         }
@@ -214,7 +215,9 @@ public class SoldierBehavior : MonoBehaviour
 
         currentSState = SoldierState.Waiting;
 
-        animator.SetBool("isAsking", true);
+        //animator.SetBool("isAsking", true);
+
+        animator.SetTrigger("shouldAsk");
 
         //Get a random delivery item from the game manager
         //wantedItem = gM.GetRandomDeliveryItem();
@@ -240,25 +243,20 @@ public class SoldierBehavior : MonoBehaviour
     public void DeliverItem(DeliveryItem item)
     {
 
+        animator.ResetTrigger("shouldAsk");
+
         //If the item is the default rifle
         //Fill their ammo back up and get back to shooting
         if (item.weapon == Weapon.Rifle)
         {
 
-            animator.SetBool("isAsking", false);
+            animator.SetTrigger("shouldShoot");
 
             currentAmmo = maximumAmmo;
 
             waitingForItem = false;
 
-            //gM.AddScore(1);
-
-            //Get rid of the current speech bubble
-            //Destroy(currentSpeechBubble);
-            //currentSpeechBubble = null;
-
             currentWeapon = Weapon.Rifle;
-            //GuntypeSound = 0;
 
             canShoot = true;
 
@@ -274,6 +272,8 @@ public class SoldierBehavior : MonoBehaviour
             Debug.Log(item.weapon.ToString());
             currentWeapon = item.weapon;
             currentSPAmmo = 3;
+
+            animator.SetTrigger("shouldIdle");
 
             if(waitingForItem)
             {
@@ -294,7 +294,6 @@ public class SoldierBehavior : MonoBehaviour
     private void ShootingOver()
     {
         //isShooting = false;
-        animator.SetInteger("animIndex", 0);
         waitingForItem = false;
         detectedZombie = null;
     }
@@ -346,8 +345,9 @@ public class SoldierBehavior : MonoBehaviour
             wantedItem = gM.GetDeliveryItems()[0];
             canShoot = false;
             waitingForItem = true;
-            animator.SetBool("isShooting", false);
-            animator.SetBool("isAsking", true);
+            //animator.SetBool("isShooting", false);
+            //animator.SetBool("isAsking", true);
+            animator.SetTrigger("shouldAsk");
 
             WantsNewItem();
         }
@@ -400,8 +400,10 @@ public class SoldierBehavior : MonoBehaviour
     //Behavior now executed by the animation itself to line up with the visuals
     private void RifleBehavior()
     {
-        animator.SetBool("isShooting", true);
-        animator.SetBool("isAsking", false);
+        //animator.SetBool("isShooting", true);
+        //animator.SetBool("isAsking", false);
+
+        animator.SetTrigger("shouldShoot");
         
         if (canShoot)
         {
@@ -434,8 +436,8 @@ public class SoldierBehavior : MonoBehaviour
     //Makes sure that the soldier is able to shoot all their shotgun shells before switching back to rifle
     private void ShotgunBehavior()
     {
-        animator.SetBool("isShooting", false);
-        animator.SetBool("isAsking", false);
+        //animator.SetBool("isShooting", false);
+        //animator.SetBool("isAsking", false);
         animator.SetTrigger("hasShotgun");
         
 
@@ -458,8 +460,8 @@ public class SoldierBehavior : MonoBehaviour
     //Only shoots a single time before switching back
     private void SniperBehavior()
     {
-        animator.SetBool("isShooting", true);
-        animator.SetBool("isAsking", false);
+        //animator.SetBool("isShooting", true);
+        //animator.SetBool("isAsking", false);
         animator.SetTrigger("hasSniper");
         
         canShoot = false;
@@ -469,8 +471,8 @@ public class SoldierBehavior : MonoBehaviour
     //Unlike the other weapons, just uses a trigger box instead of bullets
     private void FlamerBehavior()
     {
-        animator.SetBool("isShooting", false);
-        animator.SetBool("isAsking", false);
+        //animator.SetBool("isShooting", false);
+        //animator.SetBool("isAsking", false);
         
         animator.SetTrigger("hasFlamer");
 
@@ -491,9 +493,9 @@ public class SoldierBehavior : MonoBehaviour
     private void ReturnToRifle()
     {
 
-        animator.ResetTrigger("hasShotgun");
-        animator.ResetTrigger("hasSniper");
-        animator.ResetTrigger("hasFlamer");
+        //animator.ResetTrigger("hasShotgun");
+        //animator.ResetTrigger("hasSniper");
+        //animator.ResetTrigger("hasFlamer");
         canShoot = false;
         currentWeapon = Weapon.Rifle;
         WantsNewItem();
@@ -524,6 +526,8 @@ public class SoldierBehavior : MonoBehaviour
         }
 
         audioManager.PlayGun(audioManager.Shotgun_Audio);
+
+        animator.ResetTrigger("hasShotgun");
     }
 
     //Actual sniper behavior
@@ -552,6 +556,7 @@ public class SoldierBehavior : MonoBehaviour
         flamerBox.SetActive(false);
         flamerInProgress = false;
         audioManager.EndFlame();
+        animator.ResetTrigger("hasFlamer");
         ReturnToRifle();
     }
 
