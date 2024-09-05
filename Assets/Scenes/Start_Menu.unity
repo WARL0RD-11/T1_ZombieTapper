@@ -1515,7 +1515,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2523,13 +2523,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 1367410594}
   SFXSource: {fileID: 616156195}
-  EnemySource: {fileID: 0}
-  GunSource: {fileID: 0}
+  EnemySource: {fileID: 877197492}
+  GunSource: {fileID: 627834272}
   background_Audio: {fileID: 8300000, guid: e35e3640fd5826146b5e3737b4ebce2d, type: 3}
-  Rifle_Audio: {fileID: 8300000, guid: e8086e105e72c504684c5208599ed7b1, type: 3}
+  Rifle_Audio: {fileID: 8300000, guid: 87835ac02f56c504a81e43a3724c2282, type: 3}
   Shotgun_Audio: {fileID: 8300000, guid: 8c5f50686638f01499cd273efd270c3b, type: 3}
-  Pistol_Audio: {fileID: 8300000, guid: 83d82767e0a42414f8999c1764541feb, type: 3}
-  Sniper_Audio: {fileID: 8300000, guid: f8e38c61453389b4a99e358e15d85063, type: 3}
+  Flamethrower_Audio: {fileID: 8300000, guid: e1d43325a783e0a409d08060e798c18d, type: 3}
+  Sniper_Audio: {fileID: 8300000, guid: 2e059eeaa56605a4983e5e02c4702153, type: 3}
   pickup_Audio: {fileID: 8300000, guid: 26438a081f76e9449b3e7376ce3dfeb1, type: 3}
   ZombieDead_Audio: {fileID: 8300000, guid: c9ce7e0fe80ef5e439b47df79eaba075, type: 3}
   ZombieAttack_Audio: {fileID: 8300000, guid: fcfe3001939d2b44699f29936f19f13b, type: 3}
@@ -2538,7 +2538,7 @@ MonoBehaviour:
   gameStart_Audio: {fileID: 8300000, guid: ec6f4c885d63d044c86ee29f2066e84c, type: 3}
   gameEnd_Audio: {fileID: 8300000, guid: 52e177676e1b2bb46a334c7dc7ad8820, type: 3}
   Deliver_Audio: {fileID: 8300000, guid: 1ac86b3760cdff344b6e32cdf6617ded, type: 3}
-  ScreenClean_Audio: {fileID: 8300000, guid: 2c8ddb551c2d2e94698eadb6259ac354, type: 3}
+  ScreenClean_Audio: {fileID: 8300000, guid: 1df83fb8b192c264bb5127442ca43f91, type: 3}
   AskWeapon_Audio: {fileID: 8300000, guid: 2825c5474da0a9f418981c97a027ad94, type: 3}
 --- !u!4 &1262972499
 Transform:
@@ -2740,7 +2740,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.6
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
