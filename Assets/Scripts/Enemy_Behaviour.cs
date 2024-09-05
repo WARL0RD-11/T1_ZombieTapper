@@ -13,6 +13,7 @@ public class Enemy_Behaviour : MonoBehaviour
     [SerializeField] float attackCoolDown = 1f;
     [SerializeField] GameObject bloodPoolPrefab;
     [SerializeField] private float AnimTimeScale;
+    [SerializeField] public float spawnRate = 0f;
 
     GameManager gameManager;
     Animator animator;

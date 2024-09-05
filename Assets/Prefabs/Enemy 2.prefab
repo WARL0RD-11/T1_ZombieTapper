@@ -56,6 +56,7 @@ MonoBehaviour:
   attackCoolDown: 10
   bloodPoolPrefab: {fileID: 2757200110915968827, guid: f61caa260e1970f4fb83e47f16ad1b5d, type: 3}
   AnimTimeScale: 0.5
+  spawnRate: 25
 --- !u!61 &1761073916831053777
 BoxCollider2D:
   m_ObjectHideFlags: 0
